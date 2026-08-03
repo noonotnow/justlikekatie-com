@@ -1,0 +1,16 @@
+# Deployment config for justlikekatie.com (apex coming-soon page).
+#
+# This repository's root IS the deploy root. No Netlify dashboard "Base
+# directory" setting is required or used — the site is this repo, in full.
+#
+# No build step: this is a hand-authored static page, nothing to compile.
+
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
