@@ -8,3 +8,9 @@ The user described the rainbow palette in the CurioSeek emblem as “my signatur
 **Why:** A proposed palette-matched replacement lost a distinctive part of the user's identity, and the user explicitly corrected that direction.
 
 **How to apply:** Preserve the rainbow color when adapting or placing the CurioSeek logo. Treat any simplified derivative as an exploration, not a replacement for the original, unless the user asks for one.
+
+For apex explorations, protect the warmth, open center, typography, and restrained rainbow. Improve text contrast and interaction clarity first, public-facing copy and consistent color semantics second, and individual world character third. Keep family resemblance without treating the four worlds as identical products or prescribing a closed journey.
+
+**Why:** The user wants to keep this direction and make it more distinctive and legible, not reopen the whole concept.
+
+**How to apply:** Keep functional labels readable, make selection outcomes apparent, provide a readable mobile alternative to the diagram, and use concrete invitations rather than repeated defensive explanations. Decorative details can remain quiet.
