@@ -70,15 +70,15 @@ export function Apex() {
 
         <section className="ca-hero" aria-labelledby="ca-title">
           <div className="ca-hero-copy">
-            <div className="ca-eyebrow ca-kicker">A field guide to a curious life</div>
+            <div className="ca-eyebrow ca-kicker">The connective field for a curious life</div>
             <h1 id="ca-title">More than<br />one kind of <em>curious.</em></h1>
-            <p className="ca-hero-sub">A home for the things worth following—learning deeply, making things, finding your systems, and loving what you love.</p>
+            <p className="ca-hero-sub">A shared field for different universes of curiosity: common tools can travel between them while each keeps its own language and creative rhythm.</p>
             <div className="ca-hero-actions">
               <a className="ca-button" href="#worlds">Find your way around <span className="ca-arrow" aria-hidden="true">↘</span></a>
               <a className="ca-textlink" href="#approach">A small philosophy</a>
             </div>
           </div>
-          <div className="ca-art" aria-label="Illustration of four connected paths around one curious life">
+          <div className="ca-art" aria-label="Illustration of four distinct worlds connected by a shared field">
             <div className="ca-orbit" aria-hidden="true">
               <span className="ca-orbit-tag ca-tag-1"><b />LEARN</span>
               <span className="ca-orbit-tag ca-tag-2"><b />MAKE</span>
@@ -93,22 +93,22 @@ export function Apex() {
         </section>
 
         <div className="ca-thesis" aria-label="CurioSeek doctrine">
-          <span className="ca-kicker">The CurioSeek way</span>
-          <p>Collect signals <span>→</span> shape systems <span>→</span> move mountains.</p>
+          <span className="ca-kicker">The CurioSeek field</span>
+          <p>Shared instrumentation <span>→</span> distinct creative languages.</p>
         </div>
 
         <section className="ca-intro" aria-labelledby="ca-intro-title">
-          <div className="ca-kicker">01 / The bigger picture</div>
+          <div className="ca-kicker">01 / The connective tissue</div>
           <div>
-            <h2 id="ca-intro-title">Not a funnel. A <em>whole landscape.</em></h2>
-            <p>Some interests want structure. Some want a sketchbook. Some are better left private. CurioSeek gathers the different ways of being curious without turning a person into a content calendar.</p>
+            <h2 id="ca-intro-title">Not a funnel. <em>A living field.</em></h2>
+            <p>CurioSeek is the field between different filters and universes of creation. Shared tooling—like the CAPTURE membrane—can move across them, connecting practices without flattening the distinct languages each world speaks.</p>
           </div>
         </section>
 
         <section className="ca-worlds" id="worlds" aria-labelledby="ca-worlds-title">
           <div className="ca-section-head">
-            <h2 id="ca-worlds-title">Four paths, one person.</h2>
-            <p>Different rooms for different kinds of attention.</p>
+            <h2 id="ca-worlds-title">Four worlds, one field.</h2>
+            <p>Distinct filters. Shared tools where they help.</p>
           </div>
           <div className="ca-world-grid">
             {worlds.map((world, index) => {
@@ -139,15 +139,15 @@ export function Apex() {
       <section className="ca-boundary" aria-labelledby="ca-boundary-title">
         <div className="ca-wrap ca-boundary-grid">
           <div>
-            <div className="ca-kicker">02 / Keep the edges human</div>
-            <h2 id="ca-boundary-title">Creativity is <em>bigger</em> than publishing.</h2>
+            <div className="ca-kicker">02 / A membrane between worlds</div>
+            <h2 id="ca-boundary-title">Shared tools.<br /><em>Distinct languages.</em></h2>
           </div>
           <div className="ca-boundary-copy">
-            <p>Making can be private, playful, unfinished, or just for you. CreatorOS is a workstation for that full creative life—not a machine that turns every thought into content.</p>
-            <p>When you do want to share, a focused content engine can help shape a chosen idea. CreatorOS supports the wider creative practice; publishing remains a deliberate next step.</p>
+            <p>CurioSeek’s connective tissue is shared tooling and instrumentation—like the CAPTURE membrane—available across different filters and creative universes. A method can travel without making every practice look or feel the same.</p>
+            <p>StudentOS, CreatorOS, LifeOS, and Fandom Vibes each keep their own language and purpose. Making can stay private, playful, unfinished, or just for you; sharing is a choice, not the system’s default.</p>
             <div className="ca-distinction">
-              <div><strong>The workshop</strong><span>Capture, create, plan, connect. Journaling remains its own personal practice.</span></div>
-              <div><strong>The outward path</strong><span>Selected work may become shareable. The choice belongs to the maker.</span></div>
+              <div><strong>The shared membrane</strong><span>Capture and creative instrumentation can connect otherwise distinct worlds.</span></div>
+              <div><strong>The native language</strong><span>Each filter keeps its own rhythms, rules, and way of making meaning.</span></div>
             </div>
           </div>
         </div>
@@ -194,8 +194,8 @@ export function Apex() {
         </section>
 
         <aside className="ca-note">
-          <div className="ca-kicker">A note on this map</div>
-          <p>CurioSeek is an umbrella concept: some paths are private workspaces, and some are still taking shape. This page is an invitation to understand the landscape—not a claim that every room is open.</p>
+          <div className="ca-kicker">A note on this field</div>
+          <p>CurioSeek is a design concept for the connective field around distinct creative worlds. Some spaces are private workspaces, and some are still taking shape; shared instrumentation does not mean every room is open.</p>
         </aside>
 
         <footer className="ca-footer">

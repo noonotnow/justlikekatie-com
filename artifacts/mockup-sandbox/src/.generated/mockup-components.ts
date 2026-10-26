@@ -3,5 +3,8 @@ type ModuleMap = Record<string, () => Promise<Record<string, unknown>>>;
 export const modules: ModuleMap = {
   "./components/mockups/curioseek/Apex.tsx": () => import("../components/mockups/curioseek/Apex.tsx"),
   "./components/mockups/curioseek/AtlasMap.tsx": () => import("../components/mockups/curioseek/AtlasMap.tsx"),
-  "./components/mockups/curioseek/Current.tsx": () => import("../components/mockups/curioseek/Current.tsx")
+  "./components/mockups/curioseek/CuriosityMap.tsx": () => import("../components/mockups/curioseek/CuriosityMap.tsx"),
+  "./components/mockups/curioseek/Current.tsx": () => import("../components/mockups/curioseek/Current.tsx"),
+  "./components/mockups/curioseek/FieldDesk.tsx": () => import("../components/mockups/curioseek/FieldDesk.tsx"),
+  "./components/mockups/curioseek/NeuralApex.tsx": () => import("../components/mockups/curioseek/NeuralApex.tsx")
 };
