@@ -2,5 +2,6 @@
 type ModuleMap = Record<string, () => Promise<Record<string, unknown>>>;
 export const modules: ModuleMap = {
   "./components/mockups/curioseek/Apex.tsx": () => import("../components/mockups/curioseek/Apex.tsx"),
+  "./components/mockups/curioseek/AtlasMap.tsx": () => import("../components/mockups/curioseek/AtlasMap.tsx"),
   "./components/mockups/curioseek/Current.tsx": () => import("../components/mockups/curioseek/Current.tsx")
 };
