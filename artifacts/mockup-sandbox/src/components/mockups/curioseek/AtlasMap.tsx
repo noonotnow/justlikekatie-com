@@ -131,48 +131,6 @@ export function AtlasMap() {
         <div className="am-map-canvas am-neural-field">
           <div className="am-map-grid" aria-hidden="true" />
           <span className="am-map-field-label">CURIOSEEK / THE FIELD AROUND &amp; BETWEEN</span>
-          <svg className="am-neural-lines am-neural-desktop" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
-            <defs>
-              <linearGradient id="am-rainbow-desktop" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#f17363" />
-                <stop offset="34%" stopColor="#e7b64f" />
-                <stop offset="67%" stopColor="#66ad8e" />
-                <stop offset="100%" stopColor="#9482be" />
-              </linearGradient>
-            </defs>
-            <path className="am-axon" d="M290 144 C390 82 610 82 710 144" />
-            <path className="am-axon" d="M710 144 C840 212 840 388 710 462" />
-            <path className="am-axon" d="M710 462 C610 522 390 522 290 462" />
-            <path className="am-axon" d="M290 462 C160 388 160 212 290 144" />
-            <path className="am-dendrite" d="M290 144 C230 92 170 79 95 95 M290 144 C340 88 390 72 440 72" />
-            <path className="am-dendrite" d="M710 144 C770 95 834 80 909 98 M710 144 C764 191 788 221 806 255" />
-            <path className="am-dendrite" d="M710 462 C775 504 837 524 910 535 M710 462 C756 423 793 395 838 372" />
-            <path className="am-dendrite" d="M290 462 C230 505 168 525 95 535 M290 462 C244 423 211 394 181 367" />
-            <g className="am-synapses">
-              <circle cx="95" cy="95" r="4" /><circle cx="440" cy="72" r="4" /><circle cx="909" cy="98" r="4" />
-              <circle cx="806" cy="255" r="4" /><circle cx="838" cy="372" r="4" /><circle cx="910" cy="535" r="4" />
-              <circle cx="95" cy="535" r="4" /><circle cx="181" cy="367" r="4" />
-            </g>
-          </svg>
-          <svg className="am-neural-lines am-neural-mobile" viewBox="0 0 400 800" preserveAspectRatio="none" aria-hidden="true">
-            <defs>
-              <linearGradient id="am-rainbow-mobile" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#f17363" />
-                <stop offset="34%" stopColor="#e7b64f" />
-                <stop offset="67%" stopColor="#66ad8e" />
-                <stop offset="100%" stopColor="#9482be" />
-              </linearGradient>
-            </defs>
-            <path className="am-axon" d="M194 144 C150 182 224 278 194 320 M194 320 C145 367 218 455 194 504 M194 504 C145 558 222 634 194 688" />
-            <path className="am-dendrite" d="M194 144 C175 118 162 99 144 80 M194 144 C181 142 174 137 168 136 M194 144 C176 163 159 180 144 192 M194 320 C175 301 160 281 144 264 M194 320 C182 320 175 320 168 320 M194 320 C178 341 159 361 144 376 M194 320 C183 355 178 393 176 416 M194 504 C177 498 160 491 144 488 M194 504 C182 519 173 535 168 544 M194 688 C175 670 158 646 144 624 M194 688 C183 684 174 682 168 680 M194 688 C176 709 160 727 144 736 M194 688 C190 652 184 619 176 600" />
-            <path className="am-cross-link" d="M144 192 C159 211 169 219 184 222 M144 488 C158 511 171 521 188 522" />
-            <g className="am-synapses">
-              <circle cx="144" cy="80" r="4" /><circle cx="168" cy="136" r="4" /><circle cx="144" cy="192" r="4" />
-              <circle cx="144" cy="264" r="4" /><circle cx="168" cy="320" r="4" /><circle cx="144" cy="376" r="4" />
-              <circle cx="176" cy="416" r="4" /><circle cx="144" cy="488" r="4" /><circle cx="168" cy="544" r="4" />
-              <circle cx="144" cy="624" r="4" /><circle cx="168" cy="680" r="4" /><circle cx="144" cy="736" r="4" />
-            </g>
-          </svg>
           {worlds.map((world) => (
             <div className={`am-neuron am-neuron-${world.id}`} key={world.id}>
               <button
@@ -207,7 +165,7 @@ export function AtlasMap() {
               ))}
             </div>
           ))}
-          <span className="am-map-note am-note-south">FOUR WORLDS · OPEN ENDED PATHS</span>
+          <span className="am-map-note am-note-south">FOUR WORLDS · ROOM TO WANDER</span>
           <span className="am-map-compass" aria-hidden="true"><b>N</b><i>✳</i></span>
         </div>
 
