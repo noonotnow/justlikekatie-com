@@ -1,0 +1,1 @@
+- [CurioSeek scope](curioseek-scope.md) — the requested apex spans StudentOS, CreatorOS, LifeOS, Fandom Vibes, the content engine, and C-drama wiki.
