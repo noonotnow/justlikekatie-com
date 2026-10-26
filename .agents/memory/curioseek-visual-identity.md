@@ -14,3 +14,9 @@ For apex explorations, protect the warmth, open center, typography, and restrain
 **Why:** The user wants to keep this direction and make it more distinctive and legible, not reopen the whole concept.
 
 **How to apply:** Keep functional labels readable, make selection outcomes apparent, provide a readable mobile alternative to the diagram, and use concrete invitations rather than repeated defensive explanations. Decorative details can remain quiet.
+
+Explorations must not turn CurioSeek into a service that sorts people into OSes. The user prioritizes an organic, branching-network comparison that preserves the liked Atlas, with a wildcard second; shared-tool directions are not the concept.
+
+**Why:** The user explicitly rejected both the shared-tool framing and the sorting-service interpretation while choosing the next comparisons.
+
+**How to apply:** Offer optional exploration without assigning belonging or prescribing a route. Preserve the liked design as a reference rather than silently replacing it.

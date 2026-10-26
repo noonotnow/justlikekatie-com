@@ -87,10 +87,10 @@ export function AtlasCompass() {
           <p className="eyebrow"><span>CURIOSEEK</span><i /> A GUIDE TO WHAT'S NEXT</p>
           <h1>Start with<br /><em>what moves you.</em></h1>
           <p className="hero-deck">
-            One curious life has more than one direction. Tell us what you’re drawn to;
-            we’ll point you toward a world that fits.
+            One curious life has more than one direction. Begin with a feeling, or wander
+            into the open field—each world has its own way of seeing.
           </p>
-          <a className="text-link" href="#worlds">Meet the four worlds <span>↓</span></a>
+          <a className="text-link" href="#worlds">Explore the open field <span>↓</span></a>
         </div>
         <div className="compass-art" aria-label="Four paths meet at the CurioSeek compass">
           <div className="orbit orbit-one" />
@@ -108,10 +108,10 @@ export function AtlasCompass() {
       <section className="wayfinder" aria-labelledby="wayfinder-heading">
         <div className="wayfinder-top">
           <div>
-            <p className="eyebrow">A SMALL QUESTION, A GOOD PLACE TO BEGIN</p>
-            <h2 id="wayfinder-heading">What brings you here?</h2>
+            <p className="eyebrow">A SMALL QUESTION, IF IT HELPS</p>
+            <h2 id="wayfinder-heading">Where would you like to begin?</h2>
           </div>
-          <p className="wayfinder-aside">Choose a feeling, not a feature.<br />Your starting point updates below.</p>
+          <p className="wayfinder-aside">Choose a thread—or skip straight to the field.<br />This is one beginning, never a sorting.</p>
         </div>
         <div className="wayfinder-grid">
           <div className="intent-list" role="group" aria-label="Choose what brings you here">
@@ -129,9 +129,9 @@ export function AtlasCompass() {
               </button>
             ))}
           </div>
-            <article className={`destination-card tone-${destination.color} destination-${destination.id}`} aria-live="polite">
+          <article className={`destination-card tone-${destination.color} destination-${destination.id}`} aria-live="polite">
             <div className="destination-card-top">
-              <span className="destination-kicker">A GOOD PLACE TO BEGIN</span>
+              <span className="destination-kicker">ONE THREAD TO FOLLOW</span>
               <span className="destination-stamp">{destination.initials}</span>
             </div>
             <p className="destination-kind">{destination.kind}</p>
@@ -142,7 +142,7 @@ export function AtlasCompass() {
               <div className="destination-tags">
                 {destination.pathways.map((pathway) => <span key={pathway}>{pathway}</span>)}
               </div>
-              <span className="selection-note">YOUR STARTING POINT: <b>{intent.mark}</b></span>
+              <span className="selection-note">ONE POSSIBLE START: <b>{intent.mark}</b></span>
             </div>
           </article>
         </div>
@@ -150,30 +150,46 @@ export function AtlasCompass() {
 
       <section className="world-index" id="worlds">
         <div className="world-index-heading">
-          <p className="eyebrow">02 / FOUR DISTINCT WORLDS</p>
-          <h2>Not one big thing.<br /><em>Room for different things.</em></h2>
+          <p className="eyebrow">02 / A FIELD OF MANY PATHS</p>
+          <h2>An open field.<br /><em>Four distinct worlds.</em></h2>
+          <p className="field-intro">
+            CurioSeek is the space between and around them. Follow a connection,
+            choose a world, or arrive with no destination in mind.
+          </p>
+          <p className="field-instruction"><span>↗</span> Select any world to see what grows there.</p>
         </div>
-        <div className="world-rows">
+        <div className="world-field" aria-label="Explore the four connected CurioSeek worlds">
+          <svg className="field-paths" viewBox="0 0 900 540" preserveAspectRatio="none" aria-hidden="true">
+            <path className="path-sage" d="M115 138 C250 62 323 203 447 213 S646 92 798 138" />
+            <path className="path-coral" d="M115 138 C216 239 278 265 405 274 S630 326 798 397" />
+            <path className="path-gold" d="M96 409 C221 354 282 274 405 274 S676 236 798 138" />
+            <path className="path-violet" d="M96 409 C224 487 316 362 405 274 S638 308 798 397" />
+            <path className="path-branch" d="M405 274 C480 201 476 116 531 69" />
+            <circle cx="531" cy="69" r="4" />
+            <circle cx="69" cy="285" r="3" />
+            <circle cx="841" cy="286" r="3" />
+          </svg>
           {destinations.map((item, index) => (
             <button
               type="button"
-              className={`world-row tone-${item.color}${activeDestination === item.id ? " row-active" : ""}`}
+              className={`world-node node-${item.id}${activeDestination === item.id ? " node-active" : ""}`}
               key={item.id}
               onClick={() => {
                 const matchingIntent = intents.find((entry) => entry.destination === item.id);
                 if (matchingIntent) chooseIntent(matchingIntent.id, item.id);
               }}
               aria-pressed={activeDestination === item.id}
+              aria-label={`Explore ${item.name}; ${item.kind.toLowerCase()}`}
             >
-              <span className="world-row-index">0{index + 1}</span>
-              <span className="world-row-name">{item.name}</span>
-              <span className="world-row-kind">{item.kind}</span>
-              <span className="world-row-line">{item.line}</span>
-              <span className="world-row-arrow" aria-hidden="true">↗</span>
+              <span className="world-node-shape" aria-hidden="true"><span>{item.initials}</span></span>
+              <span className="world-node-index">0{index + 1} / {item.kind}</span>
+              <span className="world-node-name">{item.name}</span>
+              <span className="world-node-line">{item.line}</span>
+              <span className="world-node-action">Explore this world <i aria-hidden="true">↗</i></span>
             </button>
           ))}
         </div>
-        <p className="world-boundary"><span>FOUR WORLDS, FOUR LANGUAGES.</span> Follow any thread into what interests you.</p>
+        <p className="world-boundary"><span>FOUR WORLDS, FOUR LANGUAGES.</span> They meet here without becoming the same place.</p>
       </section>
 
       <section className="point-of-view" id="about">
