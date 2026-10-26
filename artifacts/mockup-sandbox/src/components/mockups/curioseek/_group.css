@@ -81,9 +81,8 @@
 .curio-apex .ca-world:hover {transform:translateY(-4px);border-color:var(--teal);}
 .curio-apex .ca-world:nth-child(1){grid-column:span 5;background:#e4e8dc;}
 .curio-apex .ca-world:nth-child(2){grid-column:span 7;background:#e3ebe4;}
-.curio-apex .ca-world:nth-child(3){grid-column:span 4;background:#f0e0d6;}
-.curio-apex .ca-world:nth-child(4){grid-column:span 4;background:#e4e9db;}
-.curio-apex .ca-world:nth-child(5){grid-column:span 4;background:#e9e2d3;}
+.curio-apex .ca-world:nth-child(3){grid-column:span 6;background:#f0e0d6;}
+.curio-apex .ca-world:nth-child(4){grid-column:span 6;background:#e4e9db;}
 .curio-apex .ca-world-top {display:flex;justify-content:space-between;align-items:center;}
 .curio-apex .ca-world-number {font:10px 'DM Mono',monospace;color:var(--muted);}
 .curio-apex .ca-world-status {font:9px 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(27,98,88,.35);border-radius:99px;padding:5px 8px;}

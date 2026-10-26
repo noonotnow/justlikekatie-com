@@ -1,1 +1,1 @@
-- [CurioSeek scope](curioseek-scope.md) — the requested apex spans StudentOS, CreatorOS, LifeOS, Fandom Vibes, the content engine, and C-drama wiki.
+- [CurioSeek scope](curioseek-scope.md) — the apex covers four areas; Fandom Vibes includes C-drama guides, games, and the content engine, not a separate proposed wiki.

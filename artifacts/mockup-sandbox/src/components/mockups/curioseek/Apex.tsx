@@ -23,7 +23,7 @@ const worlds: World[] = [
     status: "Private workspace",
     kind: "CAPTURE → CREATE → PLAN → CONNECT",
     description: "A creative workstation for ideas in motion—without asking every idea to become a post.",
-    detail: "CreatorOS develops selected ideas and prepares them for deliberate publication. Engines such as Fandom Vibes support specific creative outputs; they do not define the whole creative practice, and the private journal stays its own thing.",
+    detail: "CreatorOS develops selected ideas and prepares them for deliberate publication. Fandom Vibes is a C-drama world with guides, games, and creative tools; it does not define the whole creative practice, and the private journal stays its own thing.",
   },
   {
     name: "LifeOS",
@@ -36,17 +36,9 @@ const worlds: World[] = [
   {
     name: "Fandom Vibes",
     status: "Public experience",
-    kind: "NOTICE · COLLECT · COMPOSE",
-    description: "A visual playground and content engine for C-drama discoveries, collections, and creative grids.",
-    detail: "Vibe Atlas / 氛围图鉴 gathers nine visual signals into a daily star-and-vibe study. Save discoveries in a collection, then arrange them into a creative grid.",
-  },
-  {
-    name: "C-drama Wiki",
-    status: "Proposed",
-    concept: true,
-    kind: "EDITORIAL · SOURCE-AWARE",
-    description: "A proposed editorial destination for curious, considered ways into C-drama worlds.",
-    detail: "A proposed standalone editorial wiki, with no public destination verified in this review. It is distinct from the existing CDRAMA lens, which keeps first-watch observations and source provenance close to the experience.",
+    kind: "EXPLORE · PLAY · COLLECT",
+    description: "A C-drama world of guides, games, discoveries, and creative ways to follow what you love.",
+    detail: "The guides and games belong here, alongside visual experiences and the content engine. Vibe Atlas / 氛围图鉴 is one part of Fandom Vibes—not the name for everything in it.",
   },
 ];
 
@@ -108,7 +100,7 @@ export function Apex() {
 
         <section className="ca-worlds" id="worlds" aria-labelledby="ca-worlds-title">
           <div className="ca-section-head">
-            <h2 id="ca-worlds-title">Five paths, one person.</h2>
+            <h2 id="ca-worlds-title">Four paths, one person.</h2>
             <p>Different rooms for different kinds of attention.</p>
           </div>
           <div className="ca-world-grid">
@@ -145,7 +137,7 @@ export function Apex() {
           </div>
           <div className="ca-boundary-copy">
             <p>Making can be private, playful, unfinished, or just for you. CreatorOS is a workstation for that full creative life—not a machine that turns every thought into content.</p>
-            <p>When you do want to share, a focused engine such as Fandom Vibes can help shape a chosen idea. CreatorOS supports the wider creative practice; publishing remains a deliberate next step.</p>
+            <p>When you do want to share, a focused content engine can help shape a chosen idea. CreatorOS supports the wider creative practice; publishing remains a deliberate next step.</p>
             <div className="ca-distinction">
               <div><strong>The workshop</strong><span>Capture, create, plan, connect. Journaling remains its own personal practice.</span></div>
               <div><strong>The outward path</strong><span>Selected work may become shareable. The choice belongs to the maker.</span></div>
@@ -181,7 +173,7 @@ export function Apex() {
             <div className="ca-fandom-copy">
               <div className="ca-kicker">A public doorway / Fandom Vibes</div>
               <h2>For the feeling a story leaves behind.</h2>
-              <p>Part visual field guide, part creative playground. Find a drama’s atmosphere in color, texture, shape, and small visual signals—then keep what speaks to you.</p>
+              <p>Follow a C-drama curiosity through guides, games, and creative discoveries. Explore its atmosphere with Vibe Atlas, then keep going—there’s more here than one way to play.</p>
               <a className="ca-button" href="https://fandom.justlikekatie.com" target="_blank" rel="noreferrer">
                 Visit Fandom Vibes <span className="ca-arrow" aria-hidden="true">↗</span>
               </a>
