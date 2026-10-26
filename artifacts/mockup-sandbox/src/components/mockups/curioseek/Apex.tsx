@@ -2,6 +2,12 @@ import { useState } from "react";
 import "./_group.css";
 import "./Apex.css";
 
+function CurioSeekMark() {
+  return (
+    <img className="ca-mark" src="/__mockup/images/curioseek-apex-logo.png" alt="" />
+  );
+}
+
 type World = {
   name: string;
   status: string;
@@ -51,7 +57,7 @@ export function Apex() {
       <div className="ca-wrap">
         <header className="ca-nav">
           <a className="ca-wordmark" href="#top" aria-label="CurioSeek home">
-            <img className="ca-mark" src="/__mockup/images/curioseek-apex-logo.png" alt="" />
+            <CurioSeekMark />
             CurioSeek
           </a>
           <nav className="ca-navlinks" aria-label="Main navigation">
@@ -193,7 +199,7 @@ export function Apex() {
         </aside>
 
         <footer className="ca-footer">
-          <a className="ca-wordmark" href="#top"><img className="ca-mark" src="/__mockup/images/curioseek-apex-logo.png" alt="" />CurioSeek</a>
+          <a className="ca-wordmark" href="#top"><CurioSeekMark />CurioSeek</a>
           <small>A FIELD GUIDE FOR A MANY-SIDED LIFE · CONCEPT</small>
           <a className="ca-textlink ca-mono" href="#top">Back to the beginning ↑</a>
         </footer>

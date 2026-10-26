@@ -1,8 +1,9 @@
 .curio-apex .ca-mark {
-  width: 34px;
-  height: 30px;
-  object-fit: contain;
+  width: 40px;
+  height: 34px;
   display: block;
+  object-fit: contain;
+  flex: 0 0 auto;
 }
 
 .curio-apex .ca-core {

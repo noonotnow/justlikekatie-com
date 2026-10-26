@@ -1,1 +1,2 @@
 - [CurioSeek scope](curioseek-scope.md) — the apex covers four areas; Fandom Vibes includes C-drama guides, games, and the content engine, not a separate proposed wiki.
+- [CurioSeek visual identity](curioseek-visual-identity.md) — keep the rainbow palette in the original emblem; its color is a signature, not something to flatten into the page palette.
