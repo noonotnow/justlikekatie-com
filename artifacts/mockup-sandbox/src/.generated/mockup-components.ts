@@ -11,5 +11,6 @@ export const modules: ModuleMap = {
   "./components/mockups/curioseek/Current.tsx": () => import("../components/mockups/curioseek/Current.tsx"),
   "./components/mockups/curioseek/FieldDesk.tsx": () => import("../components/mockups/curioseek/FieldDesk.tsx"),
   "./components/mockups/curioseek/NeuralApex.tsx": () => import("../components/mockups/curioseek/NeuralApex.tsx"),
+  "./components/mockups/curioseek/QuietField.tsx": () => import("../components/mockups/curioseek/QuietField.tsx"),
   "./components/mockups/curioseek/ThoughtToWorld.tsx": () => import("../components/mockups/curioseek/ThoughtToWorld.tsx")
 };
