@@ -1,0 +1,13 @@
+.curio-apex .ca-mark {
+  width: 34px;
+  height: 30px;
+  object-fit: contain;
+  display: block;
+}
+
+.curio-apex .ca-core {
+  background: var(--teal);
+  color: var(--paper);
+  font: italic 500 21px/1.12 'Fraunces', Georgia, serif;
+  letter-spacing: -.035em;
+}

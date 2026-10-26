@@ -26,10 +26,7 @@
 .curio-apex .ca-kicker { font: 500 10px/1.4 'DM Mono', monospace; letter-spacing: .13em; text-transform: uppercase; }
 .curio-apex .ca-nav { height: 76px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line); }
 .curio-apex .ca-wordmark { text-decoration:none; font:600 19px 'Fraunces',serif; letter-spacing:-.045em; display:flex; gap:10px; align-items:center; }
-.curio-apex .ca-mark { width:25px;height:25px;border:1.5px solid var(--teal);border-radius:50%;display:grid;place-items:center;position:relative; }
-.curio-apex .ca-mark::before,.curio-apex .ca-mark::after { content:''; position:absolute; background:var(--coral); border-radius:50%; }
-.curio-apex .ca-mark::before { width:5px;height:5px;top:3px;right:2px; }
-.curio-apex .ca-mark::after { width:4px;height:4px;bottom:3px;left:3px; }
+.curio-apex .ca-mark { width:35px;height:30px;object-fit:contain;display:block; }
 .curio-apex .ca-navlinks { display:flex;gap:28px;align-items:center; }
 .curio-apex .ca-navlinks a { text-decoration:none;font-size:12px;color:var(--muted);transition:color .2s ease; }
 .curio-apex .ca-navlinks a:hover {color:var(--coral);}
@@ -52,8 +49,8 @@
 .curio-apex .ca-orbit {width:min(390px,100%);aspect-ratio:1;border:1px solid rgba(27,98,88,.35);border-radius:50%;position:relative;transform:rotate(-12deg);}
 .curio-apex .ca-orbit::before,.curio-apex .ca-orbit::after {content:'';position:absolute;inset:35px;border:1px dashed rgba(27,98,88,.35);border-radius:50%;}
 .curio-apex .ca-orbit::after {inset:79px;border-style:solid;opacity:.6;}
-.curio-apex .ca-core {position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(12deg);width:155px;height:155px;border-radius:50%;background:var(--teal);color:#e9e4d8;display:grid;place-items:center;text-align:center;box-shadow:0 0 0 10px var(--paper),0 0 0 11px var(--teal); }
-.curio-apex .ca-core span {font:italic 23px/1.04 'Fraunces',serif;max-width:115px;}
+.curio-apex .ca-core {position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(12deg);width:155px;height:155px;border-radius:50%;background:var(--paper);color:#e9e4d8;display:grid;place-items:center;text-align:center;box-shadow:0 0 0 10px var(--paper),0 0 0 11px var(--teal);overflow:hidden; }
+.curio-apex .ca-core-logo {width:143px;height:122px;object-fit:contain;display:block;}
 .curio-apex .ca-orbit-tag {position:absolute;z-index:2;font:10px 'DM Mono',monospace;background:var(--paper);padding:6px 9px;white-space:nowrap;}
 .curio-apex .ca-orbit-tag b {display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:7px;background:var(--coral);}
 .curio-apex .ca-tag-1 {top:42px;left:50%;transform:translateX(-50%);}
@@ -169,7 +166,6 @@
  .curio-apex .ca-art {min-height:320px;margin:2px 0 13px;}
  .curio-apex .ca-orbit {width:min(310px,85vw);}
  .curio-apex .ca-core {width:125px;height:125px;}
- .curio-apex .ca-core span {font-size:20px;}
  .curio-apex .ca-tag-2 {right:-25px;}.curio-apex .ca-tag-4 {left:-32px;}
  .curio-apex .ca-caption {right:5px;bottom:-3px;font-size:8px;}
  .curio-apex .ca-thesis {align-items:flex-start;flex-direction:column;gap:9px;padding:20px 0;}
