@@ -20,3 +20,9 @@ Explorations must not turn CurioSeek into a service that sorts people into OSes.
 **Why:** The user explicitly rejected both the shared-tool framing and the sorting-service interpretation while choosing the next comparisons.
 
 **How to apply:** Offer optional exploration without assigning belonging or prescribing a route. Preserve the liked design as a reference rather than silently replacing it.
+
+The user selected the editorial atlas framing “One curious life. Many ways in.” for the replacement apex. Keep the spacious ivory/sage layout, original rainbow CurioSeek emblem, and green focal/orbital map; show StudentOS, CreatorOS, proposed LifeOS, and public Fandom Vibes as distinct worlds within a connective field.
+
+**Why:** The user said earlier variants were moving further from the target, then approved this combination and asked for a new apex soon.
+
+**How to apply:** Treat the chosen combination as the baseline. Preserve the distinct project boundaries; improve clarity and usability without turning the apex into a tool hub or sorting funnel.
