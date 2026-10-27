@@ -207,7 +207,7 @@
   line-height: .94;
   letter-spacing: -.065em;
 }
-.sp-hero-copy h1 em { white-space: nowrap; }
+.sp-hero-copy h1 em { display: block; font-size: .8em; white-space: nowrap; }
 .sp-hero-copy p { max-width: 360px; font-size: 14px; line-height: 1.8; }
 .sp-button {
   min-height: 49px;

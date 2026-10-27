@@ -36,8 +36,8 @@ const domains: Domain[] = [
     status: "PROPOSED",
     color: "#54836b",
     light: "#e3ede2",
-    description: "Everyday operations and the ties between different parts of life.",
-    note: "A proposal for coordinating everyday operations across domains: routines, commitments, and the practical details that help a many-sided life hold together. It is not a shipped workspace.",
+    description: "Connect everyday admin with the projects and decisions it belongs to.",
+    note: "A developing coordination layer for everyday life—from email, calendars, and receipts to routing decisions and work into the right projects.",
   },
   {
     name: "Fandom Vibes",
@@ -45,8 +45,8 @@ const domains: Domain[] = [
     status: "PUBLIC WORLD",
     color: "#9b6eaa",
     light: "#eee5f0",
-    description: "C-drama guides, its reference wiki, games, and discoveries.",
-    note: "The public C-drama world brings together guides, its reference wiki, games, and a content engine. Vibe Atlas is one experience within Fandom Vibes: a concept preview for exploring the atmosphere a story leaves behind.",
+    description: "C-drama worlds to explore through guides, games, and discoveries.",
+    note: "Explore C-drama worlds through approachable guides, fandom reference, playful games, and visual discoveries.",
   },
 ];
 
@@ -74,10 +74,10 @@ export function CurioSeekSpectrum() {
           <div className="sp-hero-grid">
             <div className="sp-hero-copy">
               <span className="sp-overline">An atlas for a many-sided life</span>
-              <h1>One curious<br />life. <em>Many ways<br />in.</em></h1>
+              <h1>One curious<br />life. <em>Many ways in.</em></h1>
               <p>Study, make, tend the everyday, or follow a story into its world. CurioSeek is a map of distinct interests, each with room to be its own thing.</p>
               <a className="sp-button" href="#sp-worlds">Explore the worlds <span aria-hidden="true">↘</span></a>
-              <div className="sp-hero-index"><strong>01—04</strong><span>Private, proposed, and public by design.</span></div>
+              <div className="sp-hero-index"><strong>01—04</strong><span>Four worlds. Room to follow your curiosity.</span></div>
             </div>
 
             <div className="sp-visual" aria-label="Atlas illustration: a green CurioSeek emblem connected to four distinct fields">
@@ -135,7 +135,7 @@ export function CurioSeekSpectrum() {
         <section className="sp-worlds" id="sp-worlds">
           <div className="sp-world-heading">
             <div><span className="sp-overline">02 / THE CONNECTED WORLDS</span><h2>Different worlds.<br /><em>Room to explore.</em></h2></div>
-            <p>Some are private workspaces. One is public. One is still a proposal. The map keeps those boundaries clear.</p>
+            <p>Learn deeply, make freely, connect the everyday, or get lost in a story. Follow what interests you.</p>
           </div>
           <div className="sp-world-grid">
             {domains.map((domain, index) => {
@@ -155,7 +155,6 @@ export function CurioSeekSpectrum() {
               );
             })}
           </div>
-          <div className="sp-world-foot"><span>AN HONEST MAP</span><span>Private workspaces are not public destinations.</span></div>
         </section>
       </div>
 
@@ -184,7 +183,7 @@ export function CurioSeekSpectrum() {
         </section>
 
         <section className="sp-public" id="sp-public">
-          <div className="sp-public-copy"><span className="sp-overline">A PUBLIC WORLD / FANDOM VIBES</span><h2>For the feeling<br />a story leaves <em>behind.</em></h2><p>Fandom Vibes is a public C-drama world of guides, its reference wiki, games, and a content engine. Vibe Atlas is one concept-preview experience inside it—not the whole world.</p><a className="sp-button" href="#sp-worlds">See the world notes <span aria-hidden="true">↘</span></a><div className="sp-public-status">PUBLIC WORLD <i /> VIBE ATLAS: CONCEPT PREVIEW</div></div>
+          <div className="sp-public-copy"><span className="sp-overline">A PUBLIC WORLD / FANDOM VIBES</span><h2>For the feeling<br />a story leaves <em>behind.</em></h2><p>Explore C-drama worlds through approachable guides, fandom reference, playful games, and visual discoveries.</p><a className="sp-button" href="#sp-worlds">See the world notes <span aria-hidden="true">↘</span></a></div>
           <div className="sp-art" aria-label="Vibe Atlas visual studies">
             <div className="sp-art-label">VIBE ATLAS / CONCEPT PREVIEW</div>
             <div className="sp-art-card sp-art-one"><div className="sp-sun" /><div className="sp-hills" /><span>01 / HUSH & LIGHT</span></div>
@@ -193,7 +192,7 @@ export function CurioSeekSpectrum() {
           </div>
         </section>
 
-        <aside className="sp-note"><span>✳</span><div><span className="sp-overline">A NOTE ON THIS MAP</span><p>CurioSeek is an umbrella concept. Some paths are private workspaces, some are public, and some are still taking shape. This is an invitation to understand the landscape—not a claim that every room is open.</p></div></aside>
+        <aside className="sp-note"><span>✳</span><div><span className="sp-overline">A NOTE ON THIS MAP</span><p>StudentOS and CreatorOS are private workspaces. LifeOS is proposed. Fandom Vibes is public, with previews labeled as you explore.</p></div></aside>
         <footer className="sp-footer"><a className="sp-brand" href="#spectrum-top"><span className="sp-logo"><img src="/__mockup/images/curioseek-apex-logo.png" alt="" /></span><span>CurioSeek<span className="sp-dot">.</span></span></a><small>A FIELD GUIDE FOR A MANY-SIDED LIFE · CONCEPT</small><a href="#spectrum-top">Back to the beginning ↑</a></footer>
       </div>
     </main>

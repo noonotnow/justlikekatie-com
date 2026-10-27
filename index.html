@@ -65,7 +65,7 @@
     h1, h2, h3, p { margin-top: 0; }
     .hero h1 { margin: 24px 0; font: 400 clamp(62px, 6.4vw, 88px)/.94 var(--serif); letter-spacing: -.065em; }
     .hero h1 em, .section-title em, .feature h2 em, .practice h2 em { color: var(--green); font-weight: 400; }
-    .hero h1 em { white-space: nowrap; }
+    .hero h1 em { display: block; font-size: .8em; white-space: nowrap; }
     .hero-copy > p { max-width: 360px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.8; }
     .button { display: inline-flex; min-height: 49px; align-items: center; justify-content: space-between; gap: 30px; margin-top: 28px; padding: 0 19px; background: var(--green); color: #f8f0df; font-size: 10px; font-weight: 650; letter-spacing: .06em; transition: transform .2s ease, background .2s ease; }
     .button:hover { transform: translateY(-2px); background: #285c43; }
@@ -313,10 +313,10 @@
         <div class="hero-grid">
           <div class="hero-copy">
             <span class="overline">An atlas for a many-sided life</span>
-            <h1 id="hero-title">One curious<br />life. <em>Many ways<br />in.</em></h1>
+            <h1 id="hero-title">One curious<br />life. <em>Many ways in.</em></h1>
             <p>Study, make, tend the everyday, or follow a story into its world. CurioSeek is a map of distinct interests, each with room to be its own thing.</p>
             <a class="button" href="#worlds">Explore the worlds <span aria-hidden="true">↘</span></a>
-            <div class="hero-index"><strong>01—04</strong><span>Private, proposed, and public by design.</span></div>
+            <div class="hero-index"><strong>01—04</strong><span>Four worlds. Room to follow your curiosity.</span></div>
             <div class="mobile-destinations" aria-label="Explore the four worlds">
               <button class="mobile-destination" style="--domain:#cf7059;--domain-soft:#f8e7df" type="button" data-world-toggle="0" aria-expanded="false" aria-controls="mobile-detail-0">
                 <span class="mobile-destination-top"><i aria-hidden="true"></i>Private workspace</span><strong>StudentOS</strong><span class="mobile-summary">Study, practice, and a growing web of knowledge.</span><small class="mobile-detail" id="mobile-detail-0" hidden>A private learning space for deep study, practice-question review, and a personal knowledge wiki.</small><b aria-hidden="true">↗</b>
@@ -325,10 +325,10 @@
                 <span class="mobile-destination-top"><i aria-hidden="true"></i>Private workspace</span><strong>CreatorOS</strong><span class="mobile-summary">A creative workstation for ideas in motion.</span><small class="mobile-detail" id="mobile-detail-1" hidden>Capture, create, plan, and connect ideas—without asking every idea to become a post.</small><b aria-hidden="true">↗</b>
               </button>
               <button class="mobile-destination" style="--domain:#56836a;--domain-soft:#e3ede2" type="button" data-world-toggle="2" aria-expanded="false" aria-controls="mobile-detail-2">
-                <span class="mobile-destination-top"><i aria-hidden="true"></i>Proposed</span><strong>LifeOS</strong><span class="mobile-summary">Everyday operations and the ties between different parts of life.</span><small class="mobile-detail" id="mobile-detail-2" hidden>A proposal for coordinating everyday operations across domains: routines, commitments, and the practical details that help a many-sided life hold together. It is not a shipped workspace.</small><b aria-hidden="true">↗</b>
+                <span class="mobile-destination-top"><i aria-hidden="true"></i>Proposed</span><strong>LifeOS</strong><span class="mobile-summary">Connect everyday admin with the projects and decisions it belongs to.</span><small class="mobile-detail" id="mobile-detail-2" hidden>A developing coordination layer for everyday life—from email, calendars, and receipts to routing decisions and work into the right projects.</small><b aria-hidden="true">↗</b>
               </button>
               <button class="mobile-destination" style="--domain:#956da3;--domain-soft:#eee5f0" type="button" data-world-toggle="3" aria-expanded="false" aria-controls="mobile-detail-3">
-                <span class="mobile-destination-top"><i aria-hidden="true"></i>Public world</span><strong>Fandom Vibes</strong><span class="mobile-summary">C-drama guides, its reference wiki, games, and discoveries.</span><small class="mobile-detail" id="mobile-detail-3" hidden>The public C-drama world brings together guides, its reference wiki, games, and a content engine. Vibe Atlas is one concept-preview experience within it—not the whole world.</small><b aria-hidden="true">↗</b>
+                <span class="mobile-destination-top"><i aria-hidden="true"></i>Public world</span><strong>Fandom Vibes</strong><span class="mobile-summary">C-drama worlds to explore through guides, games, and discoveries.</span><small class="mobile-detail" id="mobile-detail-3" hidden>Explore C-drama worlds through approachable guides, fandom reference, playful games, and visual discoveries.</small><b aria-hidden="true">↗</b>
               </button>
             </div>
           </div>
@@ -356,7 +356,7 @@
         <section class="worlds" id="worlds" aria-labelledby="worlds-title">
           <div class="world-heading">
             <div><span class="overline">02 / THE CONNECTED WORLDS</span><h2 class="section-title" id="worlds-title">Different worlds.<br /><em>Room to explore.</em></h2></div>
-            <p>Some are private workspaces. One is public. One is still a proposal. The map keeps those boundaries clear.</p>
+            <p>Learn deeply, make freely, connect the everyday, or get lost in a story. Follow what interests you.</p>
           </div>
           <div class="world-grid">
             <article class="world" style="--domain:#cf7059;--domain-soft:#f8e7df">
@@ -373,18 +373,17 @@
             </article>
             <article class="world" style="--domain:#56836a;--domain-soft:#e3ede2">
               <div class="world-top"><span>WORLD / 03</span><span class="status">PROPOSED</span></div><span class="orb" aria-hidden="true"><i></i></span>
-              <div class="world-name"><span>NOTICE</span><h3>LifeOS</h3></div><p>Everyday operations and the ties between different parts of life.</p>
+              <div class="world-name"><span>NOTICE</span><h3>LifeOS</h3></div><p>Connect everyday admin with the projects and decisions it belongs to.</p>
               <button class="toggle" type="button" data-world-toggle="2" aria-expanded="false" aria-controls="world-detail-2"><span data-toggle-label>Read field note</span><span aria-hidden="true">↗</span></button>
-              <div class="detail" id="world-detail-2" hidden>A proposal for coordinating everyday operations across domains: routines, commitments, and practical details. It is not a shipped workspace.</div>
+              <div class="detail" id="world-detail-2" hidden>A developing coordination layer for everyday life—from email, calendars, and receipts to routing decisions and work into the right projects.</div>
             </article>
             <article class="world" style="--domain:#956da3;--domain-soft:#eee5f0">
               <div class="world-top"><span>WORLD / 04</span><span class="status">PUBLIC WORLD</span></div><span class="orb" aria-hidden="true"><i></i></span>
-              <div class="world-name"><span>LOVE</span><h3>Fandom Vibes</h3></div><p>C-drama guides, its reference wiki, games, and discoveries.</p>
+              <div class="world-name"><span>LOVE</span><h3>Fandom Vibes</h3></div><p>C-drama worlds to explore through guides, games, and discoveries.</p>
               <button class="toggle" type="button" data-world-toggle="3" aria-expanded="false" aria-controls="world-detail-3"><span data-toggle-label>Read field note</span><span aria-hidden="true">↗</span></button>
-              <div class="detail" id="world-detail-3" hidden>The public C-drama world brings together guides, its reference wiki, games, and a content engine. Vibe Atlas is one concept-preview experience within it—not the whole world.</div>
+              <div class="detail" id="world-detail-3" hidden>Explore C-drama worlds through approachable guides, fandom reference, playful games, and visual discoveries.</div>
             </article>
           </div>
-          <div class="world-foot"><span>AN HONEST MAP</span><span>Private workspaces are not public destinations.</span></div>
         </section>
       </div>
 
@@ -414,9 +413,8 @@
 
         <section class="public" id="fandom" aria-labelledby="fandom-title">
           <div class="public-copy"><span class="overline">A PUBLIC WORLD / FANDOM VIBES</span><h2 id="fandom-title">For the feeling<br />a story leaves <em>behind.</em></h2>
-            <p>Fandom Vibes is a public C-drama world of guides, its reference wiki, games, and a content engine. Vibe Atlas is one concept-preview experience inside it—not the whole world.</p>
+            <p>Explore C-drama worlds through approachable guides, fandom reference, playful games, and visual discoveries.</p>
             <a class="button" href="https://fandom.justlikekatie.com/" target="_blank" rel="noopener noreferrer">Visit Fandom Vibes <span aria-hidden="true">↗</span></a>
-            <div class="public-status">PUBLIC WORLD <i aria-hidden="true"></i> VIBE ATLAS: CONCEPT PREVIEW</div>
           </div>
           <div class="art" role="img" aria-label="Two atmospheric Vibe Atlas concept studies, one with a warm sun over layered hills and one with a moon over mountains.">
             <span class="art-label">VIBE ATLAS / CONCEPT PREVIEW</span>
@@ -426,7 +424,7 @@
           </div>
         </section>
 
-        <aside class="note"><span aria-hidden="true">✳</span><div><span class="overline">A NOTE ON THIS MAP</span><p>CurioSeek is an umbrella concept. Some paths are private workspaces, some are public, and some are still taking shape. This is an invitation to understand the landscape—not a claim that every room is open.</p></div></aside>
+        <aside class="note"><span aria-hidden="true">✳</span><div><span class="overline">A NOTE ON THIS MAP</span><p>StudentOS and CreatorOS are private workspaces. LifeOS is proposed. Fandom Vibes is public, with previews labeled as you explore.</p></div></aside>
         <footer class="footer">
           <a class="brand" href="#top" aria-label="CurioSeek, back to the beginning"><span class="brand-mark"><img src="/images/curioseek-apex-logo.png" alt="" /></span><span>CurioSeek<span class="brand-dot">.</span></span></a>
           <small>A FIELD GUIDE FOR A MANY-SIDED LIFE · CONCEPT</small>
