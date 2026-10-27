@@ -166,6 +166,9 @@ try {
     const fandom = document.querySelector('#fandom a[href="https://fandom.justlikekatie.com/"]');
     return {
       missing,
+      headline: document.querySelector("#hero-title")?.innerText.replace(/\\s+/g, " ").trim(),
+      worlds: [...document.querySelectorAll(".world-name h3")].map((heading) => heading.textContent.trim()),
+      statuses: [...document.querySelectorAll(".world .status")].map((status) => status.textContent.trim()),
       fandom: fandom && {
         target: fandom.target,
         rel: fandom.rel.split(/\\s+/).sort(),
@@ -173,6 +176,12 @@ try {
     };
   })()`);
   assert(initialNavigation.missing.length === 0, `All ${initialNavigation.missing.length ? "broken" : "in-page"} navigation targets resolve`);
+  assert(initialNavigation.headline === "One curious life. Many ways in.", "The apex leads with the approved many-sided-life framing");
+  assert(
+    initialNavigation.worlds.join("|") === "StudentOS|CreatorOS|LifeOS|Fandom Vibes" &&
+    initialNavigation.statuses.join("|") === "PRIVATE WORKSPACE|PRIVATE WORKSPACE|PROPOSED|PUBLIC WORLD",
+    "All four worlds and their privacy/publication boundaries are explicit",
+  );
   assert(
     initialNavigation.fandom?.target === "_blank" &&
     initialNavigation.fandom.rel.includes("noopener") &&
@@ -206,17 +215,17 @@ try {
   });
   await page.send("Emulation.setEmulatedMedia", { features: [{ name: "prefers-reduced-motion", value: "no-preference" }] });
   const normalMotion = await page.evaluate(`({
-    animation: getComputedStyle(document.querySelector(".ca-orbit")).animationName,
+    animation: getComputedStyle(document.querySelector(".orbit-one")).animationName,
     scroll: getComputedStyle(document.documentElement).scrollBehavior
   })`);
-  assert(normalMotion.animation === "ca-drift", "Orbital animation is active when reduced motion is not requested");
+  assert(normalMotion.animation === "none", "The atlas field stays still rather than prescribing a route");
 
   await page.send("Emulation.setEmulatedMedia", { features: [{ name: "prefers-reduced-motion", value: "reduce" }] });
   const reducedMotion = await page.evaluate(`({
-    animation: getComputedStyle(document.querySelector(".ca-orbit")).animationName,
+    animation: getComputedStyle(document.querySelector(".orbit-one")).animationName,
     scroll: getComputedStyle(document.documentElement).scrollBehavior
   })`);
-  assert(reducedMotion.animation === "none", "Reduced motion removes the orbital animation");
+  assert(reducedMotion.animation === "none", "The static orbital illustration remains still for reduced-motion visitors");
   assert(reducedMotion.scroll === "auto", "Reduced motion disables smooth page scrolling");
 
   await page.send("Emulation.setEmulatedMedia", { features: [{ name: "prefers-reduced-motion", value: "no-preference" }] });
@@ -237,24 +246,24 @@ try {
       nativeVirtualKeyCode: windowsVirtualKeyCode,
     });
   };
-  await page.evaluate("document.querySelector('[data-world-toggle]').focus()");
+  await page.evaluate("document.querySelector('.toggle[data-world-toggle]').focus()");
   await pressKey("Enter", "Enter", 13);
   const firstNote = await page.evaluate(`({
-    expanded: document.querySelector('[data-world-toggle]').getAttribute("aria-expanded"),
-    hidden: document.getElementById("world-detail-1").hidden,
-    label: document.querySelector('[data-world-toggle]').firstChild.textContent.trim()
+    expanded: document.querySelector('.toggle[data-world-toggle]').getAttribute("aria-expanded"),
+    hidden: document.getElementById("world-detail-0").hidden,
+    label: document.querySelector('.toggle[data-world-toggle] [data-toggle-label]').textContent.trim()
   })`);
   assert(
     firstNote.expanded === "true" && firstNote.hidden === false,
     "Enter opens a field note and exposes its expanded state",
   );
-  assert(firstNote.label === "Fold note", "An open field note's control label updates");
+  assert(firstNote.label === "Close field note", "An open field note's control label updates");
 
-  await page.evaluate("document.querySelectorAll('[data-world-toggle]')[1].focus()");
+  await page.evaluate("document.querySelectorAll('.toggle[data-world-toggle]')[1].focus()");
   await pressKey(" ", "Space", 32, " ");
   const switchedNotes = await page.evaluate(`({
-    expanded: [...document.querySelectorAll('[data-world-toggle]')].map((button) => button.getAttribute("aria-expanded")),
-    hidden: [...document.querySelectorAll('.ca-world-detail')].map((detail) => detail.hidden)
+    expanded: [...document.querySelectorAll('.toggle[data-world-toggle]')].map((button) => button.getAttribute("aria-expanded")),
+    hidden: [...document.querySelectorAll('.world .detail')].map((detail) => detail.hidden)
   })`);
   assert(
     switchedNotes.expanded[0] === "false" &&
@@ -264,11 +273,11 @@ try {
     "Space switches the open field note and keeps button states in sync",
   );
 
-  await page.evaluate("document.querySelectorAll('[data-world-toggle]')[1].focus()");
+  await page.evaluate("document.querySelectorAll('.toggle[data-world-toggle]')[1].focus()");
   await pressKey(" ", "Space", 32, " ");
   const closedNote = await page.evaluate(`({
-    expanded: document.querySelectorAll('[data-world-toggle]')[1].getAttribute("aria-expanded"),
-    hidden: document.getElementById("world-detail-2").hidden
+    expanded: document.querySelectorAll('.toggle[data-world-toggle]')[1].getAttribute("aria-expanded"),
+    hidden: document.getElementById("world-detail-1").hidden
   })`);
   assert(closedNote.expanded === "false" && closedNote.hidden, "Space closes the active field note");
 

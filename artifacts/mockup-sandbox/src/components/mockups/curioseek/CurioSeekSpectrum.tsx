@@ -4,6 +4,7 @@ import "./curioseekspectrum.css";
 type Domain = {
   name: string;
   short: string;
+  status: string;
   color: string;
   light: string;
   description: string;
@@ -14,34 +15,38 @@ const domains: Domain[] = [
   {
     name: "StudentOS",
     short: "LEARN",
+    status: "PRIVATE WORKSPACE",
     color: "#df765e",
     light: "#f8e7df",
-    description: "Study paths, practice, and a growing web of knowledge.",
+    description: "A private place for study, practice, and a growing web of knowledge.",
     note: "A private learning space for deep study, practice-question review, and a personal knowledge wiki.",
   },
   {
     name: "CreatorOS",
     short: "MAKE",
+    status: "PRIVATE WORKSPACE",
     color: "#c49127",
     light: "#f5edcf",
-    description: "A creative workstation for ideas in motion.",
+    description: "A private creative workstation for ideas in motion.",
     note: "Capture, create, plan, and connect ideas—without asking every idea to become a post.",
   },
   {
     name: "LifeOS",
     short: "NOTICE",
+    status: "PROPOSED",
     color: "#54836b",
     light: "#e3ede2",
-    description: "A gentler home for the systems that hold everyday life.",
-    note: "A proposed area for useful routines and private reflections. Still taking shape, not yet a shipped workspace.",
+    description: "Everyday operations and the ties between different parts of life.",
+    note: "A proposal for coordinating everyday operations across domains: routines, commitments, and the practical details that help a many-sided life hold together. It is not a shipped workspace.",
   },
   {
     name: "Fandom Vibes",
     short: "LOVE",
+    status: "PUBLIC WORLD",
     color: "#9b6eaa",
     light: "#eee5f0",
     description: "A C-drama world of guides, games, and discoveries.",
-    note: "A public doorway to C-drama guides, playful tools, and creative discoveries—including Vibe Atlas.",
+    note: "The public C-drama world brings together guides, games, and a content engine. Vibe Atlas is one experience within Fandom Vibes: a concept preview for exploring the atmosphere a story leaves behind.",
   },
 ];
 
@@ -68,29 +73,50 @@ export function CurioSeekSpectrum() {
           <div className="sp-kicker"><span>AN ATLAS FOR THE CURIOUS</span><b>ISSUE Nº 01</b></div>
           <div className="sp-hero-grid">
             <div className="sp-hero-copy">
-              <span className="sp-overline">A life in full colour</span>
-              <h1>Follow<br />what <em>moves</em><br />you.</h1>
-              <p>One mind can hold a thousand kinds of wonder. CurioSeek gives each one room to take its own shape.</p>
-              <a className="sp-button" href="#sp-worlds">Enter the atlas <span aria-hidden="true">↘</span></a>
-              <div className="sp-hero-index"><strong>01—04</strong><span>Distinct worlds, a shared field.</span></div>
+              <span className="sp-overline">An atlas for a many-sided life</span>
+              <h1>One curious<br />life. <em>Many ways<br />in.</em></h1>
+              <p>Study, make, tend the everyday, or follow a story into its world. CurioSeek is a map of distinct interests, each with room to be its own thing.</p>
+              <a className="sp-button" href="#sp-worlds">Explore the worlds <span aria-hidden="true">↘</span></a>
+              <div className="sp-hero-index"><strong>01—04</strong><span>Private, proposed, and public by design.</span></div>
             </div>
 
-            <div className="sp-visual" aria-label="A green CurioSeek emblem rests among four distinct, colorful worlds">
+            <div className="sp-visual" aria-label="Atlas illustration: a green CurioSeek emblem connected to four distinct fields">
               <span className="sp-visual-caption sp-caption-top">A SMALL MAP OF MANY THINGS</span>
               <span className="sp-visual-number">FIG. 01</span>
               <div className="sp-orbit sp-orbit-a" />
               <div className="sp-orbit sp-orbit-b" />
-              <div className="sp-world-island sp-island-learn"><i /><span>LEARN</span><small>StudentOS</small></div>
-              <div className="sp-world-island sp-island-make"><i /><span>MAKE</span><small>CreatorOS</small></div>
+              <div className="sp-world-island sp-island-learn"><i /><span>LEARN</span><small>StudentOS · private</small></div>
+              <div className="sp-world-island sp-island-make"><i /><span>MAKE</span><small>CreatorOS · private</small></div>
               <div className="sp-world-island sp-island-notice"><i /><span>NOTICE</span><small>LifeOS · proposed</small></div>
-              <div className="sp-world-island sp-island-love"><i /><span>LOVE</span><small>Fandom Vibes</small></div>
+              <div className="sp-world-island sp-island-love"><i /><span>LOVE</span><small>Fandom Vibes · public</small></div>
               <div className="sp-core">
                 <span className="sp-core-mark"><img src="/__mockup/images/curioseek-apex-logo.png" alt="CurioSeek emblem" /></span>
-                <span>one life,<br /><em>many ways in</em></span>
+                <span>one curious life,<br /><em>many ways in</em></span>
               </div>
               <span className="sp-spark sp-spark-a">✳</span>
               <span className="sp-spark sp-spark-b">✳</span>
               <span className="sp-visual-caption sp-caption-bottom">THE CURIOSITY CYCLE <b>↗</b> KEEP WANDERING</span>
+            </div>
+            <div className="sp-mobile-destinations" aria-label="Explore the CurioSeek worlds">
+              {domains.map((domain) => {
+                const open = openDomain === domain.name;
+                return (
+                  <button
+                    className={`sp-mobile-destination${open ? " is-selected" : ""}`}
+                    key={domain.name}
+                    type="button"
+                    aria-expanded={open}
+                    onClick={() => setOpenDomain(open ? null : domain.name)}
+                    style={{ "--domain": domain.color, "--domain-soft": domain.light } as CSSProperties}
+                  >
+                    <span className="sp-mobile-destination-top"><i aria-hidden="true" />{domain.status}</span>
+                    <strong>{domain.name}</strong>
+                    <span>{domain.description}</span>
+                    {open && <small>{domain.note}</small>}
+                    <b aria-hidden="true">{open ? "−" : "↗"}</b>
+                  </button>
+                );
+              })}
             </div>
           </div>
           <div className="sp-colorbar" aria-label="Signature palette">
@@ -108,8 +134,8 @@ export function CurioSeekSpectrum() {
 
         <section className="sp-worlds" id="sp-worlds">
           <div className="sp-world-heading">
-            <div><span className="sp-overline">02 / THE CONNECTED WORLDS</span><h2>Different rooms.<br /><em>One curious life.</em></h2></div>
-            <p>Four distinct ways to follow a thread. Find the one that feels like yours.</p>
+            <div><span className="sp-overline">02 / THE CONNECTED WORLDS</span><h2>Different worlds.<br /><em>Room to explore.</em></h2></div>
+            <p>Some are private workspaces. One is public. One is still a proposal. The map keeps those boundaries clear.</p>
           </div>
           <div className="sp-world-grid">
             {domains.map((domain, index) => {
@@ -117,7 +143,7 @@ export function CurioSeekSpectrum() {
               const detailId = `sp-detail-${index}`;
               return (
                 <article className={`sp-world sp-world-${index}${open ? " is-open" : ""}`} key={domain.name} style={{ "--domain": domain.color, "--domain-soft": domain.light } as CSSProperties}>
-                  <div className="sp-world-top"><span>WORLD / 0{index + 1}</span><span className="sp-status">{index === 2 ? "PROPOSED" : index === 3 ? "PUBLIC" : "PRIVATE"}</span></div>
+                  <div className="sp-world-top"><span>WORLD / 0{index + 1}</span><span className="sp-status">{domain.status}</span></div>
                   <span className="sp-orb" aria-hidden="true"><i /></span>
                   <div className="sp-world-name"><span>{domain.short}</span><h3>{domain.name}</h3></div>
                   <p>{domain.description}</p>
@@ -129,7 +155,7 @@ export function CurioSeekSpectrum() {
               );
             })}
           </div>
-          <div className="sp-world-foot"><span>AN HONEST MAP</span><span>Each label marks a different stage: private, public, or still becoming.</span></div>
+          <div className="sp-world-foot"><span>AN HONEST MAP</span><span>Private workspaces are not public destinations.</span></div>
         </section>
       </div>
 
@@ -149,21 +175,21 @@ export function CurioSeekSpectrum() {
 
       <div className="sp-shell">
         <section className="sp-practice">
-          <div className="sp-practice-head"><span className="sp-overline">04 / A PRACTICE, NOT A PIPELINE</span><h2>Pay attention.<br /><em>See what grows.</em></h2></div>
+            <div className="sp-practice-head"><span className="sp-overline">04 / CURIOSITY WITHOUT A FORMULA</span><h2>Notice what<br /><em>holds your gaze.</em></h2></div>
           <div className="sp-steps">
-            <article><span>01 — GATHER <b>↘</b></span><h3>Collect signals</h3><p>Keep the detail that catches your eye: a question, a pattern, a scene, a stray idea.</p></article>
-            <article><span>02 — ARRANGE <b>↘</b></span><h3>Shape systems</h3><p>Give recurring curiosities a useful place to meet, without forcing them into the same shape.</p></article>
-            <article><span>03 — BECOME <b>↘</b></span><h3>Move mountains</h3><p>Let small observations add up to something you could not have planned at the start.</p></article>
+            <article><span>A QUESTION <b>✳</b></span><h3>Stay with it</h3><p>A question, a pattern, a scene, a stray idea. Attention can begin anywhere.</p></article>
+            <article><span>A PERSONAL RHYTHM <b>✳</b></span><h3>Make room</h3><p>Some curiosities ask for a system. Others need a sketchbook, a game, or no record at all.</p></article>
+            <article><span>A NEW CONNECTION <b>✳</b></span><h3>Let it surprise you</h3><p>Interesting things may connect across a life—or stay happily distinct.</p></article>
           </div>
         </section>
 
         <section className="sp-public" id="sp-public">
-          <div className="sp-public-copy"><span className="sp-overline">A PUBLIC DOORWAY / FANDOM VIBES</span><h2>For the feeling<br />a story leaves <em>behind.</em></h2><p>Follow a C-drama curiosity through guides, games, and creative discoveries. Explore its atmosphere with Vibe Atlas, then keep going—there’s more here than one way to play.</p><a className="sp-button" href="https://fandom.justlikekatie.com" target="_blank" rel="noreferrer">Visit Fandom Vibes <span aria-hidden="true">↗</span></a></div>
+          <div className="sp-public-copy"><span className="sp-overline">A PUBLIC WORLD / FANDOM VIBES</span><h2>For the feeling<br />a story leaves <em>behind.</em></h2><p>Fandom Vibes is a public C-drama world of guides, games, and a content engine. Vibe Atlas is one concept-preview experience inside it—not the whole world.</p><a className="sp-button" href="#sp-worlds">See the world notes <span aria-hidden="true">↘</span></a><div className="sp-public-status">PUBLIC WORLD <i /> VIBE ATLAS: CONCEPT PREVIEW</div></div>
           <div className="sp-art" aria-label="Vibe Atlas visual studies">
-            <div className="sp-art-label">VIBE ATLAS / VISUAL STUDIES</div>
+            <div className="sp-art-label">VIBE ATLAS / CONCEPT PREVIEW</div>
             <div className="sp-art-card sp-art-one"><div className="sp-sun" /><div className="sp-hills" /><span>01 / HUSH & LIGHT</span></div>
             <div className="sp-art-card sp-art-two"><div className="sp-moon" /><div className="sp-mountains" /><span>02 / AFTER RAIN</span></div>
-            <div className="sp-art-caption">氛围图鉴 <b>—</b> STORY ATMOSPHERES</div>
+            <div className="sp-art-caption">氛围图鉴 <b>—</b> ONE EXPERIENCE WITHIN FANDOM VIBES</div>
           </div>
         </section>
 

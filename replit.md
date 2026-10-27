@@ -1,6 +1,6 @@
 # CurioSeek apex site
 
-The repository-root `index.html` is the static CurioSeek apex concept for the existing Netlify site. It remains hand-authored HTML with inline CSS and a small interaction script; no framework migration or domain change is part of this work. The approved React design remains isolated in the design sandbox as a reference.
+The repository-root `index.html` is the static CurioSeek apex for the existing Netlify site. It remains hand-authored HTML with inline CSS and a small interaction script; no framework migration or domain change is part of this work. The React design sandbox is a visual reference, not a separate public app.
 
 ## Run the design preview
 
