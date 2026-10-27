@@ -104,6 +104,30 @@ function connectToPage(webSocketUrl, onEvent = () => {}) {
   });
 }
 
+async function clickVisibleControl(page, selector, label) {
+  const target = await page.evaluate(`(() => {
+    const element = document.querySelector(${JSON.stringify(selector)});
+    if (!element) return null;
+    element.scrollIntoView({ block: "center", behavior: "instant" });
+    const rect = element.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+    return {
+      x, y,
+      visible: rect.width > 0 && rect.height > 0 &&
+        rect.left >= 0 && rect.right <= innerWidth &&
+        rect.top >= 0 && rect.bottom <= innerHeight &&
+        element.contains(document.elementFromPoint(x, y))
+    };
+  })()`);
+  assert(target?.visible, `${label} is in view and not clipped or covered`);
+  for (const type of ["mousePressed", "mouseReleased"]) {
+    await page.send("Input.dispatchMouseEvent", {
+      type, x: target.x, y: target.y, button: "left", clickCount: 1,
+    });
+  }
+}
+
 const server = createStaticServer();
 let browser;
 let page;
@@ -206,6 +230,127 @@ try {
     assert(
       dimensions.document <= width && dimensions.body <= width,
       `No horizontal overflow at ${width}px (document ${dimensions.document}px, body ${dimensions.body}px)`,
+    );
+  }
+
+  // Desktop browser zoom halves the CSS viewport and doubles devicePixelRatio.
+  // These are 1440px desktop and 768px narrow windows at 200%, not pinch zoom
+  // (setPageScaleFactor), which magnifies without testing responsive reflow.
+  for (const windowWidth of [1440, 768]) {
+    const width = windowWidth / 2;
+    await page.send("Emulation.setDeviceMetricsOverride", {
+      width,
+      height: 500,
+      deviceScaleFactor: 2,
+      mobile: false,
+    });
+    await page.evaluate(`window.scrollTo({ top: 0, behavior: "instant" })`);
+    const zoomDimensions = await page.evaluate(`({
+      viewport: window.innerWidth,
+      scale: window.devicePixelRatio,
+      document: document.documentElement.scrollWidth,
+      body: document.body.scrollWidth
+    })`);
+    assert(
+      zoomDimensions.viewport === width && zoomDimensions.scale === 2,
+      `The 200% zoom layout is active at ${width} CSS px`,
+    );
+    assert(
+      zoomDimensions.document <= width && zoomDimensions.body <= width,
+      `No horizontal overflow at 200% zoom and ${width} CSS px (document ${zoomDimensions.document}px, body ${zoomDimensions.body}px)`,
+    );
+
+    const menu = await page.evaluate(`(() => {
+      const toggle = document.querySelector(".nav-menu-toggle");
+      const links = [...document.querySelectorAll("#primary-navigation a")];
+      return {
+        toggleVisible: !!toggle.getClientRects().length,
+        linksVisible: links.every((link) => !!link.getClientRects().length),
+        links: links.length
+      };
+    })()`);
+    if (width <= 620) {
+      assert(menu.toggleVisible, "The compact main-navigation control is visible at 200% zoom on a narrow viewport");
+      await clickVisibleControl(page, ".nav-menu-toggle", "The compact navigation button at 200% zoom");
+      const expandedMenu = await page.evaluate(`({
+        expanded: document.querySelector(".nav-menu-toggle").getAttribute("aria-expanded"),
+        visibleLinks: [...document.querySelectorAll("#primary-navigation a")].filter((link) => !!link.getClientRects().length).length
+      })`);
+      assert(
+        expandedMenu.expanded === "true" && expandedMenu.visibleLinks === 3,
+        "The compact navigation opens all main links at 200% zoom",
+      );
+    } else {
+      assert(menu.linksVisible && menu.links === 3, "All main-navigation links stay visible at 200% zoom on a desktop viewport");
+    }
+
+    const visibleNavigation = await page.evaluate(`(() => {
+      return [...document.querySelectorAll("#primary-navigation a")].every((link) => {
+        const rect = link.getBoundingClientRect();
+        return rect.width > 0 && rect.height > 0 &&
+          rect.left >= 0 && rect.right <= innerWidth &&
+          rect.top >= 0 && rect.bottom <= innerHeight &&
+          link.contains(document.elementFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2));
+      });
+    })()`);
+    assert(visibleNavigation, `No main-navigation link is clipped or covered at 200% zoom and ${width} CSS px`);
+    await clickVisibleControl(page, '#primary-navigation a[href="#worlds"]', `The worlds navigation link at ${width} CSS px`);
+    const navigationLink = await page.evaluate(`({
+      hash: location.hash, menuExpanded: document.querySelector(".nav-menu-toggle").getAttribute("aria-expanded")
+    })`);
+    assert(navigationLink.hash === "#worlds", `The main navigation works at 200% zoom and ${width} CSS px`);
+    if (width <= 620) {
+      assert(navigationLink.menuExpanded === "false", "Choosing a compact navigation link closes its menu");
+    }
+
+    const noteTargets = await page.evaluate(`(
+      [...document.querySelectorAll("[data-world-toggle]")]
+        .filter((button) => button.getClientRects().length)
+        .map((button) => button.getAttribute("aria-controls"))
+    )`);
+    assert(noteTargets.length === (width <= 620 ? 8 : 4), `All expected field-note controls are available at ${width} CSS px`);
+    for (const noteId of noteTargets) {
+      const selector = `[data-world-toggle][aria-controls="${noteId}"]`;
+      await clickVisibleControl(page, selector, `${noteId} at 200% zoom and ${width} CSS px`);
+      const fieldNote = await page.evaluate(`(() => {
+        const button = document.querySelector(${JSON.stringify(selector)});
+        return {
+          expanded: button.getAttribute("aria-expanded"),
+          detailVisible: !document.getElementById(${JSON.stringify(noteId)}).hidden,
+          overflow: document.documentElement.scrollWidth > innerWidth || document.body.scrollWidth > innerWidth
+        };
+      })()`);
+      assert(
+        fieldNote.expanded === "true" && fieldNote.detailVisible && !fieldNote.overflow,
+        `${noteId} opens without overflow at 200% zoom and ${width} CSS px`,
+      );
+      await clickVisibleControl(page, selector, `The open ${noteId} control at ${width} CSS px`);
+      assert(
+        await page.evaluate(`document.querySelector(${JSON.stringify(selector)}).getAttribute("aria-expanded") === "false" && document.getElementById(${JSON.stringify(noteId)}).hidden`),
+        `${noteId} closes at 200% zoom and ${width} CSS px`,
+      );
+    }
+
+    // Verify activation without opening or making requests to the public site.
+    await page.evaluate(`(() => {
+      const link = document.querySelector('#fandom a[href="https://fandom.justlikekatie.com/"]');
+      link.dataset.zoomActivated = "false";
+      link.addEventListener("click", (event) => {
+        link.dataset.zoomActivated = "true";
+        event.preventDefault();
+      }, { once: true });
+    })()`);
+    await clickVisibleControl(page, '#fandom a[href="https://fandom.justlikekatie.com/"]', `The Fandom Vibes link at ${width} CSS px`);
+    const fandomLink = await page.evaluate(`(() => {
+      const link = document.querySelector('#fandom a[href="https://fandom.justlikekatie.com/"]');
+      return {
+        activated: link.dataset.zoomActivated === "true",
+        href: link.href
+      };
+    })()`);
+    assert(
+      fandomLink.activated && fandomLink.href === "https://fandom.justlikekatie.com/",
+      `The Fandom Vibes link stays visible and usable at 200% zoom and ${width} CSS px`,
     );
   }
 

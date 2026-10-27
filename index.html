@@ -48,6 +48,7 @@
     .spectrum { min-height: 100vh; overflow: hidden; background: radial-gradient(ellipse at 78% 13%, rgba(221,230,210,.42), transparent 30rem), var(--paper); }
     .shell { width: min(1230px, calc(100% - 88px)); margin: 0 auto; }
     .nav { height: 86px; display: flex; align-items: center; justify-content: space-between; gap: 25px; border-bottom: 1px solid var(--line); }
+    .nav-menu-toggle { display: none; padding: 9px 11px; border: 1px solid var(--line); background: transparent; color: var(--ink); font-size: 10px; cursor: pointer; }
     .brand { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 9px; font: 700 21px/1 var(--serif); letter-spacing: -.045em; }
     .brand-mark { display: grid; width: 34px; height: 34px; place-items: center; }
     .brand-mark img { width: 100%; height: 100%; object-fit: contain; }
@@ -251,9 +252,12 @@
     @media (max-width: 620px) {
       .spectrum { background: radial-gradient(ellipse at 70% 10%,rgba(221,230,210,.36),transparent 23rem),var(--paper); }
       .shell, .feature-inner { width: calc(100% - 36px); }
-      .nav { height: 67px; }
-      .nav-links { display: none; }
-      .edition { font-size: 7px; letter-spacing: .08em; }
+      .nav { position: relative; height: 67px; }
+      .nav-menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+      .nav-links { position: absolute; z-index: 5; top: calc(100% - 1px); right: 0; left: 0; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 6px 14px; border: 1px solid var(--line); background: var(--paper); box-shadow: 0 10px 22px rgba(38,60,51,.1); }
+      .nav-links.is-open { display: flex; }
+      .nav-links a { padding: 12px 0; font-size: 9px; }
+      .edition { display: none; }
       .hero { padding-top: 14px; }
       .hero-grid { padding: 38px 0 28px; }
       .hero h1 { margin: 20px 0; font-size: clamp(58px,15vw,76px); }
@@ -331,11 +335,12 @@
           <span class="brand-mark"><img src="/images/curioseek-apex-logo.png" alt="" /></span>
           <span>CurioSeek<span class="brand-dot">.</span></span>
         </a>
-        <nav class="nav-links" aria-label="Main navigation">
+        <nav class="nav-links" id="primary-navigation" aria-label="Main navigation">
           <a href="#worlds">The worlds</a>
           <a href="#idea">The idea</a>
           <a href="#fandom">Fandom Vibes</a>
         </nav>
+        <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">Menu</button>
         <span class="edition"><i aria-hidden="true"></i>Field notes&nbsp; · &nbsp;Vol. 01 / 04</span>
       </header>
 
@@ -491,6 +496,29 @@
   </main>
   <script>
     (() => {
+      const menuToggle = document.querySelector(".nav-menu-toggle");
+      const navigation = document.querySelector("#primary-navigation");
+      if (menuToggle && navigation) {
+        const closeMenu = () => {
+          menuToggle.setAttribute("aria-expanded", "false");
+          navigation.classList.remove("is-open");
+        };
+        menuToggle.addEventListener("click", () => {
+          const expanded = menuToggle.getAttribute("aria-expanded") !== "true";
+          menuToggle.setAttribute("aria-expanded", String(expanded));
+          navigation.classList.toggle("is-open", expanded);
+        });
+        navigation.addEventListener("click", (event) => {
+          if (event.target.closest("a")) closeMenu();
+        });
+        navigation.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") {
+            closeMenu();
+            menuToggle.focus();
+          }
+        });
+      }
+
       const controls = [...document.querySelectorAll("[data-world-toggle]")];
       let activeIndex = null;
 
