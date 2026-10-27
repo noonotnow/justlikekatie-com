@@ -1,0 +1,30 @@
+name: Lint GitHub Actions workflows
+
+# This must run independently: malformed workflow YAML cannot lint itself.
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/**"
+  push:
+    paths:
+      - ".github/workflows/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  actionlint:
+    name: Validate workflow configuration
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Lint workflows
+        uses: reviewdog/action-actionlint@v1
+        with:
+          reporter: local
+          filter_mode: nofilter
+          fail_level: any
