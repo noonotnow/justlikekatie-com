@@ -1,12 +1,12 @@
-# Deployment config for justlikekatie.com (apex coming-soon page).
+# Deployment config for the existing justlikekatie.com apex site.
 #
-# This repository's root IS the deploy root. No Netlify dashboard "Base
-# directory" setting is required or used — the site is this repo, in full.
-#
-# No build step: this is a hand-authored static page, nothing to compile.
+# The authored page remains at the repository root. A small staging step
+# publishes only the hand-authored public page and its assets, never the design
+# sandbox or project source. This keeps the existing Netlify site and domain.
 
 [build]
-  publish = "."
+  command = "node scripts/prepare-netlify.mjs"
+  publish = "generated-artifacts/netlify-site"
 
 [[headers]]
   for = "/*"
