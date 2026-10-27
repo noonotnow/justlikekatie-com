@@ -3,8 +3,10 @@ name: CurioSeek scope
 description: User-requested scope for the CurioSeek apex concept.
 ---
 
-The user clarified that the CurioSeek apex covers StudentOS, CreatorOS, LifeOS, and Fandom Vibes. “C-drama wiki” was a misnomer for the broader Fandom Vibes / C-drama world: the guides and games already built are more than the Vibe Atlas engine. Do not frame the wiki as a separate proposed product or equate all of Fandom Vibes with Vibe Atlas.
+The CurioSeek apex covers StudentOS, CreatorOS, LifeOS, and Fandom Vibes. Fandom Vibes is the broader fandom experience, with C-drama as its initial focus—not a separate “C-drama Wiki” product or an open-edit wiki. Its intended public scope includes approachable guides and reference, spoiler-aware drama/character/relationship guides, games/quizzes, curated Vibe Atlas collections, and connected browsing. The worlds launcher is https://fandom.justlikekatie.com; the direct C-drama entry is https://fandom.justlikekatie.com/cdrama. Only verified, approved public content should be linked; label proposed additions and do not imply the overall experience has launched.
 
-**Why:** The user corrected an earlier interpretation that made a separate proposed wiki and narrowed Fandom Vibes to its visual engine.
+LifeOS is the proposed everyday operations and cross-domain coordination layer for people managing a multifaceted life. It spans email/calendar triage, receipts and finance, capture, and follow-through; Shibuya routes inputs to the right project or specialist workflow while each domain retains its depth and source of truth. The initial public concept can use a fictional workflow, such as a renovation email becoming a decision, budget consideration, and next action. Do not imply live integrations or expose private journals, personal records, or internal endpoints. No canonical destination is confirmed.
 
-**How to apply:** Keep the four areas represented when developing the apex. Treat C-drama guides, games, and the content engine as part of Fandom Vibes, while verifying public availability before making launch claims. LifeOS remains a concept unless independently verified.
+**Why:** The user clarified that Fandom Vibes is not a standalone wiki, C-drama is its initial rather than exclusive focus, and LifeOS connects everyday administration to specialist domains. The user confirmed the Fandom Vibes worlds launcher and its direct C-drama entry; LifeOS has no confirmed destination.
+
+**How to apply:** Keep all four areas represented when developing the apex. Use synthetic data for LifeOS demonstrations, verify public content before linking, and avoid launch claims or personal/internal data in either area.

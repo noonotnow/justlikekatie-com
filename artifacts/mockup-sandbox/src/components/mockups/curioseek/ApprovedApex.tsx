@@ -43,10 +43,10 @@ const worlds = [
     index: "04",
     name: "Fandom Vibes",
     intent: "Follow a feeling",
-    status: "Public experience",
+    status: "Public entry points",
     color: "lilac",
     description:
-      "Step into a C-drama world of guides, games, and discoveries. Vibe Atlas is one doorway—not the whole world.",
+      "Explore a broader fandom world, with C-drama as its initial focus. Vibe Atlas is one doorway—not the whole world.",
     detail: "A public place to love a story and see where it leads.",
     mark: "F",
   },
@@ -209,9 +209,12 @@ export function ApprovedApex() {
             <p className="aa-overline">04 / THE PUBLIC WORLD</p>
             <h2>Make room<br />for the <em>story.</em></h2>
             <p>
-              Fandom Vibes is a public C-drama world of guides, games, and small discoveries to follow. Vibe Atlas is one experience among many.
+              Fandom Vibes is the broader fandom world, with C-drama as its initial focus. Use the worlds launcher to explore, or go straight to C-drama.
             </p>
-            <a href="#worlds" className="aa-fandom-link">Step into Fandom Vibes <span aria-hidden="true">↗</span></a>
+            <div className="aa-fandom-links">
+              <a href="https://fandom.justlikekatie.com" target="_blank" rel="noreferrer" className="aa-fandom-link">Open the worlds launcher <span aria-hidden="true">↗</span></a>
+              <a href="https://fandom.justlikekatie.com/cdrama" target="_blank" rel="noreferrer" className="aa-fandom-link">Go straight to C-drama <span aria-hidden="true">↗</span></a>
+            </div>
           </div>
         </div>
       </section>

@@ -155,9 +155,10 @@
 .fandom-note h2 { font-size: 35px; }
 .fandom-note h2 em { color: #78678d; }
 .fandom-note div:nth-child(2) > p:last-child { font-size: 11px; color: #555e52; margin: 9px 0 0; }
-.fandom-note > a { border: 1px solid #c7c4b8; padding: 13px 16px; font-size: 11px; transition: background .2s, color .2s; }
-.fandom-note > a:hover { background: #78678d; color: #f4f0e7; }
-.fandom-note > a span { color: var(--orange); margin-left: 10px; }
+.fandom-note-links { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.fandom-note-links > a { border: 1px solid #c7c4b8; padding: 13px 16px; font-size: 11px; transition: background .2s, color .2s; }
+.fandom-note-links > a:hover { background: #78678d; color: #f4f0e7; }
+.fandom-note-links > a span { color: var(--orange); margin-left: 10px; }
 .compass-footer { min-height: 65px; padding: 0 7.1%; display: flex; align-items: center; justify-content: space-between; }
 .compass-footer .compass-brand { font-size: 13px; }
 .compass-footer .brand-mark { width: 23px; height: 23px; }
@@ -206,7 +207,7 @@
   .fandom-note { padding: 38px 7%; grid-template-columns: 53px 1fr; gap: 18px; }
   .fandom-mark { width: 50px; height: 50px; font-size: 15px; }
   .fandom-note h2 { font-size: 32px; }
-  .fandom-note > a { grid-column: 2; justify-self: start; }
+  .fandom-note-links { grid-column: 2; justify-self: start; }
   .compass-footer { min-height: 72px; padding: 0 6%; }
   .compass-footer > span { display: none; }
 }

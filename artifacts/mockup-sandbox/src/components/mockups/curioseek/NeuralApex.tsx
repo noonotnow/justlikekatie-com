@@ -188,8 +188,11 @@ export function NeuralApex() {
           <div className="na-public-copy">
             <span className="na-micro">A PUBLIC DOORWAY / FANDOM VIBES</span>
             <h2>For the feeling<br />a story leaves <em>behind.</em></h2>
-            <p>Follow a C-drama curiosity through guides, games, and creative discoveries. Explore its atmosphere with Vibe Atlas, then keep going—there’s more here than one way to play.</p>
-            <a className="na-button" href="https://fandom.justlikekatie.com" target="_blank" rel="noreferrer">Visit Fandom Vibes <span aria-hidden="true">↗</span></a>
+            <p>Follow a fandom curiosity through guides, games, and creative discoveries. C-drama is the initial focus, and Vibe Atlas is one experience among many.</p>
+            <div className="na-public-links">
+              <a className="na-button" href="https://fandom.justlikekatie.com" target="_blank" rel="noreferrer">Open the worlds launcher <span aria-hidden="true">↗</span></a>
+              <a className="na-public-cdrama" href="https://fandom.justlikekatie.com/cdrama" target="_blank" rel="noreferrer">Go straight to C-drama ↗</a>
+            </div>
           </div>
           <div className="na-vibe-art" aria-label="Fandom Vibes visual studies">
             <div className="na-vibe-card na-vibe-one"><div className="na-vibe-sun" /><div className="na-vibe-horizon" /><span>01 / HUSH & LIGHT</span></div>

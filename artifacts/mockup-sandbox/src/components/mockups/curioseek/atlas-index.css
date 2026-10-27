@@ -129,8 +129,9 @@
 .af-fandom-note .af-kicker { margin-bottom: 8px; }
 .af-fandom-note h2 { font: 36px/.95 "Instrument Serif", Georgia, serif; }
 .af-fandom-note > div:nth-child(2) > p:not(.af-kicker) { max-width: 490px; color: #526158; font-size: 11px; line-height: 1.65; }
-.af-fandom-note > div:nth-child(2) > a { display: inline-flex; align-items: center; gap: 9px; font-size: 10px; font-weight: 700; }
-.af-fandom-note > div:nth-child(2) > a span { color: #8d78a9; }
+.af-fandom-links { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 14px; }
+.af-fandom-links a { display: inline-flex; align-items: center; gap: 9px; font-size: 10px; font-weight: 700; }
+.af-fandom-links a span { color: #8d78a9; }
 .af-fandom-art { position: relative; display: grid; place-items: center; min-height: 152px; overflow: hidden; background: #dcd6e3; color: #59536a; }
 .af-fandom-art:before, .af-fandom-art:after { content: ""; position: absolute; width: 124px; height: 124px; border: 1px solid #b5aabe; border-radius: 50%; }
 .af-fandom-art:after { width: 84px; height: 84px; }

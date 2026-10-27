@@ -211,11 +211,12 @@ export function AtlasCompass() {
         <div>
           <p className="eyebrow">A PUBLIC WORLD OF ITS OWN</p>
           <h2>For the stories<br /><em>that stay with you.</em></h2>
-          <p>Fandom Vibes is a home for C-drama guides, games, and discoveries. Step into the feeling.</p>
+          <p>Fandom Vibes brings together fandom guides, games, and discoveries, with C-drama as the initial focus.</p>
         </div>
-        <a href="https://fandom.justlikekatie.com" target="_blank" rel="noreferrer">
-          Explore Fandom Vibes <span aria-hidden="true">↗</span>
-        </a>
+        <div className="fandom-note-links">
+          <a href="https://fandom.justlikekatie.com" target="_blank" rel="noreferrer">Worlds launcher <span aria-hidden="true">↗</span></a>
+          <a href="https://fandom.justlikekatie.com/cdrama" target="_blank" rel="noreferrer">C-drama <span aria-hidden="true">↗</span></a>
+        </div>
       </section>
 
       <footer className="compass-footer">

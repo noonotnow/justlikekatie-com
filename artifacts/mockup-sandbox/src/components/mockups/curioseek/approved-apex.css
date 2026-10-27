@@ -145,6 +145,7 @@
 .approved-apex .aa-fandom-copy > p:not(.aa-overline) { color:#4f5e54; max-width:430px; font-size:13px; line-height:1.8; margin:17px 0 21px; }
 .approved-apex .aa-fandom-link { display:inline-flex; align-items:center; gap:15px; border-bottom:1px solid var(--aa-line); padding-bottom:8px; font-size:12px; font-weight:600; }
 .approved-apex .aa-fandom-link span { color:var(--aa-coral); }
+.approved-apex .aa-fandom-links { display:flex; flex-direction:column; align-items:flex-start; gap:12px; }
 .approved-apex .aa-footer { min-height:82px; display:flex; align-items:center; justify-content:space-between; }
 .approved-apex .aa-footer .aa-brand { font-size:15px; }
 .approved-apex .aa-footer .aa-brand img { width:26px; height:24px; }

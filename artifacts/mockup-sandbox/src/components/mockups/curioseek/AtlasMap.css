@@ -118,8 +118,9 @@
 .am-fandom-copy .am-overline { margin-bottom: 14px; }
 .am-fandom h2 { font: 48px "Instrument Serif", serif; }
 .am-fandom-copy > p:not(.am-overline) { max-width: 410px; margin: 14px 0 22px; color: #66746a; font-size: 13px; line-height: 1.8; }
-.am-fandom-copy > a { display: inline-flex; align-items: center; gap: 16px; padding-bottom: 6px; border-bottom: 1px solid #8f9a8c; font-size: 11px; font-weight: 600; }
-.am-fandom-copy > a span { color: #a06d5e; font-size: 15px; }
+.am-fandom-links { display: flex; flex-wrap: wrap; gap: 10px 18px; }
+.am-fandom-links > a { display: inline-flex; align-items: center; gap: 8px; padding-bottom: 6px; border-bottom: 1px solid #8f9a8c; font-size: 11px; font-weight: 600; }
+.am-fandom-links > a span { color: #a06d5e; font-size: 15px; }
 .am-fandom-art { position: relative; display: grid; place-items: center; min-height: 310px; }
 .am-art-window { position: relative; display: grid; width: min(280px, 65%); aspect-ratio: 1.28; place-items: center; overflow: hidden; border: 8px solid rgba(249,246,232,.67); background: linear-gradient(150deg, #edc89d 0%, #d68c77 44%, #879d91 100%); box-shadow: 10px 15px 0 rgba(115, 132, 113, .17); transform: rotate(4deg); }
 .am-art-window::before { position: absolute; inset: 16% -10% -18%; border: 1px solid rgba(252,242,213,.57); border-radius: 50%; content: ""; transform: rotate(-14deg); }

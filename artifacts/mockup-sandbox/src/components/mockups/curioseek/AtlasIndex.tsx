@@ -189,8 +189,11 @@ export function AtlasIndex() {
         <div>
           <p className="af-kicker">A DOORWAY INTO A WORLD OF ITS OWN</p>
           <h2>Fandom Vibes</h2>
-          <p>For the feeling a story leaves behind. Find C-drama guides, playful discoveries, and the visual moods of Vibe Atlas / 氛围图鉴.</p>
-          <a href="https://fandom.justlikekatie.com" target="_blank" rel="noreferrer">Visit Fandom Vibes <span>↗</span></a>
+          <p>For the feeling a story leaves behind. Find fandom guides, playful discoveries, and the visual moods of Vibe Atlas / 氛围图鉴. C-drama is the initial focus.</p>
+          <div className="af-fandom-links">
+            <a href="https://fandom.justlikekatie.com" target="_blank" rel="noreferrer">Open the worlds launcher <span>↗</span></a>
+            <a href="https://fandom.justlikekatie.com/cdrama" target="_blank" rel="noreferrer">Go straight to C-drama <span>↗</span></a>
+          </div>
         </div>
         <div className="af-fandom-art" aria-hidden="true"><span>VIBE<br />ATLAS</span><i /><small>SCENES / FEELINGS / DISCOVERIES</small></div>
       </section>

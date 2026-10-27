@@ -205,10 +205,11 @@ export function AtlasMap() {
         <div className="am-fandom-copy">
           <p className="am-overline">04 / A WORLD OF ITS OWN</p>
           <h2>Fandom Vibes</h2>
-          <p>For the feeling a story leaves behind. Explore C-drama guides, playful discoveries, and the visual moods of Vibe Atlas / 氛围图鉴.</p>
-          <a href="https://fandom.justlikekatie.com" target="_blank" rel="noreferrer">
-            Step into Fandom Vibes <span aria-hidden="true">↗</span>
-          </a>
+          <p>For the feeling a story leaves behind. Explore fandom guides, playful discoveries, and the visual moods of Vibe Atlas / 氛围图鉴. C-drama is the initial focus.</p>
+          <div className="am-fandom-links">
+            <a href="https://fandom.justlikekatie.com" target="_blank" rel="noreferrer">Open the worlds launcher <span aria-hidden="true">↗</span></a>
+            <a href="https://fandom.justlikekatie.com/cdrama" target="_blank" rel="noreferrer">Go straight to C-drama <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
         <div className="am-fandom-art" aria-hidden="true">
           <div className="am-art-window"><span>VIBE<br />ATLAS</span><i /></div>

@@ -155,7 +155,12 @@ export function FieldDesk() {
         <div className="fd-band-mark">↗</div>
         <div className="fd-band-title"><span>THE CURIOSITY CYCLE</span><h2>Collect signals <i>→</i> Shape systems <i>→</i> See what grows.</h2></div>
         <p>Not a funnel. Not a content machine. A landscape for the things worth following.</p>
-        {active.id === "love" && <a className="fd-public-link" href="https://fandom.justlikekatie.com" target="_blank" rel="noreferrer">Visit Fandom Vibes ↗</a>}
+        {active.id === "love" && (
+          <div className="fd-destination-links">
+            <a href="https://fandom.justlikekatie.com" target="_blank" rel="noreferrer">Worlds launcher ↗</a>
+            <a href="https://fandom.justlikekatie.com/cdrama" target="_blank" rel="noreferrer">C-drama ↗</a>
+          </div>
+        )}
       </section>
       <footer className="fd-footer"><span>CURIO SEEK / FIELD STUDY 01</span><span>A MAP OF WHAT MATTERS TO YOU.</span><a href="#fielddesk-top">BACK TO THE INDEX ↑</a></footer>
     </main>

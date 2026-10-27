@@ -36,16 +36,16 @@ const worlds: World[] = [
     name: "LifeOS",
     status: "Proposed",
     concept: true,
-    kind: "NOTICE · REFLECT · MAKE ROOM",
-    description: "A gentler home for the everyday systems and private reflections that make a life feel held.",
-    detail: "This is a proposed area, not a shipped workspace. Private reflection is one building block; the idea is to make room for the useful, ordinary parts of a many-sided life.",
+    kind: "CAPTURE · ROUTE · FOLLOW THROUGH",
+    description: "For people balancing everyday administration with projects and domains—without forcing everything into one dashboard.",
+    detail: "LifeOS is the proposed everyday operations and coordination layer: email and calendar triage, receipts and finance, capture, and follow-through. Shibuya is intended to route inputs to the right project or specialist workflow while each domain keeps its own depth and source of truth. A concept walkthrough could show a fictional renovation email becoming a decision, budget consideration, and next action. This is not a launched workspace or a claim that integrations are complete; keep real records and internal systems private.",
   },
   {
     name: "Fandom Vibes",
-    status: "Public experience",
+    status: "Public scope",
     kind: "EXPLORE · PLAY · COLLECT",
-    description: "A C-drama world of guides, games, discoveries, and creative ways to follow what you love.",
-    detail: "The guides and games belong here, alongside visual experiences and the content engine. Vibe Atlas / 氛围图鉴 is one part of Fandom Vibes—not the name for everything in it.",
+    description: "For newcomers and longtime fans seeking approachable context, deeper discovery, and playful participation—with C-drama as the starting focus.",
+    detail: "Fandom Vibes is the broader fandom experience, not a separate C-drama Wiki. Its public scope includes approachable guides and reference (introductions, vocabulary, genre and cultural context, curated drama, character, and relationship guides with spoiler boundaries), games and quizzes, curated Vibe Atlas collections, and connected browsing. It is not an open-edit wiki. Link only verified, approved public content; label proposed additions clearly and do not imply the overall experience has launched. The worlds launcher is fandom.justlikekatie.com; the direct C-drama entry is fandom.justlikekatie.com/cdrama.",
   },
 ];
 
@@ -178,12 +178,17 @@ export function Apex() {
         <section className="ca-fandom" id="fandom" aria-labelledby="ca-fandom-title">
           <div className="ca-fandom-panel">
             <div className="ca-fandom-copy">
-              <div className="ca-kicker">A public doorway / Fandom Vibes</div>
+              <div className="ca-kicker">Public scope / Fandom Vibes</div>
               <h2>For the feeling a story leaves behind.</h2>
-              <p>Follow a C-drama curiosity through guides, games, and creative discoveries. Explore its atmosphere with Vibe Atlas, then keep going—there’s more here than one way to play.</p>
-              <a className="ca-button" href="https://fandom.justlikekatie.com" target="_blank" rel="noreferrer">
-                Visit Fandom Vibes <span className="ca-arrow" aria-hidden="true">↗</span>
-              </a>
+              <p>Fandom Vibes is the broader home for fandom guides, reference, games, and visual discovery. C-drama is the initial focus; Vibe Atlas is one experience among many. Open the worlds launcher or go straight to C-drama.</p>
+              <div className="ca-fandom-links">
+                <a className="ca-button" href="https://fandom.justlikekatie.com" target="_blank" rel="noreferrer">
+                  Open the worlds launcher <span className="ca-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a className="ca-textlink" href="https://fandom.justlikekatie.com/cdrama" target="_blank" rel="noreferrer">
+                  Go straight to C-drama <span aria-hidden="true">↗</span>
+                </a>
+              </div>
             </div>
             <div className="ca-fandom-art" aria-hidden="true">
               <div className="ca-swatch ca-swatch-a"><div className="ca-swatch-art" /><div className="ca-swatch-caption">01 · hush / light</div></div>

@@ -122,6 +122,8 @@
 .na-public h2 { margin: 18px 0; font-size: 43px; }
 .na-public h2 em { color: #d9c879; }
 .na-public-copy > p { max-width: 350px; margin: 0 0 22px; color: #c9d0c4; font-size: 11px; line-height: 1.75; }
+.na-public-links { display: flex; flex-direction: column; align-items: flex-start; gap: 11px; }
+.na-public-cdrama { color: #e6c666; font-size: 10px; text-decoration: underline; text-underline-offset: 4px; }
 .na-public .na-button { background: #e6c666; color: #354b40 !important; }
 .na-vibe-art { position: relative; min-height: 415px; background: #425d51; overflow: hidden; }
 .na-vibe-card { position: absolute; width: 191px; height: 249px; overflow: hidden; box-shadow: 0 18px 36px #22382e55; }
