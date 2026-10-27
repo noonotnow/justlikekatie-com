@@ -31,6 +31,8 @@ npx serve .
 
 ## Deploy config
 
-`netlify.toml`: `publish = "."` (repo root), plus baseline security headers
-(`X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`) on all
-paths. No functions, no build command, no environment variables.
+`netlify.toml` runs `node scripts/prepare-netlify.mjs` and publishes the
+allowlisted static site from `generated-artifacts/netlify-site`. The staging
+step includes the apex page and its approved assets only. Baseline security
+headers (`X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`) apply
+to all paths; there are no functions or environment variables.

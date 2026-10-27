@@ -8,7 +8,7 @@ The repository-root `index.html` is the static CurioSeek apex for the existing N
 - Working directory: `artifacts/mockup-sandbox`
 - Command: `npm run dev`
 - Preview base: `/__mockup/`
-- CurioSeek concept: `/__mockup/preview/curioseek/Apex`
+- CurioSeek concept: `/__mockup/preview/curioseek/CurioSeekSpectrum`
 - Exact imported-page reference: `/__mockup/preview/curioseek/Current`
 - Type check: `cd artifacts/mockup-sandbox && npm run typecheck`
 

@@ -45,8 +45,8 @@ const domains: Domain[] = [
     status: "PUBLIC WORLD",
     color: "#9b6eaa",
     light: "#eee5f0",
-    description: "A C-drama world of guides, games, and discoveries.",
-    note: "The public C-drama world brings together guides, games, and a content engine. Vibe Atlas is one experience within Fandom Vibes: a concept preview for exploring the atmosphere a story leaves behind.",
+    description: "C-drama guides, its reference wiki, games, and discoveries.",
+    note: "The public C-drama world brings together guides, its reference wiki, games, and a content engine. Vibe Atlas is one experience within Fandom Vibes: a concept preview for exploring the atmosphere a story leaves behind.",
   },
 ];
 
@@ -184,7 +184,7 @@ export function CurioSeekSpectrum() {
         </section>
 
         <section className="sp-public" id="sp-public">
-          <div className="sp-public-copy"><span className="sp-overline">A PUBLIC WORLD / FANDOM VIBES</span><h2>For the feeling<br />a story leaves <em>behind.</em></h2><p>Fandom Vibes is a public C-drama world of guides, games, and a content engine. Vibe Atlas is one concept-preview experience inside it—not the whole world.</p><a className="sp-button" href="#sp-worlds">See the world notes <span aria-hidden="true">↘</span></a><div className="sp-public-status">PUBLIC WORLD <i /> VIBE ATLAS: CONCEPT PREVIEW</div></div>
+          <div className="sp-public-copy"><span className="sp-overline">A PUBLIC WORLD / FANDOM VIBES</span><h2>For the feeling<br />a story leaves <em>behind.</em></h2><p>Fandom Vibes is a public C-drama world of guides, its reference wiki, games, and a content engine. Vibe Atlas is one concept-preview experience inside it—not the whole world.</p><a className="sp-button" href="#sp-worlds">See the world notes <span aria-hidden="true">↘</span></a><div className="sp-public-status">PUBLIC WORLD <i /> VIBE ATLAS: CONCEPT PREVIEW</div></div>
           <div className="sp-art" aria-label="Vibe Atlas visual studies">
             <div className="sp-art-label">VIBE ATLAS / CONCEPT PREVIEW</div>
             <div className="sp-art-card sp-art-one"><div className="sp-sun" /><div className="sp-hills" /><span>01 / HUSH & LIGHT</span></div>
