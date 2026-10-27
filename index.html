@@ -1,76 +1,34 @@
 <!doctype html>
-<!--
-  IMPECCABLE DIRECTION CONTRACT
-  THESIS: A single instrument-panel viewport that reads as built-on-purpose, not
-  broken — it refuses the apologetic "coming soon" placeholder.
-  OWN-WORLD: Near-black ground (#0e0e12) with warm gold signal accent (#c9a96e),
-  inherited from this family's existing palette; Inter for the editorial voice;
-  JetBrains Mono strictly for live instrument readouts (channel id, signal state,
-  build status) — genuine telemetry typography, not a technical costume.
-  STORY: A visitor reads the room's own signage — a plain "coming soon," the
-  control-room description, and a one-line status update — notices a live
-  signal confirming quiet, intentional activity behind it, and leaves
-  understanding this is Katie's personal system: deliberately quiet, not a
-  storefront, not for hire, not broken.
-  FIRST VIEWPORT: Full-bleed dark panel framed by thin corner brackets at all
-  four screen corners (HUD chrome, not a card) holding small mono readouts —
-  channel id top-left, live signal top-right, build status bottom-left, mark
-  bottom-right. Inside the panel: a mono eyebrow, the "is coming soon" headline,
-  the verbatim control-room sentence, one status paragraph, a short "More soon,"
-  and a small closing wink about WHOIS marketers — never louder than the copy
-  above it.
-  FORM: Content contract supplied and approved by the user via Notion,
-  authoritative over the original single-sentence layout; visual system
-  (palette/type/HUD grammar) preserved from the prior committed direction.
--->
 <html lang="en">
 <head>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-5T5P2C9S');</script>
-  <!-- End Google Tag Manager -->
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CGWB67360Q"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-CGWB67360Q');
-  </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>justlikekatie.com — coming soon</title>
-  <meta name="description" content="justlikekatie.com is coming soon — a tiny internet control room for Katie Hendley’s fandom analysis, creative projects, acting experiments, and “wait, I built a tool for that” moments." />
+  <title>CurioSeek — More than one kind of curious</title>
+  <meta name="description" content="CurioSeek is a concept for the connective field between different universes of curiosity—where tools can travel between distinct worlds without flattening their language or creative rhythm." />
   <link rel="canonical" href="https://justlikekatie.com/" />
   <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#0e0e12" />
+  <meta name="theme-color" content="#f3efe5" />
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://justlikekatie.com/" />
-  <meta property="og:site_name" content="justlikekatie.com" />
-  <meta property="og:title" content="justlikekatie.com — coming soon" />
-  <meta property="og:description" content="justlikekatie.com is coming soon — a tiny internet control room for Katie Hendley’s fandom analysis, creative projects, acting experiments, and “wait, I built a tool for that” moments." />
+  <meta property="og:site_name" content="CurioSeek" />
+  <meta property="og:title" content="CurioSeek — More than one kind of curious" />
+  <meta property="og:description" content="CurioSeek is a concept for the connective field between different universes of curiosity—where tools can travel between distinct worlds without flattening their language or creative rhythm." />
   <meta property="og:image" content="https://justlikekatie.com/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="A dark instrument panel reading the justlikekatie.com control-room description, framed by corner brackets with a live signal readout." />
+  <meta property="og:image:alt" content="CurioSeek — a field guide to a many-sided life, with distinct colored paths crossing an open cream-colored field." />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="justlikekatie.com — coming soon" />
-  <meta name="twitter:description" content="justlikekatie.com is coming soon — a tiny internet control room for Katie Hendley’s fandom analysis, creative projects, acting experiments, and “wait, I built a tool for that” moments." />
+  <meta name="twitter:title" content="CurioSeek — More than one kind of curious" />
+  <meta name="twitter:description" content="CurioSeek is a concept for the connective field between different universes of curiosity—where tools can travel between distinct worlds without flattening their language or creative rhythm." />
   <meta name="twitter:image" content="https://justlikekatie.com/og-image.png" />
 
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
-  <link rel="icon" href="/favicon-16.png" sizes="16x16" type="image/png" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="icon" href="/images/curioseek-apex-logo.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/images/curioseek-apex-logo.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -279,53 +237,422 @@
       .hud-corner { padding: 1rem; }
     }
   </style>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { min-height: 100%; background: #f3efe5; color: #183936; }
+    .skip-link {
+      position: fixed;
+      z-index: 10;
+      top: 0.75rem;
+      left: 0.75rem;
+      padding: 0.7rem 1rem;
+      background: #183936;
+      color: #f3efe5;
+      transform: translateY(-160%);
+    }
+    .skip-link:focus { transform: translateY(0); }
+    .curio-apex {
+      --paper: #f3efe5;
+      --paper-deep: #e9e4d8;
+      --ink: #183936;
+      --muted: #596c63;
+      --line: rgba(24, 57, 54, .2);
+      --teal: #1b6258;
+      --teal-bright: #a8d0b1;
+      --coral: #e66c50;
+      --yellow: #efc96d;
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+    }
+    .curio-apex *, .curio-apex *::before, .curio-apex *::after { box-sizing: border-box; }
+    .curio-apex a { color: inherit; }
+    .curio-apex button { font: inherit; color: inherit; }
+    .curio-apex :focus-visible { outline: 3px solid #9e402d; outline-offset: 4px; }
+    .curio-apex .ca-serif { font-family: "Fraunces", Georgia, serif; }
+    .curio-apex .ca-mono { font-family: "DM Mono", monospace; }
+    .curio-apex .ca-wrap { width: min(1160px, calc(100% - 64px)); margin-inline: auto; }
+    .curio-apex .ca-kicker { font: 500 10px/1.4 "DM Mono", monospace; letter-spacing: .13em; text-transform: uppercase; }
+    .curio-apex .ca-nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); gap: 14px; }
+    .curio-apex .ca-wordmark { text-decoration: none; font: 600 19px "Fraunces", serif; letter-spacing: -.045em; display: flex; gap: 10px; align-items: center; white-space: nowrap; }
+    .curio-apex .ca-mark { width: 40px; height: 34px; object-fit: contain; display: block; flex: 0 0 auto; }
+    .curio-apex .ca-navlinks { display: flex; gap: 28px; align-items: center; }
+    .curio-apex .ca-navlinks a { text-decoration: none; font-size: 12px; color: var(--muted); transition: color .2s ease; }
+    .curio-apex .ca-navlinks a:hover { color: var(--coral); }
+    .curio-apex .ca-concept { border: 1px solid var(--line); border-radius: 99px; padding: 7px 11px; display: flex; align-items: center; gap: 8px; font: 10px "DM Mono", monospace; letter-spacing: .05em; white-space: nowrap; }
+    .curio-apex .ca-concept i { width: 6px; height: 6px; background: var(--coral); border-radius: 50%; display: block; }
+    .curio-apex .ca-hero { padding: 76px 0 60px; display: grid; grid-template-columns: 1fr .86fr; align-items: center; gap: 48px; min-height: 545px; }
+    .curio-apex .ca-hero-copy { position: relative; z-index: 1; }
+    .curio-apex .ca-eyebrow { display: flex; align-items: center; gap: 12px; color: var(--teal); margin-bottom: 25px; }
+    .curio-apex .ca-eyebrow::before { content: ""; width: 34px; height: 1px; background: var(--coral); }
+    .curio-apex .ca-hero h1 { font: 400 clamp(58px, 7.2vw, 94px)/.92 "Fraunces", Georgia, serif; letter-spacing: -.065em; margin: 0; max-width: 690px; }
+    .curio-apex .ca-hero h1 em { font-weight: 400; color: var(--teal); font-style: italic; }
+    .curio-apex .ca-hero-sub { margin: 27px 0 29px; max-width: 440px; font-size: 16px; line-height: 1.75; color: #445b53; }
+    .curio-apex .ca-hero-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .curio-apex .ca-button { display: inline-flex; align-items: center; gap: 15px; padding: 14px 18px; background: var(--teal); color: var(--paper) !important; text-decoration: none; font-size: 12px; font-weight: 600; transition: transform .25s, background .25s; }
+    .curio-apex .ca-button:hover { transform: translateY(-3px); background: #124c44; }
+    .curio-apex .ca-button .ca-arrow { font-size: 18px; line-height: 10px; }
+    .curio-apex .ca-textlink { font-size: 12px; text-decoration: none; border-bottom: 1px solid var(--line); padding: 8px 0; transition: border-color .2s; }
+    .curio-apex .ca-textlink:hover { border-color: var(--coral); }
+    .curio-apex .ca-art { min-height: 370px; position: relative; display: grid; place-items: center; }
+    .curio-apex .ca-orbit { width: min(390px, 100%); aspect-ratio: 1; border: 1px solid rgba(27, 98, 88, .35); border-radius: 50%; position: relative; transform: rotate(-12deg); }
+    .curio-apex .ca-orbit::before, .curio-apex .ca-orbit::after { content: ""; position: absolute; inset: 35px; border: 1px dashed rgba(27, 98, 88, .35); border-radius: 50%; }
+    .curio-apex .ca-orbit::after { inset: 79px; border-style: solid; opacity: .6; }
+    .curio-apex .ca-core { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(12deg); width: 155px; height: 155px; border-radius: 50%; background: var(--teal); color: var(--paper); display: grid; place-items: center; text-align: center; box-shadow: 0 0 0 10px var(--paper), 0 0 0 11px var(--teal); overflow: hidden; font: italic 500 21px/1.12 "Fraunces", Georgia, serif; letter-spacing: -.035em; }
+    .curio-apex .ca-orbit-tag { position: absolute; z-index: 2; font: 10px "DM Mono", monospace; background: var(--paper); padding: 6px 9px; white-space: nowrap; }
+    .curio-apex .ca-orbit-tag b { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 7px; background: var(--coral); }
+    .curio-apex .ca-tag-1 { top: 42px; left: 50%; transform: translateX(-50%); }
+    .curio-apex .ca-tag-2 { top: 50%; right: -32px; transform: translateY(-50%); }
+    .curio-apex .ca-tag-3 { bottom: 54px; left: 50%; transform: translateX(-50%); }
+    .curio-apex .ca-tag-4 { top: 50%; left: -40px; transform: translateY(-50%); }
+    .curio-apex .ca-spark { position: absolute; font: 26px "Fraunces", serif; color: var(--coral); }
+    .curio-apex .ca-spark.one { top: 28px; right: 14%; }
+    .curio-apex .ca-spark.two { bottom: 36px; left: 11%; font-size: 18px; color: var(--teal); }
+    .curio-apex .ca-caption { position: absolute; bottom: -3px; right: 0; font: 10px "DM Mono", monospace; color: var(--muted); letter-spacing: .07em; }
+    .curio-apex .ca-thesis { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 24px 0; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .curio-apex .ca-thesis p { margin: 0; font: 400 clamp(21px, 2.6vw, 31px)/1.15 "Fraunces", serif; letter-spacing: -.025em; }
+    .curio-apex .ca-thesis p span { color: var(--coral); font-style: italic; }
+    .curio-apex .ca-thesis .ca-kicker { color: var(--muted); white-space: nowrap; }
+    .curio-apex .ca-intro { padding: 110px 0 55px; display: grid; grid-template-columns: .55fr 1fr; gap: 50px; align-items: start; }
+    .curio-apex .ca-intro .ca-kicker { color: #a14d39; padding-top: 12px; }
+    .curio-apex .ca-intro h2 { font: 400 clamp(36px, 5vw, 57px)/1.05 "Fraunces", serif; letter-spacing: -.05em; margin: 0; max-width: 700px; }
+    .curio-apex .ca-intro h2 em { color: var(--teal); font-weight: 400; }
+    .curio-apex .ca-intro p { font-size: 14px; line-height: 1.8; max-width: 540px; color: var(--muted); margin: 20px 0 0; }
+    .curio-apex .ca-worlds { padding: 25px 0 110px; }
+    .curio-apex .ca-section-head { display: flex; align-items: flex-end; justify-content: space-between; border-bottom: 1px solid var(--line); padding-bottom: 17px; margin-bottom: 25px; gap: 18px; }
+    .curio-apex .ca-section-head h2 { font: 400 32px "Fraunces", serif; letter-spacing: -.04em; margin: 0; }
+    .curio-apex .ca-section-head p { margin: 0; font-size: 12px; color: var(--muted); }
+    .curio-apex .ca-world-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
+    .curio-apex .ca-world { min-height: 250px; padding: 25px 26px 23px; border: 1px solid var(--line); position: relative; overflow: hidden; display: flex; flex-direction: column; transition: transform .25s, border-color .25s; }
+    .curio-apex .ca-world:hover { transform: translateY(-4px); border-color: var(--teal); }
+    .curio-apex .ca-world:nth-child(1) { grid-column: span 5; background: #e4e8dc; }
+    .curio-apex .ca-world:nth-child(2) { grid-column: span 7; background: #e3ebe4; }
+    .curio-apex .ca-world:nth-child(3) { grid-column: span 6; background: #f0e0d6; }
+    .curio-apex .ca-world:nth-child(4) { grid-column: span 6; background: #e4e9db; }
+    .curio-apex .ca-world-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+    .curio-apex .ca-world-number { font: 10px "DM Mono", monospace; color: var(--muted); }
+    .curio-apex .ca-world-status { font: 9px "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--teal); border: 1px solid rgba(27, 98, 88, .35); border-radius: 99px; padding: 5px 8px; white-space: nowrap; }
+    .curio-apex .ca-world-status.concept { color: #873b2a; border-color: rgba(135, 59, 42, .45); }
+    .curio-apex .ca-world h3 { font: 400 30px/1 "Fraunces", serif; letter-spacing: -.04em; margin: 30px 0 11px; }
+    .curio-apex .ca-world:nth-child(2) h3 { font-size: 39px; }
+    .curio-apex .ca-world p { font-size: 12px; line-height: 1.7; color: #43564d; max-width: 350px; margin: 0 0 21px; }
+    .curio-apex .ca-world-bottom { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .curio-apex .ca-world-kind { font: 9px "DM Mono", monospace; letter-spacing: .05em; color: #465d53; }
+    .curio-apex .ca-world-button { border: 0; background: transparent; padding: 6px 0; display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .curio-apex .ca-world-button span { font-size: 18px; transition: transform .2s; }
+    .curio-apex .ca-world-button:hover span { transform: translateX(4px); }
+    .curio-apex .ca-world-detail { border-top: 1px solid rgba(24, 57, 54, .22); margin-top: 16px; padding-top: 13px; font-size: 12px; line-height: 1.65; color: #425950; animation: ca-rise .3s ease both; }
+    .curio-apex .ca-world-detail[hidden] { display: none; }
+    .curio-apex .ca-boundary { background: var(--teal); color: var(--paper); padding: 85px 0 91px; position: relative; }
+    .curio-apex .ca-boundary::before { content: "✳"; position: absolute; right: 7%; top: 45px; color: var(--yellow); font: 48px "Fraunces", serif; opacity: .9; }
+    .curio-apex .ca-boundary-grid { display: grid; grid-template-columns: .7fr 1fr; gap: 76px; align-items: start; }
+    .curio-apex .ca-boundary .ca-kicker { color: #c4ddc9; }
+    .curio-apex .ca-boundary h2 { font: 400 clamp(38px, 5vw, 58px)/1.04 "Fraunces", serif; letter-spacing: -.045em; margin: 22px 0 0; max-width: 410px; }
+    .curio-apex .ca-boundary h2 em { color: var(--yellow); font-weight: 400; }
+    .curio-apex .ca-boundary-copy { padding-top: 37px; }
+    .curio-apex .ca-boundary-copy p { font-size: 14px; line-height: 1.85; color: #e1e9dd; margin: 0 0 22px; max-width: 570px; }
+    .curio-apex .ca-distinction { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid rgba(243, 239, 229, .32); margin-top: 30px; }
+    .curio-apex .ca-distinction div { padding: 18px 20px 0 0; }
+    .curio-apex .ca-distinction div + div { border-left: 1px solid rgba(243, 239, 229, .32); padding-left: 20px; }
+    .curio-apex .ca-distinction strong { display: block; font: italic 21px "Fraunces", serif; color: var(--yellow); margin-bottom: 8px; }
+    .curio-apex .ca-distinction span { font-size: 11px; line-height: 1.65; color: #e4ebdf; }
+    .curio-apex .ca-method { padding: 108px 0 104px; }
+    .curio-apex .ca-method-head { display: grid; grid-template-columns: .6fr 1fr; gap: 50px; margin-bottom: 48px; }
+    .curio-apex .ca-method-head .ca-kicker { color: #a14d39; padding-top: 10px; }
+    .curio-apex .ca-method h2 { font: 400 clamp(38px, 5vw, 58px)/1.02 "Fraunces", serif; letter-spacing: -.05em; margin: 0; }
+    .curio-apex .ca-method h2 em { color: var(--teal); font-weight: 400; }
+    .curio-apex .ca-steps { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .curio-apex .ca-step { padding: 23px 20px 25px 0; position: relative; }
+    .curio-apex .ca-step + .ca-step { border-left: 1px solid var(--line); padding-left: 22px; }
+    .curio-apex .ca-step .ca-kicker { color: #a14d39; }
+    .curio-apex .ca-step h3 { font: 400 26px "Fraunces", serif; letter-spacing: -.03em; margin: 30px 0 8px; }
+    .curio-apex .ca-step p { font-size: 12px; line-height: 1.7; color: #4d6157; margin: 0; max-width: 280px; }
+    .curio-apex .ca-step-arrow { position: absolute; right: 16px; top: 26px; color: var(--teal); font: 20px "Fraunces", serif; }
+    .curio-apex .ca-fandom { padding: 0 0 112px; }
+    .curio-apex .ca-fandom-panel { background: #e8d8c5; min-height: 380px; position: relative; overflow: hidden; padding: 55px 7%; display: grid; grid-template-columns: 1fr .8fr; align-items: center; gap: 30px; }
+    .curio-apex .ca-fandom-panel::after { content: ""; position: absolute; width: 360px; height: 360px; border: 1px solid rgba(24, 57, 54, .24); border-radius: 50%; right: 8%; top: 10px; box-shadow: 0 0 0 25px rgba(24, 57, 54, .035), 0 0 0 70px rgba(24, 57, 54, .03); }
+    .curio-apex .ca-fandom-copy { position: relative; z-index: 1; }
+    .curio-apex .ca-fandom-copy .ca-kicker { color: #873b2a; }
+    .curio-apex .ca-fandom h2 { font: 400 clamp(42px, 5vw, 60px)/.98 "Fraunces", serif; letter-spacing: -.05em; margin: 20px 0 16px; max-width: 480px; }
+    .curio-apex .ca-fandom-copy p { max-width: 400px; font-size: 13px; line-height: 1.75; color: #43564d; margin: 0 0 25px; }
+    .curio-apex .ca-fandom .ca-button { background: #a94430; }
+    .curio-apex .ca-fandom .ca-button:hover { background: #873725; }
+    .curio-apex .ca-fandom-art { height: 270px; position: relative; z-index: 1; display: grid; place-items: center; }
+    .curio-apex .ca-swatch { position: absolute; width: 152px; height: 193px; border: 1px solid rgba(24, 57, 54, .5); background: #f3efe5; box-shadow: 8px 8px 0 rgba(24, 57, 54, .12); display: flex; flex-direction: column; padding: 13px; transition: transform .35s; }
+    .curio-apex .ca-fandom-panel:hover .ca-swatch-a { transform: rotate(-13deg) translate(-39px, 0); }
+    .curio-apex .ca-fandom-panel:hover .ca-swatch-b { transform: rotate(11deg) translate(35px, 0); }
+    .curio-apex .ca-swatch-a { transform: rotate(-7deg) translate(-28px, 0); background: #d9e1d2; }
+    .curio-apex .ca-swatch-b { transform: rotate(7deg) translate(27px, 0); background: #e7b8a4; }
+    .curio-apex .ca-swatch-c { transform: rotate(1deg); background: #efc96d; }
+    .curio-apex .ca-swatch-art { flex: 1; border: 1px solid rgba(24, 57, 54, .35); position: relative; overflow: hidden; background: linear-gradient(145deg, transparent 55%, rgba(24, 57, 54, .1) 56%), linear-gradient(35deg, transparent 51%, rgba(230, 108, 80, .45) 52%); }
+    .curio-apex .ca-swatch-art::before { content: ""; position: absolute; width: 62px; height: 62px; border-radius: 50%; background: var(--coral); top: 19px; left: 42px; opacity: .75; }
+    .curio-apex .ca-swatch-art::after { content: ""; position: absolute; width: 80px; height: 38px; border-radius: 60% 60% 0 0; background: var(--teal); bottom: 0; left: 30px; }
+    .curio-apex .ca-swatch-b .ca-swatch-art::before { background: #d8ad45; left: 18px; top: 40px; }
+    .curio-apex .ca-swatch-b .ca-swatch-art::after { background: #52685a; left: 52px; bottom: 0; }
+    .curio-apex .ca-swatch-caption { font: 8px "DM Mono", monospace; letter-spacing: .06em; margin-top: 10px; text-transform: uppercase; }
+    .curio-apex .ca-note { display: grid; grid-template-columns: 130px 1fr; gap: 40px; padding: 25px 0 90px; border-top: 1px solid var(--line); }
+    .curio-apex .ca-note .ca-kicker { color: #a14d39; }
+    .curio-apex .ca-note p { margin: 0; max-width: 720px; font: 400 20px/1.45 "Fraunces", serif; color: #40574f; }
+    .curio-apex .ca-footer { border-top: 1px solid var(--line); padding: 22px 0 30px; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+    .curio-apex .ca-footer small { font: 9px "DM Mono", monospace; letter-spacing: .06em; color: var(--muted); }
+    .curio-apex .ca-footer .ca-wordmark { font-size: 16px; }
+    .curio-apex .ca-world-detail[hidden] { display: none; }
+    @keyframes ca-rise { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
+    @media (prefers-reduced-motion: no-preference) {
+      .curio-apex .ca-orbit { animation: ca-drift 32s linear infinite; }
+      .curio-apex .ca-core { animation: ca-counter 32s linear infinite; }
+      @keyframes ca-drift { to { transform: rotate(348deg); } }
+      @keyframes ca-counter { to { transform: translate(-50%, -50%) rotate(-348deg); } }
+    }
+    @media (max-width: 760px) {
+      .curio-apex .ca-wrap { width: min(calc(100% - 38px), 560px); }
+      .curio-apex .ca-nav { min-height: 64px; }
+      .curio-apex .ca-navlinks { gap: 14px; }
+      .curio-apex .ca-navlinks a { font-size: 10px; }
+      .curio-apex .ca-navlinks a:nth-child(2) { display: none; }
+      .curio-apex .ca-concept { font-size: 8px; padding: 6px 8px; }
+      .curio-apex .ca-hero { padding: 58px 0 45px; grid-template-columns: 1fr; gap: 22px; }
+      .curio-apex .ca-hero h1 { font-size: clamp(56px, 15vw, 80px); }
+      .curio-apex .ca-hero-sub { font-size: 14px; margin: 20px 0 22px; }
+      .curio-apex .ca-art { min-height: 320px; margin: 2px 0 13px; }
+      .curio-apex .ca-orbit { width: min(310px, 85vw); }
+      .curio-apex .ca-core { width: 125px; height: 125px; }
+      .curio-apex .ca-tag-2 { right: -25px; }
+      .curio-apex .ca-tag-4 { left: -32px; }
+      .curio-apex .ca-caption { right: 5px; bottom: -3px; font-size: 8px; }
+      .curio-apex .ca-thesis { align-items: flex-start; flex-direction: column; gap: 9px; padding: 20px 0; }
+      .curio-apex .ca-thesis .ca-kicker { order: -1; }
+      .curio-apex .ca-intro { padding: 75px 0 37px; grid-template-columns: 1fr; gap: 14px; }
+      .curio-apex .ca-intro .ca-kicker { padding: 0; }
+      .curio-apex .ca-intro p { font-size: 13px; }
+      .curio-apex .ca-worlds { padding-bottom: 75px; }
+      .curio-apex .ca-section-head { align-items: flex-start; flex-direction: column; gap: 9px; }
+      .curio-apex .ca-section-head h2 { font-size: 29px; }
+      .curio-apex .ca-world-grid { grid-template-columns: 1fr; gap: 10px; }
+      .curio-apex .ca-world:nth-child(n) { grid-column: auto; min-height: 222px; }
+      .curio-apex .ca-world:nth-child(2) h3 { font-size: 34px; }
+      .curio-apex .ca-boundary { padding: 69px 0 72px; }
+      .curio-apex .ca-boundary-grid { grid-template-columns: 1fr; gap: 15px; }
+      .curio-apex .ca-boundary-copy { padding-top: 4px; }
+      .curio-apex .ca-boundary-copy p { font-size: 13px; }
+      .curio-apex .ca-method { padding: 76px 0; }
+      .curio-apex .ca-method-head { grid-template-columns: 1fr; gap: 13px; margin-bottom: 32px; }
+      .curio-apex .ca-steps { grid-template-columns: 1fr; }
+      .curio-apex .ca-step { padding: 19px 5px 22px 0; }
+      .curio-apex .ca-step + .ca-step { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; }
+      .curio-apex .ca-step h3 { margin: 17px 0 6px; }
+      .curio-apex .ca-step-arrow { top: 18px; }
+      .curio-apex .ca-fandom { padding-bottom: 75px; }
+      .curio-apex .ca-fandom-panel { padding: 35px 24px 28px; grid-template-columns: 1fr; gap: 4px; }
+      .curio-apex .ca-fandom-art { height: 230px; }
+      .curio-apex .ca-fandom-panel::after { right: -90px; top: 45%; width: 280px; height: 280px; }
+      .curio-apex .ca-note { grid-template-columns: 1fr; gap: 12px; padding: 22px 0 60px; }
+      .curio-apex .ca-note p { font-size: 18px; }
+      .curio-apex .ca-footer { align-items: flex-start; gap: 12px; flex-direction: column; }
+    }
+    @media (max-width: 390px) {
+      .curio-apex .ca-concept { display: none; }
+      .curio-apex .ca-navlinks { gap: 10px; }
+      .curio-apex .ca-wordmark { gap: 6px; font-size: 17px; }
+      .curio-apex .ca-mark { width: 34px; height: 30px; }
+      .curio-apex .ca-world { padding-inline: 19px; }
+      .curio-apex .ca-world-kind { font-size: 8px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .curio-apex *, .curio-apex *::before, .curio-apex *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5T5P2C9S"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-  <div class="stage">
-    <div class="hud-corner hud-corner--tl">
-      <span class="mono">JLK · Apex Channel</span>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <main class="curio-apex" id="top">
+    <div class="ca-wrap">
+      <header class="ca-nav">
+        <a class="ca-wordmark" href="#top" aria-label="CurioSeek home">
+          <img class="ca-mark" src="/images/curioseek-apex-logo.png" alt="" />
+          CurioSeek
+        </a>
+        <nav class="ca-navlinks" aria-label="Main navigation">
+          <a href="#worlds">The worlds</a>
+          <a href="#approach">The approach</a>
+          <a href="#fandom">A closer look</a>
+        </nav>
+        <span class="ca-concept"><i aria-hidden="true"></i>APEX CONCEPT</span>
+      </header>
+
+      <section class="ca-hero" id="main-content" aria-labelledby="ca-title">
+        <div class="ca-hero-copy">
+          <div class="ca-eyebrow ca-kicker">The connective field for a curious life</div>
+          <h1 id="ca-title">More than<br />one kind of <em>curious.</em></h1>
+          <p class="ca-hero-sub">A shared field for different universes of curiosity: common tools can travel between them while each keeps its own language and creative rhythm.</p>
+          <div class="ca-hero-actions">
+            <a class="ca-button" href="#worlds">Find your way around <span class="ca-arrow" aria-hidden="true">↘</span></a>
+            <a class="ca-textlink" href="#approach">A small philosophy</a>
+          </div>
+        </div>
+        <div class="ca-art" role="img" aria-label="Illustration of four distinct worlds connected by a shared field">
+          <div class="ca-orbit" aria-hidden="true">
+            <span class="ca-orbit-tag ca-tag-1"><b></b>LEARN</span>
+            <span class="ca-orbit-tag ca-tag-2"><b></b>MAKE</span>
+            <span class="ca-orbit-tag ca-tag-3"><b></b>NOTICE</span>
+            <span class="ca-orbit-tag ca-tag-4"><b></b>LOVE</span>
+            <div class="ca-core"><span>one life,<br />many ways<br />in</span></div>
+          </div>
+          <span class="ca-spark one" aria-hidden="true">✳</span>
+          <span class="ca-spark two" aria-hidden="true">✳</span>
+          <span class="ca-caption">A PERSONAL ATLAS · VOL. 01</span>
+        </div>
+      </section>
+
+      <div class="ca-thesis" aria-label="CurioSeek doctrine">
+        <span class="ca-kicker">The CurioSeek field</span>
+        <p>Shared instrumentation <span aria-hidden="true">→</span> distinct creative languages.</p>
+      </div>
+
+      <section class="ca-intro" aria-labelledby="ca-intro-title">
+        <div class="ca-kicker">01 / The connective tissue</div>
+        <div>
+          <h2 id="ca-intro-title">Not a funnel. <em>A living field.</em></h2>
+          <p>CurioSeek is the field between different filters and universes of creation. Shared tooling—like the CAPTURE membrane—can move across them, connecting practices without flattening the distinct languages each world speaks.</p>
+        </div>
+      </section>
+
+      <section class="ca-worlds" id="worlds" aria-labelledby="ca-worlds-title">
+        <div class="ca-section-head">
+          <h2 id="ca-worlds-title">Four worlds, one field.</h2>
+          <p>Distinct filters. Shared tools where they help.</p>
+        </div>
+        <div class="ca-world-grid">
+          <article class="ca-world">
+            <div class="ca-world-top"><span class="ca-world-number">FIELD NOTE 01</span><span class="ca-world-status">Private workspace</span></div>
+            <h3>StudentOS</h3>
+            <p>A place for serious learning: study paths, practice, and a growing web of knowledge.</p>
+            <div class="ca-world-bottom">
+              <span class="ca-world-kind">LEARN · PRACTICE · CONNECT IDEAS</span>
+              <button class="ca-world-button" type="button" aria-expanded="false" aria-controls="world-detail-1" data-world-toggle>Open note <span aria-hidden="true">↗</span></button>
+            </div>
+            <div class="ca-world-detail" id="world-detail-1" hidden>Learning is more than a streak. StudentOS brings study, practice-question review, and a personal knowledge wiki into one private learning space.</div>
+          </article>
+          <article class="ca-world">
+            <div class="ca-world-top"><span class="ca-world-number">FIELD NOTE 02</span><span class="ca-world-status">Private workspace</span></div>
+            <h3>CreatorOS</h3>
+            <p>A creative workstation for ideas in motion—without asking every idea to become a post.</p>
+            <div class="ca-world-bottom">
+              <span class="ca-world-kind">CAPTURE → CREATE → PLAN → CONNECT</span>
+              <button class="ca-world-button" type="button" aria-expanded="false" aria-controls="world-detail-2" data-world-toggle>Open note <span aria-hidden="true">↗</span></button>
+            </div>
+            <div class="ca-world-detail" id="world-detail-2" hidden>CreatorOS develops selected ideas and prepares them for deliberate publication. Fandom Vibes is a C-drama world with guides, games, and creative tools; it does not define the whole creative practice, and the private journal stays its own thing.</div>
+          </article>
+          <article class="ca-world">
+            <div class="ca-world-top"><span class="ca-world-number">FIELD NOTE 03</span><span class="ca-world-status concept">Proposed</span></div>
+            <h3>LifeOS</h3>
+            <p>A gentler home for the everyday systems and private reflections that make a life feel held.</p>
+            <div class="ca-world-bottom">
+              <span class="ca-world-kind">NOTICE · REFLECT · MAKE ROOM</span>
+              <button class="ca-world-button" type="button" aria-expanded="false" aria-controls="world-detail-3" data-world-toggle>Open note <span aria-hidden="true">↗</span></button>
+            </div>
+            <div class="ca-world-detail" id="world-detail-3" hidden>This is a proposed area, not a shipped workspace. Private reflection is one building block; the idea is to make room for the useful, ordinary parts of a many-sided life.</div>
+          </article>
+          <article class="ca-world">
+            <div class="ca-world-top"><span class="ca-world-number">FIELD NOTE 04</span><span class="ca-world-status">Public experience</span></div>
+            <h3>Fandom Vibes</h3>
+            <p>A C-drama world of guides, games, discoveries, and creative ways to follow what you love.</p>
+            <div class="ca-world-bottom">
+              <span class="ca-world-kind">EXPLORE · PLAY · COLLECT</span>
+              <button class="ca-world-button" type="button" aria-expanded="false" aria-controls="world-detail-4" data-world-toggle>Open note <span aria-hidden="true">↗</span></button>
+            </div>
+            <div class="ca-world-detail" id="world-detail-4" hidden>The guides and games belong here, alongside visual experiences and the content engine. Vibe Atlas / 氛围图鉴 is one part of Fandom Vibes—not the name for everything in it.</div>
+          </article>
+        </div>
+      </section>
     </div>
 
-    <div class="hud-corner hud-corner--tr">
-      <span class="signal">
-        <span class="mono">Signal — On</span>
-        <span class="signal-dot" aria-hidden="true"></span>
-      </span>
+    <section class="ca-boundary" aria-labelledby="ca-boundary-title">
+      <div class="ca-wrap ca-boundary-grid">
+        <div>
+          <div class="ca-kicker">02 / A membrane between worlds</div>
+          <h2 id="ca-boundary-title">Shared tools.<br /><em>Distinct languages.</em></h2>
+        </div>
+        <div class="ca-boundary-copy">
+          <p>CurioSeek’s connective tissue is shared tooling and instrumentation—like the CAPTURE membrane—available across different filters and creative universes. A method can travel without making every practice look or feel the same.</p>
+          <p>StudentOS, CreatorOS, LifeOS, and Fandom Vibes each keep their own language and purpose. Making can stay private, playful, unfinished, or just for you; sharing is a choice, not the system’s default.</p>
+          <div class="ca-distinction">
+            <div><strong>The shared membrane</strong><span>Capture and creative instrumentation can connect otherwise distinct worlds.</span></div>
+            <div><strong>The native language</strong><span>Each filter keeps its own rhythms, rules, and way of making meaning.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ca-wrap">
+      <section class="ca-method" id="approach" aria-labelledby="ca-method-title">
+        <div class="ca-method-head">
+          <div class="ca-kicker">03 / A practice, not a pipeline</div>
+          <h2 id="ca-method-title">Pay attention.<br /><em>Then see what grows.</em></h2>
+        </div>
+        <div class="ca-steps">
+          <article class="ca-step"><span class="ca-kicker">01 — Gather</span><span class="ca-step-arrow" aria-hidden="true">↘</span><h3>Collect signals</h3><p>Keep the detail that catches your eye: a question, a pattern, a scene, a stray idea.</p></article>
+          <article class="ca-step"><span class="ca-kicker">02 — Arrange</span><span class="ca-step-arrow" aria-hidden="true">↘</span><h3>Shape systems</h3><p>Give recurring curiosities a useful place to meet, without forcing them into the same shape.</p></article>
+          <article class="ca-step"><span class="ca-kicker">03 — Become</span><span class="ca-step-arrow" aria-hidden="true">↘</span><h3>Move mountains</h3><p>Let the small observations add up to something you could not have planned at the start.</p></article>
+        </div>
+      </section>
+
+      <section class="ca-fandom" id="fandom" aria-labelledby="ca-fandom-title">
+        <div class="ca-fandom-panel">
+          <div class="ca-fandom-copy">
+            <div class="ca-kicker">A public doorway / Fandom Vibes</div>
+            <h2 id="ca-fandom-title">For the feeling a story leaves behind.</h2>
+            <p>Follow a C-drama curiosity through guides, games, and creative discoveries. Explore its atmosphere with Vibe Atlas, then keep going—there’s more here than one way to play.</p>
+            <a class="ca-button" href="https://fandom.justlikekatie.com/" target="_blank" rel="noopener noreferrer">
+              Visit Fandom Vibes <span class="ca-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <div class="ca-fandom-art" aria-hidden="true">
+            <div class="ca-swatch ca-swatch-a"><div class="ca-swatch-art"></div><div class="ca-swatch-caption">01 · hush / light</div></div>
+            <div class="ca-swatch ca-swatch-b"><div class="ca-swatch-art"></div><div class="ca-swatch-caption">02 · after rain</div></div>
+            <div class="ca-swatch ca-swatch-c"><div class="ca-swatch-art"></div><div class="ca-swatch-caption">Vibe Atlas / 氛围图鉴</div></div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="ca-note">
+        <div class="ca-kicker">A note on this field</div>
+        <p>CurioSeek is a design concept for the connective field around distinct creative worlds. Some spaces are private workspaces, and some are still taking shape; shared instrumentation does not mean every room is open.</p>
+      </aside>
+
+      <footer class="ca-footer">
+        <a class="ca-wordmark" href="#top"><img class="ca-mark" src="/images/curioseek-apex-logo.png" alt="" />CurioSeek</a>
+        <small>A FIELD GUIDE FOR A MANY-SIDED LIFE · CONCEPT</small>
+        <a class="ca-textlink ca-mono" href="#top">Back to the beginning ↑</a>
+      </footer>
     </div>
-
-    <main class="panel">
-      <p class="eyebrow">Signal from the Control Room</p>
-
-      <h1 class="thesis">justlikekatie.com is coming soon.</h1>
-
-      <p class="lede">
-        A tiny internet control room for Katie Hendley’s fandom analysis,
-        creative projects, acting experiments, and “wait, I built a tool for
-        that” moments.
-      </p>
-
-      <p class="body-copy">
-        This site is currently in build mode — gathering portfolio work,
-        fandom systems, media experiments, and the tools behind them into one
-        public home.
-      </p>
-
-      <p class="more-soon">More soon.</p>
-
-      <p class="whois-aside">Built internally. Please do not feed the WHOIS marketers.</p>
-    </main>
-
-    <div class="hud-corner hud-corner--bl">
-      <span class="mono">Status — Build Mode</span>
-    </div>
-
-    <div class="hud-corner hud-corner--br">
-      <span class="mono">© Katie Hendley</span>
-    </div>
-  </div>
+  </main>
+  <script>
+    (() => {
+      const buttons = Array.from(document.querySelectorAll("[data-world-toggle]"));
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const wasExpanded = button.getAttribute("aria-expanded") === "true";
+          buttons.forEach((other) => {
+            const detail = document.getElementById(other.getAttribute("aria-controls"));
+            other.setAttribute("aria-expanded", String(other === button && !wasExpanded));
+            detail.hidden = other === button ? wasExpanded : true;
+            other.firstChild.textContent = other === button && !wasExpanded ? "Fold note " : "Open note ";
+            const arrow = other.querySelector("span");
+            arrow.textContent = other === button && !wasExpanded ? "−" : "↗";
+          });
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

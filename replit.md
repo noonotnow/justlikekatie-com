@@ -1,6 +1,6 @@
-# CurioSeek apex design exploration
+# CurioSeek apex site
 
-The imported root is the existing static Just Like Katie landing page. Its HTML, product brief, assets, and Netlify configuration remain unchanged. The CurioSeek proposal is isolated in a design sandbox, not integrated into the production page.
+The repository-root `index.html` is the static CurioSeek apex concept for the existing Netlify site. It remains hand-authored HTML with inline CSS and a small interaction script; no framework migration or domain change is part of this work. The approved React design remains isolated in the design sandbox as a reference.
 
 ## Run the design preview
 
@@ -18,8 +18,8 @@ The sandbox uses Node.js 22, React, TypeScript, and Vite. It does not need appli
 
 CurioSeek is the connection and shared field around and between StudentOS, CreatorOS, LifeOS, Fandom Vibes, and their content engines—not a central hub, machine, tool node, or instrument panel. The OSes are distinct universes, languages, and filters; the domains and engines are analogous to neurons with their own branches and connections. They MAY share some tooling, but not all. CAPTURE was an example, not the architecture: tool overlap is incidental and must not become the organizing principle or a dominant central diagram object. Preserve the field through the relationships, space, and atmosphere, without flattening each world's identity.
 
-Fandom Vibes encompasses the C-drama guides, games, discoveries, and content engine; Vibe Atlas is one experience within it. The apex page remains a design proposal, not a launch announcement.
+Fandom Vibes encompasses the C-drama guides, games, discoveries, and content engine; Vibe Atlas is one experience within it. The apex page remains a design concept, not a launch announcement. The Fandom Vibes destination is public; other workspaces are not linked.
 
 Keep private workspaces and public destinations distinct. Do not expose private repository contents, operator endpoints, clinical information, account data, or private tool URLs in public page content. LifeOS has not been verified as implemented; do not claim otherwise. Do not split the C-drama guides and games into an invented standalone proposed wiki.
 
-The existing root product brief describes the earlier coming-soon page. It has not been rewritten to imply approval of the new concept. Production integration, domain changes, and publishing require a separate user decision.
+`PRODUCT.md` and `DESIGN.md` describe the earlier coming-soon page and are historical references, not the copy contract for the CurioSeek page. The page is not published from this task; publishing and domain changes require a separate user decision.
