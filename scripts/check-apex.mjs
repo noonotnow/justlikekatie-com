@@ -58,13 +58,14 @@ function createStaticServer() {
   });
 }
 
-function connectToPage(webSocketUrl) {
+function connectToPage(webSocketUrl, onEvent = () => {}) {
   const socket = new WebSocket(webSocketUrl);
   let nextId = 0;
   const pending = new Map();
 
   socket.addEventListener("message", (event) => {
     const message = JSON.parse(event.data);
+    if (message.method) onEvent(message);
     if (!message.id) return;
     const callbacks = pending.get(message.id);
     if (!callbacks) return;
@@ -107,6 +108,7 @@ const server = createStaticServer();
 let browser;
 let page;
 let profileDirectory;
+const browserEvents = [];
 
 try {
   await access(chromiumPath);
@@ -146,7 +148,7 @@ try {
     const pages = (await response.json()).filter((target) => target.type === "page");
     return pages[0] || null;
   }, "Chromium did not open a page");
-  page = await connectToPage(targets.webSocketDebuggerUrl);
+  page = await connectToPage(targets.webSocketDebuggerUrl, (event) => browserEvents.push(event));
   await page.send("Page.enable");
   await page.send("Runtime.enable");
   await page.send("Emulation.setDeviceMetricsOverride", {
@@ -280,6 +282,65 @@ try {
     hidden: document.getElementById("world-detail-1").hidden
   })`);
   assert(closedNote.expanded === "false" && closedNote.hidden, "Space closes the active field note");
+
+  for (const trackerState of ["missing", "throwing"]) {
+    const { targetInfos: existingTargets } = await page.send("Target.getTargets");
+    const existingTargetIds = new Set(existingTargets.map((target) => target.targetId));
+    browserEvents.length = 0;
+    const point = await page.evaluate(`(() => {
+      delete window.umami;
+      window.__trackerCalls = 0;
+      window.__fandomClick = null;
+      if (${JSON.stringify(trackerState)} === "throwing") {
+        window.umami = { track() {
+          window.__trackerCalls++;
+          throw new Error("Simulated analytics failure");
+        } };
+      }
+      const link = document.querySelector('#fandom a[href="https://fandom.justlikekatie.com/"]');
+      document.addEventListener("click", (event) => {
+        window.__fandomClick = {
+          defaultPrevented: event.defaultPrevented,
+          trusted: event.isTrusted,
+        };
+      }, { once: true });
+      link.scrollIntoView({ behavior: "instant", block: "center" });
+      const rect = link.getBoundingClientRect();
+      return { x: rect.x + rect.width / 2, y: rect.y + rect.height / 2 };
+    })()`);
+    await page.send("Input.dispatchMouseEvent", {
+      type: "mousePressed", ...point, button: "left", clickCount: 1,
+    });
+    await page.send("Input.dispatchMouseEvent", {
+      type: "mouseReleased", ...point, button: "left", clickCount: 1,
+    });
+    const click = await page.evaluate(`new Promise((resolve) => {
+      // Drain the analytics timer, including any uncaught exception it raises.
+      window.setTimeout(() => resolve({
+        ...window.__fandomClick,
+        trackerCalls: window.__trackerCalls,
+        url: window.location.href,
+      }), 50);
+    })`);
+    assert(click.trusted && click.defaultPrevented === false,
+      `A real click is not cancelled with a ${trackerState} analytics tracker`);
+    assert(click.trackerCalls === (trackerState === "throwing" ? 1 : 0),
+      `The ${trackerState} tracker scenario actually runs`);
+    assert(!browserEvents.some((event) => event.method === "Runtime.exceptionThrown"),
+      `No uncaught page error with a ${trackerState} analytics tracker`);
+    assert(browserEvents.some((event) => event.method === "Page.windowOpen" &&
+      event.params.url === "https://fandom.justlikekatie.com/" && event.params.userGesture),
+      `Fandom navigation is requested by the click with a ${trackerState} tracker`);
+    const popup = await waitFor(async () => {
+      const { targetInfos } = await page.send("Target.getTargets");
+      return targetInfos.find((target) =>
+        target.type === "page" && !existingTargetIds.has(target.targetId));
+    }, `Fandom did not open a new tab with a ${trackerState} tracker`);
+    assert(Boolean(popup), `A new tab opens with a ${trackerState} analytics tracker`);
+    assert(click.url === `http://127.0.0.1:${sitePort}/`,
+      `The apex stays open with a ${trackerState} analytics tracker`);
+    await page.send("Target.closeTarget", { targetId: popup.targetId });
+  }
 
   console.log(`Apex browser checks passed (${checks.length} assertions).`);
   for (const check of checks) console.log(`  ✓ ${check}`);
