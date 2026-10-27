@@ -45,13 +45,6 @@ const domains: Domain[] = [
   },
 ];
 
-const paths = [
-  "M 300 247 C 260 200 242 172 199 147 C 154 121 105 119 66 87",
-  "M 300 247 C 345 201 360 166 402 144 C 448 120 492 119 529 82",
-  "M 300 247 C 260 295 239 326 201 352 C 158 381 111 383 71 421",
-  "M 300 247 C 342 295 363 325 403 351 C 445 378 490 386 530 421",
-];
-
 export function CurioSeekSpectrum() {
   const [openDomain, setOpenDomain] = useState<string | null>(null);
 
@@ -82,31 +75,19 @@ export function CurioSeekSpectrum() {
               <div className="sp-hero-index"><strong>01—04</strong><span>Distinct worlds, a shared field.</span></div>
             </div>
 
-            <div className="sp-visual" aria-label="Four colorful CurioSeek pathways radiate from a green center">
+            <div className="sp-visual" aria-label="A green CurioSeek emblem rests among four distinct, colorful worlds">
               <span className="sp-visual-caption sp-caption-top">A SMALL MAP OF MANY THINGS</span>
               <span className="sp-visual-number">FIG. 01</span>
               <div className="sp-orbit sp-orbit-a" />
               <div className="sp-orbit sp-orbit-b" />
-              <div className="sp-orbit sp-orbit-c" />
-              <svg viewBox="0 0 600 500" className="sp-branches" aria-hidden="true">
-                {paths.map((path, i) => <path key={path} d={path} className={`sp-branch sp-branch-${i}`} />)}
-                <path className="sp-spine" d="M300 247 C300 178 299 117 300 57" />
-                <path className="sp-spine" d="M300 247 C300 323 300 379 300 443" />
-                <path className="sp-spine" d="M300 247 C216 247 161 249 101 247" />
-                <path className="sp-spine" d="M300 247 C383 247 439 248 500 247" />
-                {[["66","87",0],["529","82",1],["71","421",2],["530","421",3],["300","57",4],["300","443",5],["101","247",6],["500","247",7]].map(([x,y,i]) => (
-                  <circle key={i} cx={x} cy={y} r="5" className={`sp-terminal sp-terminal-${i}`} />
-                ))}
-              </svg>
-              <span className="sp-tag sp-tag-a">LEARN <i /></span>
-              <span className="sp-tag sp-tag-b"><i /> MAKE</span>
-              <span className="sp-tag sp-tag-c">NOTICE <i /></span>
-              <span className="sp-tag sp-tag-d"><i /> LOVE</span>
+              <div className="sp-world-island sp-island-learn"><i /><span>LEARN</span><small>StudentOS</small></div>
+              <div className="sp-world-island sp-island-make"><i /><span>MAKE</span><small>CreatorOS</small></div>
+              <div className="sp-world-island sp-island-notice"><i /><span>NOTICE</span><small>LifeOS · proposed</small></div>
+              <div className="sp-world-island sp-island-love"><i /><span>LOVE</span><small>Fandom Vibes</small></div>
               <div className="sp-core">
                 <span className="sp-core-mark"><img src="/__mockup/images/curioseek-apex-logo.png" alt="CurioSeek emblem" /></span>
                 <span>one life,<br /><em>many ways in</em></span>
               </div>
-              <span className="sp-side-note">LEARN · MAKE · NOTICE · LOVE</span>
               <span className="sp-spark sp-spark-a">✳</span>
               <span className="sp-spark sp-spark-b">✳</span>
               <span className="sp-visual-caption sp-caption-bottom">THE CURIOSITY CYCLE <b>↗</b> KEEP WANDERING</span>
