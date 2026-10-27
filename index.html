@@ -467,6 +467,19 @@
           updateWorlds(activeIndex === index ? null : index);
         });
       });
+
+      const fandomLink = document.querySelector("#fandom a[href='https://fandom.justlikekatie.com/']");
+      fandomLink?.addEventListener("click", () => {
+        window.setTimeout(() => {
+          try {
+            window.umami?.track("fandom_vibes_link_activated", {
+              location: "fandom_section",
+            });
+          } catch {
+            // Analytics must never interfere with opening the public world.
+          }
+        }, 0);
+      });
     })();
   </script>
 </body>
