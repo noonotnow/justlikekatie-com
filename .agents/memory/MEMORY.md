@@ -2,3 +2,5 @@
 - [CurioSeek visual identity](curioseek-visual-identity.md) — keep the rainbow palette in the original emblem; its color is a signature, not something to flatten into the page palette.
 - [Required CI checks](required-ci-checks.md) — required checks must report on every pull request; workflow path filters can leave unrelated PRs blocked indefinitely.
 - [Share artwork rendering](share-artwork-rendering.md) — use browser SVG export for the linked rainbow emblem; some rasterizers silently omit it.
+- [Browser runtime compatibility](browser-runtime-compatibility.md) — native WebKitGTK availability does not establish runnable Playwright WebKit coverage in this workspace.
+- [Dependency lock portability](dependency-lock-portability.md) — workspace package installs can record private registry URLs; shared test hosts need public tarball URLs with verified integrity.

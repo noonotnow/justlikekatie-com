@@ -1,2 +1,3 @@
 **/node_modules/
 /generated-artifacts/
+/.cache/ms-playwright/

@@ -29,6 +29,43 @@ with any static file server for local preview, e.g.:
 npx serve .
 ```
 
+## Browser regression checks
+
+The checks start and stop their own local static server; no preview workflow
+or published site is needed. Install the locked development dependency with
+`npm ci`, then install the browser engines with:
+
+```sh
+npx playwright install chromium firefox webkit
+```
+
+On supported Linux hosts, Playwright also needs its documented browser OS
+libraries (`npx playwright install-deps`); on Replit/Nix, install system
+dependencies through the workspace package tools instead of apt.
+
+```sh
+npm run check:apex             # Chromium plus available Firefox and WebKit
+npm run check:apex:all         # require all three engines (recommended for CI)
+npm run check:apex:chromium    # existing Chromium-only check
+npm run check:apex:firefox
+npm run check:apex:webkit      # Safari's engine, not the macOS Safari application
+```
+
+Every engine runs the same 320/390/768/1440px overflow checks, reduced-motion
+checks, and native Enter/Space open/switch/close checks on desktop and mobile
+field-note buttons. Default discovery reports unavailable Firefox/WebKit
+explicitly; assertion failures always fail. Explicit browser selection and
+`--require-all` also fail if an engine cannot start, so CI cannot silently
+skip coverage. `--browser=firefox,webkit` selects multiple engines.
+
+The existing 200% zoom reflow and analytics-failure navigation checks are also
+run for each available engine. Fandom popup destinations are intercepted
+locally during the tests rather than contacting the public site.
+
+Chromium uses `/repl/tools/bin/chromium` when present, otherwise Playwright's
+bundled engine. `CHROMIUM_PATH`, `FIREFOX_PATH`, and `WEBKIT_PATH` can point to
+compatible executables; Firefox/WebKit must be Playwright-compatible builds.
+
 ## Deploy config
 
 `netlify.toml` runs `node scripts/prepare-netlify.mjs` and publishes the
