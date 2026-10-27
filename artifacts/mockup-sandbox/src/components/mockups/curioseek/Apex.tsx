@@ -38,7 +38,7 @@ const worlds: World[] = [
     concept: true,
     kind: "CAPTURE · ROUTE · FOLLOW THROUGH",
     description: "For people balancing everyday administration with projects and domains—without forcing everything into one dashboard.",
-    detail: "LifeOS is the proposed everyday operations and coordination layer: email and calendar triage, receipts and finance, capture, and follow-through. Shibuya is intended to route inputs to the right project or specialist workflow while each domain keeps its own depth and source of truth. A concept walkthrough could show a fictional renovation email becoming a decision, budget consideration, and next action. This is not a launched workspace or a claim that integrations are complete; keep real records and internal systems private.",
+    detail: "LifeOS is a proposed everyday-operations and cross-domain coordination layer for email and calendar triage, projects, finance, and follow-through. Shibuya is intended to route inputs to the right domain workflow while each keeps its own depth and source of truth. The fictional concept example below shows a renovation email routed to project, budget, and calendar/action workflows—not launched functionality or live integrations.",
   },
   {
     name: "Fandom Vibes",
@@ -133,6 +133,52 @@ export function Apex() {
               );
             })}
           </div>
+        </section>
+
+        <section className="ca-lifeos" aria-labelledby="ca-lifeos-title">
+          <div className="ca-lifeos-head">
+            <div>
+              <div className="ca-kicker">LifeOS / Proposed concept</div>
+              <h2 id="ca-lifeos-title">One small signal.<br /><em>A few useful threads.</em></h2>
+            </div>
+            <p className="ca-lifeos-disclaimer">FICTIONAL CONCEPT EXAMPLE<br />Not launched functionality · No live integrations</p>
+          </div>
+          <div className="ca-lifeos-flow">
+            <article className="ca-lifeos-card ca-lifeos-capture">
+              <span className="ca-kicker">01 / Capture</span>
+              <h3>Renovation note</h3>
+              <p>Fictional email: “The kitchen tile estimate is ready. Could you confirm the finish by Friday?”</p>
+              <span className="ca-lifeos-tag">Email · synthetic</span>
+            </article>
+            <div className="ca-lifeos-route" aria-label="Conceptual routing through Shibuya">
+              <span>Shibuya</span>
+              <i aria-hidden="true">→</i>
+              <small>conceptual routing</small>
+            </div>
+            <div className="ca-lifeos-outcomes">
+              <article className="ca-lifeos-outcome">
+                <span className="ca-kicker">02 / Connect</span>
+                <strong>Renovation / project</strong>
+                <span>Compare the warm limestone sample with the kitchen plan.</span>
+              </article>
+              <article className="ca-lifeos-outcome">
+                <span className="ca-kicker">03 / Consider</span>
+                <strong>Finance / budget</strong>
+                <span>Consider the fictional $4,280 estimate against a $5,000 materials allowance.</span>
+              </article>
+              <article className="ca-lifeos-outcome">
+                <span className="ca-kicker">04 / Decide</span>
+                <strong>Choose limestone</strong>
+                <span>A fictional decision, made after checking the plan and allowance.</span>
+              </article>
+              <article className="ca-lifeos-outcome ca-lifeos-next">
+                <span className="ca-kicker">05 / Calendar + action</span>
+                <strong>Reply by Friday</strong>
+                <span>Next action: confirm the finish with the fictional installer.</span>
+              </article>
+            </div>
+          </div>
+          <p className="ca-lifeos-foot">A proposed LifeOS flow: capture → route across relevant domains → decide → act.</p>
         </section>
       </div>
 
