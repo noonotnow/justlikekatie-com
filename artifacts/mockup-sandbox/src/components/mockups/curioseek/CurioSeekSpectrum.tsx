@@ -45,8 +45,8 @@ const domains: Domain[] = [
     status: "PUBLIC WORLD",
     color: "#9b6eaa",
     light: "#eee5f0",
-    description: "C-drama worlds to explore through guides, games, and discoveries.",
-    note: "Explore C-drama worlds through approachable guides, fandom reference, playful games, and visual discoveries.",
+    description: "Fandom guides, reference, games, and discoveries. C-drama first.",
+    note: "Public guides, reference, games, and Vibe Atlas daily card drops, with C-drama as the initial focus. Read each guide’s spoiler boundary; episode-bounded readings are not spoiler-free. Personal collections remain separate.",
   },
 ];
 
@@ -183,9 +183,9 @@ export function CurioSeekSpectrum() {
         </section>
 
         <section className="sp-public" id="sp-public">
-          <div className="sp-public-copy"><span className="sp-overline">A PUBLIC WORLD / FANDOM VIBES</span><h2>For the feeling<br />a story leaves <em>behind.</em></h2><p>Explore C-drama worlds through approachable guides, fandom reference, playful games, and visual discoveries.</p><a className="sp-button" href="#sp-worlds">See the world notes <span aria-hidden="true">↘</span></a></div>
-          <div className="sp-art" aria-label="Vibe Atlas visual studies">
-            <div className="sp-art-label">VIBE ATLAS / CONCEPT PREVIEW</div>
+          <div className="sp-public-copy"><span className="sp-overline">A PUBLIC WORLD / FANDOM VIBES</span><h2>For the feeling<br />a story leaves <em>behind.</em></h2><p>Fandom Vibes brings together public guides, reference, games, and visual discoveries, with C-drama as its initial focus. Vibe Atlas’s daily card drops are one experience within it—not the whole world. Check each reading’s spoiler boundary before opening.</p><a className="sp-button" href="https://fandom.justlikekatie.com/" target="_blank" rel="noopener noreferrer">Visit Fandom Vibes <span aria-hidden="true">↗</span></a><div className="sp-public-status">PUBLIC WORLD <i /> VIBE ATLAS: DAILY CARD DROP</div></div>
+          <div className="sp-art" aria-label="Concept art, not published Vibe Atlas cards">
+            <div className="sp-art-label">CONCEPT ART / NOT PUBLISHED CARDS</div>
             <div className="sp-art-card sp-art-one"><div className="sp-sun" /><div className="sp-hills" /><span>01 / HUSH & LIGHT</span></div>
             <div className="sp-art-card sp-art-two"><div className="sp-moon" /><div className="sp-mountains" /><span>02 / AFTER RAIN</span></div>
             <div className="sp-art-caption">氛围图鉴 <b>—</b> ONE EXPERIENCE WITHIN FANDOM VIBES</div>

@@ -42,10 +42,10 @@ const worlds: World[] = [
   },
   {
     name: "Fandom Vibes",
-    status: "Public scope",
+    status: "Public entry points",
     kind: "EXPLORE · PLAY · COLLECT",
     description: "For newcomers and longtime fans seeking approachable context, deeper discovery, and playful participation—with C-drama as the starting focus.",
-    detail: "Fandom Vibes is the broader fandom experience, not a separate C-drama Wiki. Its public scope includes approachable guides and reference (introductions, vocabulary, genre and cultural context, curated drama, character, and relationship guides with spoiler boundaries), games and quizzes, curated Vibe Atlas collections, and connected browsing. It is not an open-edit wiki. Link only verified, approved public content; label proposed additions clearly and do not imply the overall experience has launched. The worlds launcher is fandom.justlikekatie.com; the direct C-drama entry is fandom.justlikekatie.com/cdrama.",
+    detail: "Fandom Vibes is the broader fandom experience, with C-drama as its initial focus—not a separate or open-edit wiki. Public entry points include guides and reference, fandom games, and Vibe Atlas daily card drops and published editions. Read each guide’s spoiler boundary: episode-bounded readings are not spoiler-free, and the closing reading includes ending spoilers. Personal collections and account-only tools are not public editorial collections.",
   },
 ];
 
@@ -224,22 +224,22 @@ export function Apex() {
         <section className="ca-fandom" id="fandom" aria-labelledby="ca-fandom-title">
           <div className="ca-fandom-panel">
             <div className="ca-fandom-copy">
-              <div className="ca-kicker">Public scope / Fandom Vibes</div>
+              <div className="ca-kicker">Public entry points / Fandom Vibes</div>
               <h2>For the feeling a story leaves behind.</h2>
-              <p>Fandom Vibes is the broader home for fandom guides, reference, games, and visual discovery. C-drama is the initial focus; Vibe Atlas is one experience among many. Open the worlds launcher or go straight to C-drama.</p>
+              <p>Fandom Vibes is the broader home for fandom guides, reference, games, and visual discovery. C-drama is the initial focus; Vibe Atlas’s public daily card drops are one experience among many. Check each reading’s spoiler boundary before opening.</p>
               <div className="ca-fandom-links">
-                <a className="ca-button" href="https://fandom.justlikekatie.com" target="_blank" rel="noreferrer">
+                <a className="ca-button" href="https://fandom.justlikekatie.com/" target="_blank" rel="noopener noreferrer">
                   Open the worlds launcher <span className="ca-arrow" aria-hidden="true">↗</span>
                 </a>
-                <a className="ca-textlink" href="https://fandom.justlikekatie.com/cdrama" target="_blank" rel="noreferrer">
-                  Go straight to C-drama <span aria-hidden="true">↗</span>
+                <a className="ca-textlink" href="https://fandom.justlikekatie.com/c-drama-fandom/" target="_blank" rel="noopener noreferrer">
+                  Explore the C-drama field guide <span aria-hidden="true">↗</span>
                 </a>
               </div>
             </div>
             <div className="ca-fandom-art" aria-hidden="true">
               <div className="ca-swatch ca-swatch-a"><div className="ca-swatch-art" /><div className="ca-swatch-caption">01 · hush / light</div></div>
               <div className="ca-swatch ca-swatch-b"><div className="ca-swatch-art" /><div className="ca-swatch-caption">02 · after rain</div></div>
-              <div className="ca-swatch ca-swatch-c"><div className="ca-swatch-art" /><div className="ca-swatch-caption">Vibe Atlas / 氛围图鉴</div></div>
+              <div className="ca-swatch ca-swatch-c"><div className="ca-swatch-art" /><div className="ca-swatch-caption">Concept art / not published cards</div></div>
             </div>
           </div>
         </section>

@@ -20,6 +20,8 @@ CurioSeek is the connection and shared field around and between StudentOS, Creat
 
 Fandom Vibes encompasses the C-drama guides, games, discoveries, and content engine; Vibe Atlas is one experience within it. The apex page remains a design concept, not a launch announcement. The Fandom Vibes destination is public; other workspaces are not linked.
 
+Katie explicitly confirmed `https://fandom.justlikekatie.com/` as the canonical apex destination. C-drama is the initial focus within the broader Fandom Vibes experience, not a separate wiki. The verified C-drama field-guide shortcut is `/c-drama-fandom/`; `/cdrama` currently returns the front door. See `FANDOM-PUBLIC-CONTENT.md` for the public-content review and spoiler limits. Do not treat all public content as spoiler-free or personal saved collections as public editorial collections.
+
 Keep private workspaces and public destinations distinct. Do not expose private repository contents, operator endpoints, clinical information, account data, or private tool URLs in public page content. LifeOS has not been verified as implemented; do not claim otherwise. Do not split the C-drama guides and games into an invented standalone proposed wiki.
 
 `PRODUCT.md` and `DESIGN.md` describe the earlier coming-soon page and are historical references, not the copy contract for the CurioSeek page. The page is not published from this task; publishing and domain changes require a separate user decision.

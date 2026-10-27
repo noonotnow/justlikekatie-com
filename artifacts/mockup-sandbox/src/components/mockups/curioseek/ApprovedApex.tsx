@@ -47,7 +47,7 @@ const worlds = [
     color: "lilac",
     description:
       "Explore a broader fandom world, with C-drama as its initial focus. Vibe Atlas is one doorway—not the whole world.",
-    detail: "A public place to love a story and see where it leads.",
+    detail: "Public guides, reference, games, and Vibe Atlas daily card drops. Check each reading’s spoiler boundary; personal collections remain separate.",
     mark: "F",
   },
 ] as const;
@@ -257,11 +257,11 @@ export function ApprovedApex() {
             <p className="aa-overline">04 / THE PUBLIC WORLD</p>
             <h2>Make room<br />for the <em>story.</em></h2>
             <p>
-              Fandom Vibes is the broader fandom world, with C-drama as its initial focus. Use the worlds launcher to explore, or go straight to C-drama.
+              Fandom Vibes is the broader fandom world, with C-drama as its initial focus. Explore public guides, games, and Vibe Atlas daily card drops. Check each reading’s spoiler boundary before opening.
             </p>
             <div className="aa-fandom-links">
-              <a href="https://fandom.justlikekatie.com" target="_blank" rel="noreferrer" className="aa-fandom-link">Open the worlds launcher <span aria-hidden="true">↗</span></a>
-              <a href="https://fandom.justlikekatie.com/cdrama" target="_blank" rel="noreferrer" className="aa-fandom-link">Go straight to C-drama <span aria-hidden="true">↗</span></a>
+              <a href="https://fandom.justlikekatie.com/" target="_blank" rel="noopener noreferrer" className="aa-fandom-link">Open the worlds launcher <span aria-hidden="true">↗</span></a>
+              <a href="https://fandom.justlikekatie.com/c-drama-fandom/" target="_blank" rel="noopener noreferrer" className="aa-fandom-link">Explore the C-drama field guide <span aria-hidden="true">↗</span></a>
             </div>
           </div>
         </div>

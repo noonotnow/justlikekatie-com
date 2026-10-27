@@ -195,6 +195,8 @@ try {
       headline: document.querySelector("#hero-title")?.innerText.replace(/\\s+/g, " ").trim(),
       worlds: [...document.querySelectorAll(".world-name h3")].map((heading) => heading.textContent.trim()),
       statuses: [...document.querySelectorAll(".world .status")].map((status) => status.textContent.trim()),
+      fandomCopy: document.querySelector("#fandom .public-copy")?.textContent,
+      fandomArtLabel: document.querySelector("#fandom .art-label")?.textContent,
       fandom: fandom && {
         target: fandom.target,
         rel: fandom.rel.split(/\\s+/).sort(),
@@ -213,6 +215,14 @@ try {
     initialNavigation.fandom.rel.includes("noopener") &&
     initialNavigation.fandom.rel.includes("noreferrer"),
     "The public Fandom Vibes link uses the expected URL and safe new-tab attributes",
+  );
+  assert(
+    initialNavigation.fandomCopy?.includes("C-drama as its initial focus") &&
+    initialNavigation.fandomCopy.includes("Check each reading’s spoiler boundary") &&
+    initialNavigation.fandomCopy.includes("VIBE ATLAS: DAILY CARD DROP") &&
+    !initialNavigation.fandomCopy.includes("CONCEPT PREVIEW") &&
+    initialNavigation.fandomArtLabel === "CONCEPT ART / NOT PUBLISHED CARDS",
+    "Fandom copy distinguishes public card drops, spoiler boundaries, initial C-drama focus, and concept artwork",
   );
 
   for (const width of [320, 390, 768, 1440]) {

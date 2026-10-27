@@ -63,7 +63,7 @@ const worlds = [
     mode: "PUBLIC EXPERIENCE",
     verb: "Follow a feeling",
     description:
-      "A C-drama world of guides, games, and creative discoveries. Vibe Atlas is one doorway into it—not the whole universe.",
+      "A broader fandom world with C-drama as its initial focus: public guides, games, and Vibe Atlas daily card drops. Check each reading’s spoiler boundary.",
     color: "lilac",
     x: "29%",
     y: "77%",
@@ -205,15 +205,15 @@ export function AtlasMap() {
         <div className="am-fandom-copy">
           <p className="am-overline">04 / A WORLD OF ITS OWN</p>
           <h2>Fandom Vibes</h2>
-          <p>For the feeling a story leaves behind. Explore fandom guides, playful discoveries, and the visual moods of Vibe Atlas / 氛围图鉴. C-drama is the initial focus.</p>
+           <p>For the feeling a story leaves behind. Explore public fandom guides, games, and Vibe Atlas daily card drops. C-drama is the initial focus, not a separate wiki. Check each reading’s spoiler boundary.</p>
           <div className="am-fandom-links">
-            <a href="https://fandom.justlikekatie.com" target="_blank" rel="noreferrer">Open the worlds launcher <span aria-hidden="true">↗</span></a>
-            <a href="https://fandom.justlikekatie.com/cdrama" target="_blank" rel="noreferrer">Go straight to C-drama <span aria-hidden="true">↗</span></a>
+             <a href="https://fandom.justlikekatie.com/" target="_blank" rel="noopener noreferrer">Open the worlds launcher <span aria-hidden="true">↗</span></a>
+             <a href="https://fandom.justlikekatie.com/c-drama-fandom/" target="_blank" rel="noopener noreferrer">Explore the C-drama field guide <span aria-hidden="true">↗</span></a>
           </div>
         </div>
         <div className="am-fandom-art" aria-hidden="true">
           <div className="am-art-window"><span>VIBE<br />ATLAS</span><i /></div>
-          <span className="am-art-caption">SCENES / FEELINGS / DISCOVERIES</span>
+           <span className="am-art-caption">CONCEPT ART / NOT PUBLISHED CARDS</span>
         </div>
       </section>
 
