@@ -2,16 +2,6 @@ name: Netlify output guard
 
 on:
   pull_request:
-    paths:
-      - "index.html"
-      - "og-image.png"
-      - "images/**"
-      - "netlify.toml"
-      - "scripts/check-netlify-output.mjs"
-      - "scripts/prepare-netlify.mjs"
-      - "scripts/netlify-output-validation.mjs"
-      - "scripts/netlify-output-validation.test.mjs"
-      - ".github/workflows/netlify-output-guard.yml"
 
 permissions:
   contents: read

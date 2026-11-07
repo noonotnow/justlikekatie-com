@@ -38,14 +38,14 @@ const worlds: World[] = [
     concept: true,
     kind: "CAPTURE · ROUTE · FOLLOW THROUGH",
     description: "For people balancing everyday administration with projects and domains—without forcing everything into one dashboard.",
-    detail: "LifeOS is the proposed everyday operations and coordination layer: email and calendar triage, receipts and finance, capture, and follow-through. Shibuya is intended to route inputs to the right project or specialist workflow while each domain keeps its own depth and source of truth. A concept walkthrough could show a fictional renovation email becoming a decision, budget consideration, and next action. This is not a launched workspace or a claim that integrations are complete; keep real records and internal systems private.",
+    detail: "LifeOS is a proposed everyday-operations and cross-domain coordination layer for email and calendar triage, projects, finance, and follow-through. Shibuya is intended to route inputs to the right domain workflow while each keeps its own depth and source of truth. The fictional concept example below shows a renovation email routed to project, budget, and calendar/action workflows—not launched functionality or live integrations.",
   },
   {
     name: "Fandom Vibes",
-    status: "Public scope",
+    status: "Public entry points",
     kind: "EXPLORE · PLAY · COLLECT",
     description: "For newcomers and longtime fans seeking approachable context, deeper discovery, and playful participation—with C-drama as the starting focus.",
-    detail: "Fandom Vibes is the broader fandom experience, not a separate C-drama Wiki. Its public scope includes approachable guides and reference (introductions, vocabulary, genre and cultural context, curated drama, character, and relationship guides with spoiler boundaries), games and quizzes, curated Vibe Atlas collections, and connected browsing. It is not an open-edit wiki. Link only verified, approved public content; label proposed additions clearly and do not imply the overall experience has launched. The worlds launcher is fandom.justlikekatie.com; the direct C-drama entry is fandom.justlikekatie.com/cdrama.",
+    detail: "Fandom Vibes is the broader fandom experience, with C-drama as its initial focus—not a separate or open-edit wiki. Public entry points include guides and reference, fandom games, and Vibe Atlas daily card drops and published editions. Read each guide’s spoiler boundary: episode-bounded readings are not spoiler-free, and the closing reading includes ending spoilers. Personal collections and account-only tools are not public editorial collections.",
   },
 ];
 
@@ -134,6 +134,52 @@ export function Apex() {
             })}
           </div>
         </section>
+
+        <section className="ca-lifeos" aria-labelledby="ca-lifeos-title">
+          <div className="ca-lifeos-head">
+            <div>
+              <div className="ca-kicker">LifeOS / Proposed concept</div>
+              <h2 id="ca-lifeos-title">One small signal.<br /><em>A few useful threads.</em></h2>
+            </div>
+            <p className="ca-lifeos-disclaimer">FICTIONAL CONCEPT EXAMPLE<br />Not launched functionality · No live integrations</p>
+          </div>
+          <div className="ca-lifeos-flow">
+            <article className="ca-lifeos-card ca-lifeos-capture">
+              <span className="ca-kicker">01 / Capture</span>
+              <h3>Renovation note</h3>
+              <p>Fictional email: “The kitchen tile estimate is ready. Could you confirm the finish by Friday?”</p>
+              <span className="ca-lifeos-tag">Email · synthetic</span>
+            </article>
+            <div className="ca-lifeos-route" aria-label="Conceptual routing through Shibuya">
+              <span>Shibuya</span>
+              <i aria-hidden="true">→</i>
+              <small>conceptual routing</small>
+            </div>
+            <div className="ca-lifeos-outcomes">
+              <article className="ca-lifeos-outcome">
+                <span className="ca-kicker">02 / Connect</span>
+                <strong>Renovation / project</strong>
+                <span>Compare the warm limestone sample with the kitchen plan.</span>
+              </article>
+              <article className="ca-lifeos-outcome">
+                <span className="ca-kicker">03 / Consider</span>
+                <strong>Finance / budget</strong>
+                <span>Consider the fictional $4,280 estimate against a $5,000 materials allowance.</span>
+              </article>
+              <article className="ca-lifeos-outcome">
+                <span className="ca-kicker">04 / Decide</span>
+                <strong>Choose limestone</strong>
+                <span>A fictional decision, made after checking the plan and allowance.</span>
+              </article>
+              <article className="ca-lifeos-outcome ca-lifeos-next">
+                <span className="ca-kicker">05 / Calendar + action</span>
+                <strong>Reply by Friday</strong>
+                <span>Next action: confirm the finish with the fictional installer.</span>
+              </article>
+            </div>
+          </div>
+          <p className="ca-lifeos-foot">A proposed LifeOS flow: capture → route across relevant domains → decide → act.</p>
+        </section>
       </div>
 
       <section className="ca-boundary" aria-labelledby="ca-boundary-title">
@@ -178,22 +224,22 @@ export function Apex() {
         <section className="ca-fandom" id="fandom" aria-labelledby="ca-fandom-title">
           <div className="ca-fandom-panel">
             <div className="ca-fandom-copy">
-              <div className="ca-kicker">Public scope / Fandom Vibes</div>
+              <div className="ca-kicker">Public entry points / Fandom Vibes</div>
               <h2>For the feeling a story leaves behind.</h2>
-              <p>Fandom Vibes is the broader home for fandom guides, reference, games, and visual discovery. C-drama is the initial focus; Vibe Atlas is one experience among many. Open the worlds launcher or go straight to C-drama.</p>
+              <p>Fandom Vibes is the broader home for fandom guides, reference, games, and visual discovery. C-drama is the initial focus; Vibe Atlas’s public daily card drops are one experience among many. Check each reading’s spoiler boundary before opening.</p>
               <div className="ca-fandom-links">
-                <a className="ca-button" href="https://fandom.justlikekatie.com" target="_blank" rel="noreferrer">
+                <a className="ca-button" href="https://fandom.justlikekatie.com/" target="_blank" rel="noopener noreferrer">
                   Open the worlds launcher <span className="ca-arrow" aria-hidden="true">↗</span>
                 </a>
-                <a className="ca-textlink" href="https://fandom.justlikekatie.com/cdrama" target="_blank" rel="noreferrer">
-                  Go straight to C-drama <span aria-hidden="true">↗</span>
+                <a className="ca-textlink" href="https://fandom.justlikekatie.com/c-drama-fandom/" target="_blank" rel="noopener noreferrer">
+                  Explore the C-drama field guide <span aria-hidden="true">↗</span>
                 </a>
               </div>
             </div>
             <div className="ca-fandom-art" aria-hidden="true">
               <div className="ca-swatch ca-swatch-a"><div className="ca-swatch-art" /><div className="ca-swatch-caption">01 · hush / light</div></div>
               <div className="ca-swatch ca-swatch-b"><div className="ca-swatch-art" /><div className="ca-swatch-caption">02 · after rain</div></div>
-              <div className="ca-swatch ca-swatch-c"><div className="ca-swatch-art" /><div className="ca-swatch-caption">Vibe Atlas / 氛围图鉴</div></div>
+              <div className="ca-swatch ca-swatch-c"><div className="ca-swatch-art" /><div className="ca-swatch-caption">Concept art / not published cards</div></div>
             </div>
           </div>
         </section>

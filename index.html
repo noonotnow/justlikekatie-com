@@ -14,13 +14,15 @@
   <meta property="og:title" content="CurioSeek — One curious life. Many ways in." />
   <meta property="og:description" content="An atlas for a many-sided life. Distinct worlds, each with room to be its own thing." />
   <meta property="og:image" content="https://justlikekatie.com/og-image.png" />
+  <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="CurioSeek, a field guide to a many-sided life, with colorful paths connected across an open cream-colored field." />
+  <meta property="og:image:alt" content="CurioSeek’s rainbow emblem sits in an orbital field connecting StudentOS, CreatorOS, proposed LifeOS, and Fandom Vibes beneath the words “One curious life. Many ways in.”" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="CurioSeek — One curious life. Many ways in." />
   <meta name="twitter:description" content="An atlas for a many-sided life. Distinct worlds, each with room to be its own thing." />
   <meta name="twitter:image" content="https://justlikekatie.com/og-image.png" />
+  <meta name="twitter:image:alt" content="CurioSeek’s rainbow emblem sits in an orbital field connecting StudentOS, CreatorOS, proposed LifeOS, and Fandom Vibes beneath the words “One curious life. Many ways in.”" />
   <link rel="icon" href="/images/curioseek-apex-logo.png" type="image/png" />
   <link rel="apple-touch-icon" href="/images/curioseek-apex-logo.png" />
   <style>
@@ -46,6 +48,7 @@
     .spectrum { min-height: 100vh; overflow: hidden; background: radial-gradient(ellipse at 78% 13%, rgba(221,230,210,.42), transparent 30rem), var(--paper); }
     .shell { width: min(1230px, calc(100% - 88px)); margin: 0 auto; }
     .nav { height: 86px; display: flex; align-items: center; justify-content: space-between; gap: 25px; border-bottom: 1px solid var(--line); }
+    .nav-menu-toggle { display: none; padding: 9px 11px; border: 1px solid var(--line); background: transparent; color: var(--ink); font-size: 10px; cursor: pointer; }
     .brand { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 9px; font: 700 21px/1 var(--serif); letter-spacing: -.045em; }
     .brand-mark { display: grid; width: 34px; height: 34px; place-items: center; }
     .brand-mark img { width: 100%; height: 100%; object-fit: contain; }
@@ -179,6 +182,28 @@
     .mountains::after { position: absolute; inset: 38px 0 0 67px; background: #889d88; clip-path: polygon(0 100%,40% 0,100% 100%); content: ""; }
     .art-caption { position: absolute; right: 9%; bottom: 22px; color: #d4dbc8; font: 8px var(--mono); letter-spacing: .12em; }
     .art-caption b { margin: 0 8px; color: #dfc675; }
+    .lifeos { margin-bottom: 90px; padding: 30px; border: 1px solid var(--line); background: #ecebdd; }
+    .lifeos-heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 24px; }
+    .lifeos h2 { margin: 12px 0 0; font: 400 clamp(32px,4vw,46px)/1.05 var(--serif); letter-spacing: -.045em; }
+    .lifeos h2 em { color: var(--green); font-weight: 400; }
+    .lifeos-disclaimer { max-width: 310px; margin: 0; padding: 12px; border: 1px solid #c7c7b5; color: #586452; font-size: 12px; line-height: 1.6; }
+    .lifeos-disclaimer strong { display: block; }
+    .lifeos-flow { display: grid; grid-template-columns: minmax(0,1fr) 115px minmax(0,1.6fr); gap: 16px; }
+    .lifeos-capture { padding: 18px; border: 1px solid #c7c7b5; background: var(--paper); }
+    .lifeos h3 { margin: 12px 0 10px; font: 400 24px/1.15 var(--serif); }
+    .lifeos-capture p { margin-bottom: 14px; color: #586452; font-size: 13px; line-height: 1.7; }
+    .lifeos-capture small { color: #586452; font-size: 12px; }
+    .lifeos-route { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-align: center; color: #365f45; }
+    .lifeos-route strong { font: italic 25px var(--serif); }
+    .lifeos-route span { font-size: 24px; }
+    .lifeos-route small { color: #586452; font-size: 12px; }
+    .lifeos-outcomes { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); margin: 0; padding: 0; list-style: none; border-top: 1px solid #c7c7b5; border-left: 1px solid #c7c7b5; }
+    .lifeos-outcomes li { padding: 16px; border-right: 1px solid #c7c7b5; border-bottom: 1px solid #c7c7b5; }
+    .lifeos-outcomes .overline, .lifeos-capture .overline { color: #586452; }
+    .lifeos-outcomes strong { display: block; margin: 10px 0 8px; font: 700 17px/1.2 var(--serif); }
+    .lifeos-outcomes p { margin: 0; color: #586452; font-size: 12px; line-height: 1.65; }
+    .lifeos-outcomes li:last-child { background: #dde5d5; }
+    .lifeos-foot { margin: 18px 0 0; color: #586452; font-size: 12px; line-height: 1.65; }
     .note { display: flex; max-width: 840px; gap: 20px; margin: 75px auto 60px; padding: 25px 28px; border: 1px solid var(--line); }
     .note > span { color: #cf7157; font-size: 18px; }
     .note p { margin: 9px 0 0; color: #72796e; font: 14px/1.75 var(--serif); }
@@ -216,13 +241,23 @@
       .world:nth-child(3) { border-left: 1px solid var(--line); }
       .feature-inner { gap: 45px; }
       .practice { grid-template-columns: 1fr; gap: 35px; }
+      .lifeos { padding: 22px; margin-bottom: 65px; }
+      .lifeos-heading { flex-direction: column; align-items: start; }
+      .lifeos-disclaimer { max-width: none; }
+      .lifeos-flow { grid-template-columns: 1fr; }
+      .lifeos-route { padding: 4px 0; }
+      .lifeos-route span { transform: rotate(90deg); }
+      .lifeos-outcomes { grid-template-columns: 1fr; }
     }
     @media (max-width: 620px) {
       .spectrum { background: radial-gradient(ellipse at 70% 10%,rgba(221,230,210,.36),transparent 23rem),var(--paper); }
       .shell, .feature-inner { width: calc(100% - 36px); }
-      .nav { height: 67px; }
-      .nav-links { display: none; }
-      .edition { font-size: 7px; letter-spacing: .08em; }
+      .nav { position: relative; height: 67px; }
+      .nav-menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+      .nav-links { position: absolute; z-index: 5; top: calc(100% - 1px); right: 0; left: 0; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 6px 14px; border: 1px solid var(--line); background: var(--paper); box-shadow: 0 10px 22px rgba(38,60,51,.1); }
+      .nav-links.is-open { display: flex; }
+      .nav-links a { padding: 12px 0; font-size: 9px; }
+      .edition { display: none; }
       .hero { padding-top: 14px; }
       .hero-grid { padding: 38px 0 28px; }
       .hero h1 { margin: 20px 0; font-size: clamp(58px,15vw,76px); }
@@ -300,11 +335,12 @@
           <span class="brand-mark"><img src="/images/curioseek-apex-logo.png" alt="" /></span>
           <span>CurioSeek<span class="brand-dot">.</span></span>
         </a>
-        <nav class="nav-links" aria-label="Main navigation">
+        <nav class="nav-links" id="primary-navigation" aria-label="Main navigation">
           <a href="#worlds">The worlds</a>
           <a href="#idea">The idea</a>
           <a href="#fandom">Fandom Vibes</a>
         </nav>
+        <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">Menu</button>
         <span class="edition"><i aria-hidden="true"></i>Field notes&nbsp; · &nbsp;Vol. 01 / 04</span>
       </header>
 
@@ -328,7 +364,7 @@
                 <span class="mobile-destination-top"><i aria-hidden="true"></i>Proposed</span><strong>LifeOS</strong><span class="mobile-summary">Connect everyday admin with the projects and decisions it belongs to.</span><small class="mobile-detail" id="mobile-detail-2" hidden>A developing coordination layer for everyday life—from email, calendars, and receipts to routing decisions and work into the right projects.</small><b aria-hidden="true">↗</b>
               </button>
               <button class="mobile-destination" style="--domain:#956da3;--domain-soft:#eee5f0" type="button" data-world-toggle="3" aria-expanded="false" aria-controls="mobile-detail-3">
-                <span class="mobile-destination-top"><i aria-hidden="true"></i>Public world</span><strong>Fandom Vibes</strong><span class="mobile-summary">C-drama worlds to explore through guides, games, and discoveries.</span><small class="mobile-detail" id="mobile-detail-3" hidden>Explore C-drama worlds through approachable guides, fandom reference, playful games, and visual discoveries.</small><b aria-hidden="true">↗</b>
+                <span class="mobile-destination-top"><i aria-hidden="true"></i>Public world</span><strong>Fandom Vibes</strong><span class="mobile-summary">Fandom guides, reference, games, and discoveries. C-drama first.</span><small class="mobile-detail" id="mobile-detail-3" hidden>Public guides, reference, games, and Vibe Atlas daily card drops, with C-drama as the initial focus. Read each guide’s spoiler boundary; episode-bounded readings are not spoiler-free. Personal collections remain separate.</small><b aria-hidden="true">↗</b>
               </button>
             </div>
           </div>
@@ -379,11 +415,36 @@
             </article>
             <article class="world" style="--domain:#956da3;--domain-soft:#eee5f0">
               <div class="world-top"><span>WORLD / 04</span><span class="status">PUBLIC WORLD</span></div><span class="orb" aria-hidden="true"><i></i></span>
-              <div class="world-name"><span>LOVE</span><h3>Fandom Vibes</h3></div><p>C-drama worlds to explore through guides, games, and discoveries.</p>
+              <div class="world-name"><span>LOVE</span><h3>Fandom Vibes</h3></div><p>Fandom guides, reference, games, and discoveries. C-drama first.</p>
               <button class="toggle" type="button" data-world-toggle="3" aria-expanded="false" aria-controls="world-detail-3"><span data-toggle-label>Read field note</span><span aria-hidden="true">↗</span></button>
-              <div class="detail" id="world-detail-3" hidden>Explore C-drama worlds through approachable guides, fandom reference, playful games, and visual discoveries.</div>
+              <div class="detail" id="world-detail-3" hidden>Public guides, reference, games, and Vibe Atlas daily card drops, with C-drama as the initial focus. Read each guide’s spoiler boundary; episode-bounded readings are not spoiler-free. Personal collections remain separate.</div>
             </article>
           </div>
+        </section>
+
+        <section class="lifeos" id="lifeos-concept" aria-labelledby="lifeos-title">
+          <div class="lifeos-heading">
+            <div><span class="overline">PROPOSED LIFEOS / A CONCEPT</span><h2 id="lifeos-title">One email.<br /><em>A few connected decisions.</em></h2></div>
+            <p class="lifeos-disclaimer"><strong>Fictional concept example</strong>All details are synthetic. This is not a launched product or a demonstration of live integrations.</p>
+          </div>
+          <div class="lifeos-flow">
+            <article class="lifeos-capture">
+              <span class="overline">01 / CAPTURE</span>
+              <h3>Renovation email</h3>
+              <p>“The kitchen tile estimate is ready. Could you confirm the finish by Friday?”</p>
+              <small>Fictional email · synthetic data</small>
+            </article>
+            <div class="lifeos-route" aria-label="Conceptual routing through Shibuya">
+              <strong>Shibuya</strong><span aria-hidden="true">→</span><small>Conceptual routing</small>
+            </div>
+            <ol class="lifeos-outcomes" start="2">
+              <li><span class="overline">02 / RENOVATION · PROJECT</span><strong>Compare finishes</strong><p>Check the warm limestone sample against the kitchen plan.</p></li>
+              <li><span class="overline">03 / FINANCE · BUDGET</span><strong>Review allowance</strong><p>Consider the fictional $4,280 estimate against a $5,000 materials allowance.</p></li>
+              <li><span class="overline">04 / DECISION</span><strong>Choose limestone</strong><p>A fictional decision after checking the plan and allowance.</p></li>
+              <li><span class="overline">05 / CALENDAR · ACTION</span><strong>Reply by Friday</strong><p>Next action: confirm the finish with the fictional installer.</p></li>
+            </ol>
+          </div>
+          <p class="lifeos-foot">In this proposed LifeOS flow, Shibuya would route the captured input to project, finance, and calendar/action workflows. Each domain would keep its own records and source of truth.</p>
         </section>
       </div>
 
@@ -413,11 +474,12 @@
 
         <section class="public" id="fandom" aria-labelledby="fandom-title">
           <div class="public-copy"><span class="overline">A PUBLIC WORLD / FANDOM VIBES</span><h2 id="fandom-title">For the feeling<br />a story leaves <em>behind.</em></h2>
-            <p>Explore C-drama worlds through approachable guides, fandom reference, playful games, and visual discoveries.</p>
+            <p>Fandom Vibes brings together public guides, reference, games, and visual discoveries, with C-drama as its initial focus. Vibe Atlas’s daily card drops are one experience within it—not the whole world. Check each reading’s spoiler boundary before opening.</p>
             <a class="button" href="https://fandom.justlikekatie.com/" target="_blank" rel="noopener noreferrer">Visit Fandom Vibes <span aria-hidden="true">↗</span></a>
+            <div class="public-status">PUBLIC WORLD <i aria-hidden="true"></i> VIBE ATLAS: DAILY CARD DROP</div>
           </div>
-          <div class="art" role="img" aria-label="Two atmospheric Vibe Atlas concept studies, one with a warm sun over layered hills and one with a moon over mountains.">
-            <span class="art-label">VIBE ATLAS / CONCEPT PREVIEW</span>
+          <div class="art" role="img" aria-label="Two atmospheric concept studies, not published Vibe Atlas cards: a sun over hills and a moon over mountains.">
+            <span class="art-label">CONCEPT ART / NOT PUBLISHED CARDS</span>
             <div class="art-card art-one" aria-hidden="true"><i class="sun"></i><i class="hills"></i><span>01 / HUSH &amp; LIGHT</span></div>
             <div class="art-card art-two" aria-hidden="true"><i class="moon"></i><i class="mountains"></i><span>02 / AFTER RAIN</span></div>
             <span class="art-caption">氛围图鉴 <b>—</b> ONE EXPERIENCE WITHIN FANDOM VIBES</span>
@@ -435,6 +497,29 @@
   </main>
   <script>
     (() => {
+      const menuToggle = document.querySelector(".nav-menu-toggle");
+      const navigation = document.querySelector("#primary-navigation");
+      if (menuToggle && navigation) {
+        const closeMenu = () => {
+          menuToggle.setAttribute("aria-expanded", "false");
+          navigation.classList.remove("is-open");
+        };
+        menuToggle.addEventListener("click", () => {
+          const expanded = menuToggle.getAttribute("aria-expanded") !== "true";
+          menuToggle.setAttribute("aria-expanded", String(expanded));
+          navigation.classList.toggle("is-open", expanded);
+        });
+        navigation.addEventListener("click", (event) => {
+          if (event.target.closest("a")) closeMenu();
+        });
+        navigation.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") {
+            closeMenu();
+            menuToggle.focus();
+          }
+        });
+      }
+
       const controls = [...document.querySelectorAll("[data-world-toggle]")];
       let activeIndex = null;
 

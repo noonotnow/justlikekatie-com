@@ -29,6 +29,64 @@ with any static file server for local preview, e.g.:
 npx serve .
 ```
 
+## Browser regression checks
+
+The checks start and stop their own local static server; no preview workflow
+or published site is needed. Install the locked development dependency with
+`npm ci`, then install the browser engines with:
+
+```sh
+npx playwright install chromium firefox webkit
+```
+
+On supported Linux hosts, Playwright also needs its documented browser OS
+libraries (`npx playwright install-deps`); on Replit/Nix, install system
+dependencies through the workspace package tools instead of apt.
+
+```sh
+npm run check:apex             # Chromium plus available Firefox and WebKit
+npm run check:apex:all         # require all three engines (recommended for CI)
+npm run check:apex:chromium    # existing Chromium-only check
+npm run check:apex:firefox
+npm run check:apex:webkit      # Safari's engine, not the macOS Safari application
+```
+
+Every engine runs the same 320/390/768/1440px overflow checks, reduced-motion
+checks, and native Enter/Space open/switch/close checks on desktop and mobile
+field-note buttons. Default discovery reports unavailable Firefox/WebKit
+explicitly; assertion failures always fail. Explicit browser selection and
+`--require-all` also fail if an engine cannot start, so CI cannot silently
+skip coverage. `--browser=firefox,webkit` selects multiple engines.
+
+### Pull-request browser checks
+
+`.github/workflows/apex-browser-checks.yml` runs on every pull request, without
+path filters, and can also be started manually with `workflow_dispatch`.
+The **Apex browser checks** workflow reports the separate
+**Validate apex in Chromium, Firefox, and WebKit** job. It uses Ubuntu 24.04
+and Node.js 22, runs `npm ci --include=dev`, installs the locked Playwright
+engines and supported host libraries with
+`npx --no-install playwright install --with-deps chromium firefox webkit`,
+then runs `npm run check:apex:all`. All three engines must launch and pass;
+missing engines fail the job instead of reducing coverage.
+
+The existing **Netlify output guard** workflow and its
+**Validate staged Netlify output** check remain independent and unchanged.
+Browser failures therefore appear separately from deploy-output failures.
+The browser suite serves the checked-out files locally; it does not publish
+the site or require deployment credentials. Replit/Nix cannot currently
+launch the bundled WebKit engine because its host libraries are incompatible;
+use the GitHub-hosted job to verify all three engines, not a locally skipped
+WebKit result.
+
+The existing 200% zoom reflow and analytics-failure navigation checks are also
+run for each available engine. Fandom popup destinations are intercepted
+locally during the tests rather than contacting the public site.
+
+Chromium uses `/repl/tools/bin/chromium` when present, otherwise Playwright's
+bundled engine. `CHROMIUM_PATH`, `FIREFOX_PATH`, and `WEBKIT_PATH` can point to
+compatible executables; Firefox/WebKit must be Playwright-compatible builds.
+
 ## Deploy config
 
 `netlify.toml` runs `node scripts/prepare-netlify.mjs` and publishes the

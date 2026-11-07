@@ -34,8 +34,8 @@ const worlds = [
     status: "Proposed",
     color: "coral",
     description:
-      "An idea still taking shape: a gentler home for everyday systems, reflection, and the in-between.",
-    detail: "A future possibility, still finding its own form.",
+      "A proposed home for everyday operations: coordinate projects, money, and time without flattening their distinct workflows.",
+    detail: "LifeOS would connect capture and triage across email, calendar, finance, and projects. Shibuya is intended to route each input to the right domain workflow for decisions and follow-through, while each domain keeps its own depth and source of truth.",
     mark: "L",
   },
   {
@@ -47,7 +47,7 @@ const worlds = [
     color: "lilac",
     description:
       "Explore a broader fandom world, with C-drama as its initial focus. Vibe Atlas is one doorway—not the whole world.",
-    detail: "A public place to love a story and see where it leads.",
+    detail: "Public guides, reference, games, and Vibe Atlas daily card drops. Check each reading’s spoiler boundary; personal collections remain separate.",
     mark: "F",
   },
 ] as const;
@@ -164,6 +164,54 @@ export function ApprovedApex() {
         </div>
       </section>
 
+      <section className="aa-lifeos" aria-labelledby="aa-lifeos-title">
+        <div className="aa-wrap">
+          <div className="aa-lifeos-heading">
+            <div>
+              <p className="aa-overline">PROPOSED LIFEOS / A CONCEPT</p>
+              <h2 id="aa-lifeos-title">A signal crosses<br /><em>the everyday.</em></h2>
+            </div>
+            <p className="aa-lifeos-disclaimer">FICTIONAL CONCEPT EXAMPLE<br />Not launched functionality · No live integrations</p>
+          </div>
+          <div className="aa-lifeos-flow">
+            <article className="aa-lifeos-capture">
+              <p className="aa-overline">01 / CAPTURE</p>
+              <h3>Renovation email</h3>
+              <p>“The kitchen tile estimate is ready. Could you confirm the finish by Friday?”</p>
+              <span>Email · synthetic</span>
+            </article>
+            <div className="aa-lifeos-shibuya">
+              <span>Shibuya</span>
+              <i aria-hidden="true">→</i>
+              <small>conceptual routing</small>
+            </div>
+            <div className="aa-lifeos-threads">
+              <article>
+                <p className="aa-overline">02 / RENOVATION · PROJECT</p>
+                <strong>Compare finishes</strong>
+                <span>Check the warm limestone sample against the kitchen plan.</span>
+              </article>
+              <article>
+                <p className="aa-overline">03 / FINANCE · BUDGET</p>
+                <strong>Review allowance</strong>
+                <span>Consider the fictional $4,280 estimate against a $5,000 materials allowance.</span>
+              </article>
+              <article>
+                <p className="aa-overline">04 / DECISION</p>
+                <strong>Choose limestone</strong>
+                <span>A fictional decision after checking the plan and allowance.</span>
+              </article>
+              <article className="aa-lifeos-action">
+                <p className="aa-overline">05 / CALENDAR · ACTION</p>
+                <strong>Reply by Friday</strong>
+                <span>Next action: confirm the finish with the fictional installer.</span>
+              </article>
+            </div>
+          </div>
+          <p className="aa-lifeos-foot">A proposed flow: capture → route across relevant domains → decision → next action.</p>
+        </div>
+      </section>
+
       <section className="aa-thesis" id="field-note">
         <div className="aa-wrap aa-thesis-inner">
           <p className="aa-overline">02 / OUR POINT OF VIEW</p>
@@ -209,11 +257,11 @@ export function ApprovedApex() {
             <p className="aa-overline">04 / THE PUBLIC WORLD</p>
             <h2>Make room<br />for the <em>story.</em></h2>
             <p>
-              Fandom Vibes is the broader fandom world, with C-drama as its initial focus. Use the worlds launcher to explore, or go straight to C-drama.
+              Fandom Vibes is the broader fandom world, with C-drama as its initial focus. Explore public guides, games, and Vibe Atlas daily card drops. Check each reading’s spoiler boundary before opening.
             </p>
             <div className="aa-fandom-links">
-              <a href="https://fandom.justlikekatie.com" target="_blank" rel="noreferrer" className="aa-fandom-link">Open the worlds launcher <span aria-hidden="true">↗</span></a>
-              <a href="https://fandom.justlikekatie.com/cdrama" target="_blank" rel="noreferrer" className="aa-fandom-link">Go straight to C-drama <span aria-hidden="true">↗</span></a>
+              <a href="https://fandom.justlikekatie.com/" target="_blank" rel="noopener noreferrer" className="aa-fandom-link">Open the worlds launcher <span aria-hidden="true">↗</span></a>
+              <a href="https://fandom.justlikekatie.com/c-drama-fandom/" target="_blank" rel="noopener noreferrer" className="aa-fandom-link">Explore the C-drama field guide <span aria-hidden="true">↗</span></a>
             </div>
           </div>
         </div>

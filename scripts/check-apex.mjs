@@ -1,32 +1,42 @@
-import { spawn } from "node:child_process";
+import { constants } from "node:fs";
+import { access, readFile } from "node:fs/promises";
 import { createServer } from "node:http";
-import { access, mkdtemp, readFile, rm } from "node:fs/promises";
-import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { chromium, firefox, webkit } from "playwright";
+import { checkAnalyticsNavigation, checkZoom } from "./apex-interaction-checks.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const chromiumPath = process.env.CHROMIUM_PATH || "/repl/tools/bin/chromium";
-const checks = [];
+const browserTypes = { chromium, firefox, webkit };
+const widths = [320, 390, 768, 1440];
 
-function assert(condition, message) {
-  if (!condition) throw new Error(message);
-  checks.push(message);
+function parseOptions(args) {
+  let selected;
+  let requireAll = false;
+  for (const arg of args) {
+    if (arg === "--require-all") requireAll = true;
+    else if (arg.startsWith("--browser=")) {
+      if (selected) throw new Error("Specify --browser only once.");
+      const value = arg.slice("--browser=".length);
+      selected = value === "all" ? Object.keys(browserTypes) : value.split(",");
+      if (!selected.length || selected.some((name) => !Object.hasOwn(browserTypes, name))) {
+        throw new Error("Use --browser=chromium, --browser=firefox, --browser=webkit, or --browser=all.");
+      }
+    } else {
+      throw new Error(`Unknown option: ${arg}`);
+    }
+  }
+  return {
+    browsers: [...new Set(selected || Object.keys(browserTypes))],
+    // Default discovery may skip missing engines, but an explicitly requested
+    // engine (or CI's --require-all) must never silently pass without running.
+    requireAll: requireAll || Boolean(selected),
+  };
 }
 
-async function waitFor(readinessCheck, message, timeoutMs = 15_000) {
-  const deadline = Date.now() + timeoutMs;
-  let lastError;
-  while (Date.now() < deadline) {
-    try {
-      const result = await readinessCheck();
-      if (result) return result;
-    } catch (error) {
-      lastError = error;
-    }
-    await new Promise((resolve) => setTimeout(resolve, 100));
-  }
-  throw new Error(`${message}${lastError ? `: ${lastError.message}` : ""}`);
+function assert(condition, message, checks) {
+  if (!condition) throw new Error(message);
+  checks.push(message);
 }
 
 function createStaticServer() {
@@ -37,7 +47,6 @@ function createStaticServer() {
     ".css": "text/css; charset=utf-8",
     ".js": "text/javascript; charset=utf-8",
   };
-
   return createServer(async (request, response) => {
     try {
       const pathname = decodeURIComponent(new URL(request.url, "http://127.0.0.1").pathname);
@@ -58,107 +67,91 @@ function createStaticServer() {
   });
 }
 
-function connectToPage(webSocketUrl) {
-  const socket = new WebSocket(webSocketUrl);
-  let nextId = 0;
-  const pending = new Map();
-
-  socket.addEventListener("message", (event) => {
-    const message = JSON.parse(event.data);
-    if (!message.id) return;
-    const callbacks = pending.get(message.id);
-    if (!callbacks) return;
-    pending.delete(message.id);
-    if (message.error) callbacks.reject(new Error(message.error.message));
-    else callbacks.resolve(message.result || {});
-  });
-
-  return new Promise((resolve, reject) => {
-    socket.addEventListener("open", () => {
-      resolve({
-        send(method, params = {}) {
-          const id = ++nextId;
-          return new Promise((commandResolve, commandReject) => {
-            pending.set(id, { resolve: commandResolve, reject: commandReject });
-            socket.send(JSON.stringify({ id, method, params }));
-          });
-        },
-        async evaluate(expression) {
-          const result = await this.send("Runtime.evaluate", {
-            expression,
-            returnByValue: true,
-            awaitPromise: true,
-          });
-          if (result.exceptionDetails) {
-            throw new Error(result.exceptionDetails.exception?.description || result.exceptionDetails.text);
-          }
-          return result.result?.value;
-        },
-        close() {
-          socket.close();
-        },
-      });
-    }, { once: true });
-    socket.addEventListener("error", () => reject(new Error("Could not connect to Chromium's page.")), { once: true });
-  });
+async function launchOptions(name) {
+  const override = process.env[`${name.toUpperCase()}_PATH`];
+  if (override) return { executablePath: override };
+  if (name === "chromium") {
+    // Preserve the original Replit Chromium path, with bundled Chromium as the
+    // portable alternative on machines using `playwright install`.
+    try {
+      await access("/repl/tools/bin/chromium", constants.X_OK);
+      return { executablePath: "/repl/tools/bin/chromium" };
+    } catch {
+      // Playwright reports a missing bundled executable with installation help.
+    }
+  }
+  return {};
 }
 
-const server = createStaticServer();
-let browser;
-let page;
-let profileDirectory;
+function unavailableReason(error) {
+  return /Executable doesn't exist|Host system is missing dependencies|error while loading shared libraries|cannot open shared object file/i.test(error.message);
+}
 
-try {
-  await access(chromiumPath);
-  await new Promise((resolve, reject) => {
-    server.once("error", reject);
-    server.listen(0, "127.0.0.1", resolve);
-  });
-  const { port: sitePort } = server.address();
-  profileDirectory = await mkdtemp(path.join(os.tmpdir(), "curioseek-apex-check-"));
-  browser = spawn(chromiumPath, [
-    "--headless=new",
-    "--no-sandbox",
-    "--disable-gpu",
-    "--disable-dev-shm-usage",
-    "--no-first-run",
-    "--no-default-browser-check",
-    "--remote-debugging-port=0",
-    "--remote-allow-origins=*",
-    `--user-data-dir=${profileDirectory}`,
-    "about:blank",
-  ], { stdio: "ignore" });
+async function checkNoOverflow(page, width, checks, state = "") {
+  const dimensions = await page.evaluate(() => ({
+    viewport: window.innerWidth,
+    document: document.documentElement.scrollWidth,
+    body: document.body.scrollWidth,
+  }));
+  assert(
+    dimensions.viewport === width && dimensions.document <= width && dimensions.body <= width,
+    `No horizontal overflow at ${width}px${state} (viewport ${dimensions.viewport}px, document ${dimensions.document}px, body ${dimensions.body}px)`,
+    checks,
+  );
+}
 
-  const activePortFile = path.join(profileDirectory, "DevToolsActivePort");
-  const debuggingPort = await waitFor(async () => {
-    if (browser.exitCode !== null) throw new Error(`Chromium exited with code ${browser.exitCode}.`);
-    try {
-      const [port] = (await readFile(activePortFile, "utf8")).split("\n");
-      return Number(port) || null;
-    } catch {
-      return null;
-    }
-  }, "Chromium did not start its debugging interface");
+async function checkNoteState(page, activeIndex, checks, message) {
+  const state = await page.locator("[data-world-toggle]").evaluateAll((controls) =>
+    controls.map((control) => ({
+      index: Number(control.dataset.worldToggle),
+      expanded: control.getAttribute("aria-expanded"),
+      hidden: document.getElementById(control.getAttribute("aria-controls"))?.hidden,
+      label: control.querySelector("[data-toggle-label]")?.textContent.trim(),
+    })),
+  );
+  assert(
+    state.length === 8 && state.every((control) => {
+      const expanded = control.index === activeIndex;
+      return control.expanded === String(expanded) &&
+        control.hidden === !expanded &&
+        (control.label === undefined || control.label === (expanded ? "Close field note" : "Read field note"));
+    }),
+    message,
+    checks,
+  );
+}
 
-  const targets = await waitFor(async () => {
-    const response = await fetch(`http://127.0.0.1:${debuggingPort}/json/list`);
-    if (!response.ok) return null;
-    const pages = (await response.json()).filter((target) => target.type === "page");
-    return pages[0] || null;
-  }, "Chromium did not open a page");
-  page = await connectToPage(targets.webSocketDebuggerUrl);
-  await page.send("Page.enable");
-  await page.send("Runtime.enable");
-  await page.send("Emulation.setDeviceMetricsOverride", {
-    width: 1440,
-    height: 1000,
-    deviceScaleFactor: 1,
-    mobile: false,
-  });
-  await page.send("Page.navigate", { url: `http://127.0.0.1:${sitePort}/` });
-  await waitFor(async () => (await page.evaluate("document.readyState")) === "complete", "The apex page did not load");
+async function checkKeyboard(page, selector, width, checks, layout) {
+  await page.setViewportSize({ width, height: 1000 });
+  const controls = page.locator(selector);
+  // Exercise both native activation keys as opener, switcher, and closer.
+  // These are real browser keyboard events, not click() or DOM dispatchEvent().
+  for (const key of ["Enter", "Space"]) {
+    await controls.nth(0).focus();
+    await page.keyboard.press(key);
+    await checkNoteState(page, 0, checks, `${layout}: ${key} opens a field note and synchronizes controls, labels, and panels`);
+    await checkNoOverflow(page, width, checks, ` with the ${layout} note open`);
 
-  const initialNavigation = await page.evaluate(`(() => {
+    await controls.nth(1).focus();
+    await page.keyboard.press(key);
+    await checkNoteState(page, 1, checks, `${layout}: ${key} switches field notes and closes the previous panel`);
+    assert(
+      await controls.nth(1).evaluate((control) => document.activeElement === control),
+      `${layout}: ${key} keeps focus on the activated button`,
+      checks,
+    );
+
+    await page.keyboard.press(key);
+    await checkNoteState(page, null, checks, `${layout}: ${key} closes the active field note`);
+  }
+}
+
+async function checkApex(page, url, checks) {
+  const pageErrors = [];
+  page.on("pageerror", (error) => pageErrors.push(error.message));
+  await page.goto(url, { waitUntil: "load" });
+  await page.evaluate(() => document.fonts.ready);
+  const initialNavigation = await page.evaluate(() => {
     const anchors = [...document.querySelectorAll('a[href^="#"]')];
     const missing = anchors
       .map((anchor) => anchor.getAttribute("href"))
@@ -166,129 +159,128 @@ try {
     const fandom = document.querySelector('#fandom a[href="https://fandom.justlikekatie.com/"]');
     return {
       missing,
-      headline: document.querySelector("#hero-title")?.innerText.replace(/\\s+/g, " ").trim(),
+      headline: document.querySelector("#hero-title")?.innerText.replace(/\s+/g, " ").trim(),
       worlds: [...document.querySelectorAll(".world-name h3")].map((heading) => heading.textContent.trim()),
       statuses: [...document.querySelectorAll(".world .status")].map((status) => status.textContent.trim()),
-      fandom: fandom && {
-        target: fandom.target,
-        rel: fandom.rel.split(/\\s+/).sort(),
-      },
+      fandomCopy: document.querySelector("#fandom .public-copy")?.textContent,
+      fandomArtLabel: document.querySelector("#fandom .art-label")?.textContent,
+      fandom: fandom && { target: fandom.target, rel: fandom.rel.split(/\s+/) },
     };
-  })()`);
-  assert(initialNavigation.missing.length === 0, `All ${initialNavigation.missing.length ? "broken" : "in-page"} navigation targets resolve`);
-  assert(initialNavigation.headline === "One curious life. Many ways in.", "The apex leads with the approved many-sided-life framing");
+  });
+  assert(initialNavigation.missing.length === 0, "All in-page navigation targets resolve", checks);
+  assert(initialNavigation.headline === "One curious life. Many ways in.", "The apex leads with the approved many-sided-life framing", checks);
   assert(
     initialNavigation.worlds.join("|") === "StudentOS|CreatorOS|LifeOS|Fandom Vibes" &&
     initialNavigation.statuses.join("|") === "PRIVATE WORKSPACE|PRIVATE WORKSPACE|PROPOSED|PUBLIC WORLD",
     "All four worlds and their privacy/publication boundaries are explicit",
+    checks,
   );
   assert(
     initialNavigation.fandom?.target === "_blank" &&
     initialNavigation.fandom.rel.includes("noopener") &&
     initialNavigation.fandom.rel.includes("noreferrer"),
     "The public Fandom Vibes link uses the expected URL and safe new-tab attributes",
+    checks,
+  );
+  assert(
+    initialNavigation.fandomCopy?.includes("C-drama as its initial focus") &&
+    initialNavigation.fandomCopy.includes("Check each reading’s spoiler boundary") &&
+    initialNavigation.fandomCopy.includes("VIBE ATLAS: DAILY CARD DROP") &&
+    !initialNavigation.fandomCopy.includes("CONCEPT PREVIEW") &&
+    initialNavigation.fandomArtLabel === "CONCEPT ART / NOT PUBLISHED CARDS",
+    "Fandom copy distinguishes public card drops, spoiler boundaries, initial C-drama focus, and concept artwork",
+    checks,
   );
 
-  for (const width of [320, 390, 768, 1440]) {
-    await page.send("Emulation.setDeviceMetricsOverride", {
-      width,
-      height: 1000,
-      deviceScaleFactor: 1,
-      mobile: width < 768,
-    });
-    const dimensions = await page.evaluate(`({
-      viewport: window.innerWidth,
-      document: document.documentElement.scrollWidth,
-      body: document.body.scrollWidth
-    })`);
-    assert(
-      dimensions.document <= width && dimensions.body <= width,
-      `No horizontal overflow at ${width}px (document ${dimensions.document}px, body ${dimensions.body}px)`,
-    );
+  for (const width of widths) {
+    await page.setViewportSize({ width, height: 1000 });
+    await checkNoOverflow(page, width, checks);
   }
 
-  await page.send("Emulation.setDeviceMetricsOverride", {
-    width: 1440,
-    height: 1000,
-    deviceScaleFactor: 1,
-    mobile: false,
-  });
-  await page.send("Emulation.setEmulatedMedia", { features: [{ name: "prefers-reduced-motion", value: "no-preference" }] });
-  const normalMotion = await page.evaluate(`({
-    animation: getComputedStyle(document.querySelector(".orbit-one")).animationName,
-    scroll: getComputedStyle(document.documentElement).scrollBehavior
-  })`);
-  assert(normalMotion.animation === "none", "The atlas field stays still rather than prescribing a route");
-
-  await page.send("Emulation.setEmulatedMedia", { features: [{ name: "prefers-reduced-motion", value: "reduce" }] });
-  const reducedMotion = await page.evaluate(`({
-    animation: getComputedStyle(document.querySelector(".orbit-one")).animationName,
-    scroll: getComputedStyle(document.documentElement).scrollBehavior
-  })`);
-  assert(reducedMotion.animation === "none", "The static orbital illustration remains still for reduced-motion visitors");
-  assert(reducedMotion.scroll === "auto", "Reduced motion disables smooth page scrolling");
-
-  await page.send("Emulation.setEmulatedMedia", { features: [{ name: "prefers-reduced-motion", value: "no-preference" }] });
-  const pressKey = async (key, code, windowsVirtualKeyCode, text) => {
-    await page.send("Input.dispatchKeyEvent", {
-      type: "keyDown",
-      key,
-      code,
-      windowsVirtualKeyCode,
-      nativeVirtualKeyCode: windowsVirtualKeyCode,
-      ...(text ? { text, unmodifiedText: text } : key === "Enter" ? { text: "\r", unmodifiedText: "\r" } : {}),
-    });
-    await page.send("Input.dispatchKeyEvent", {
-      type: "keyUp",
-      key,
-      code,
-      windowsVirtualKeyCode,
-      nativeVirtualKeyCode: windowsVirtualKeyCode,
-    });
-  };
-  await page.evaluate("document.querySelector('.toggle[data-world-toggle]').focus()");
-  await pressKey("Enter", "Enter", 13);
-  const firstNote = await page.evaluate(`({
-    expanded: document.querySelector('.toggle[data-world-toggle]').getAttribute("aria-expanded"),
-    hidden: document.getElementById("world-detail-0").hidden,
-    label: document.querySelector('.toggle[data-world-toggle] [data-toggle-label]').textContent.trim()
-  })`);
+  const motionState = () => page.evaluate(() => ({
+    reduced: matchMedia("(prefers-reduced-motion: reduce)").matches,
+    animations: [...document.querySelectorAll(".orbit")].map((orbit) => getComputedStyle(orbit).animationName),
+    scroll: getComputedStyle(document.documentElement).scrollBehavior,
+  }));
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  const normalMotion = await motionState();
+  assert(!normalMotion.reduced && normalMotion.scroll === "smooth", "The normal-motion baseline uses smooth scrolling", checks);
   assert(
-    firstNote.expanded === "true" && firstNote.hidden === false,
-    "Enter opens a field note and exposes its expanded state",
+    normalMotion.animations.length === 2 && normalMotion.animations.every((animation) => animation === "none"),
+    "The atlas field stays still rather than prescribing a route",
+    checks,
   );
-  assert(firstNote.label === "Close field note", "An open field note's control label updates");
-
-  await page.evaluate("document.querySelectorAll('.toggle[data-world-toggle]')[1].focus()");
-  await pressKey(" ", "Space", 32, " ");
-  const switchedNotes = await page.evaluate(`({
-    expanded: [...document.querySelectorAll('.toggle[data-world-toggle]')].map((button) => button.getAttribute("aria-expanded")),
-    hidden: [...document.querySelectorAll('.world .detail')].map((detail) => detail.hidden)
-  })`);
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  const reducedMotion = await motionState();
+  assert(reducedMotion.reduced, "The browser applies the reduced-motion preference", checks);
   assert(
-    switchedNotes.expanded[0] === "false" &&
-    switchedNotes.expanded[1] === "true" &&
-    switchedNotes.hidden[0] === true &&
-    switchedNotes.hidden[1] === false,
-    "Space switches the open field note and keeps button states in sync",
+    reducedMotion.animations.length === 2 && reducedMotion.animations.every((animation) => animation === "none"),
+    "Reduced motion leaves both orbital illustrations unanimated",
+    checks,
   );
+  assert(reducedMotion.scroll === "auto", "Reduced motion disables smooth page scrolling", checks);
 
-  await page.evaluate("document.querySelectorAll('.toggle[data-world-toggle]')[1].focus()");
-  await pressKey(" ", "Space", 32, " ");
-  const closedNote = await page.evaluate(`({
-    expanded: document.querySelectorAll('.toggle[data-world-toggle]')[1].getAttribute("aria-expanded"),
-    hidden: document.getElementById("world-detail-1").hidden
-  })`);
-  assert(closedNote.expanded === "false" && closedNote.hidden, "Space closes the active field note");
-
-  console.log(`Apex browser checks passed (${checks.length} assertions).`);
-  for (const check of checks) console.log(`  ✓ ${check}`);
-} catch (error) {
-  console.error(`Apex browser check failed: ${error.message}`);
-  process.exitCode = 1;
-} finally {
-  page?.close();
-  browser?.kill("SIGTERM");
-  await new Promise((resolve) => server.close(resolve));
-  if (profileDirectory) await rm(profileDirectory, { recursive: true, force: true });
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await checkKeyboard(page, ".toggle[data-world-toggle]", 1440, checks, "desktop");
+  await checkKeyboard(page, ".mobile-destination[data-world-toggle]", 390, checks, "mobile");
+  await checkAnalyticsNavigation(page, url, checks, assert);
+  assert(pageErrors.length === 0, `No uncaught page errors${pageErrors.length ? `: ${pageErrors.join("; ")}` : ""}`, checks);
 }
+
+async function main() {
+  const options = parseOptions(process.argv.slice(2));
+  const server = createStaticServer();
+  const failures = [];
+  const skipped = [];
+  let passed = 0;
+  try {
+    await new Promise((resolve, reject) => {
+      server.once("error", reject);
+      server.listen(0, "127.0.0.1", resolve);
+    });
+    const url = `http://127.0.0.1:${server.address().port}/`;
+    for (const name of options.browsers) {
+      let browser;
+      try {
+        try {
+          browser = await browserTypes[name].launch({ headless: true, ...await launchOptions(name) });
+        } catch (error) {
+          const hasOverride = Boolean(process.env[`${name.toUpperCase()}_PATH`]);
+          if (name !== "chromium" && !options.requireAll && !hasOverride && unavailableReason(error)) {
+            skipped.push(name);
+            console.warn(`UNAVAILABLE ${name}: ${error.message}`);
+            continue;
+          }
+          throw error;
+        }
+        const checks = [];
+        const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+        page.setDefaultTimeout(15_000);
+        await checkApex(page, url, checks);
+        await checkZoom(browser, url, checks, assert);
+        console.log(`PASS ${name} ${browser.version()} (${checks.length} assertions)`);
+        for (const check of checks) console.log(`  ✓ ${check}`);
+        passed++;
+      } catch (error) {
+        failures.push(name);
+        console.error(`FAIL ${name}: ${error.stack || error.message}`);
+      } finally {
+        // Playwright waits for the browser to exit before removing its profile.
+        // Killing Chromium and immediately deleting the directory can race.
+        await browser?.close();
+      }
+    }
+  } finally {
+    await new Promise((resolve) => server.close(resolve));
+  }
+  console.log(`Apex browser checks: ${passed} passed, ${failures.length} failed, ${skipped.length} unavailable.`);
+  if (skipped.length) {
+    console.warn(`Not verified: ${skipped.join(", ")}. Install engines with "npx playwright install firefox webkit" and their OS dependencies. Use --require-all to fail on unavailable browsers.`);
+  }
+  if (failures.length) process.exitCode = 1;
+}
+
+main().catch((error) => {
+  console.error(`Apex browser check failed: ${error.stack || error.message}`);
+  process.exitCode = 1;
+});

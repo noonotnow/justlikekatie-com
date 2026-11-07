@@ -1,0 +1,34 @@
+name: Apex browser checks
+
+# Always report on pull requests, including changes outside the apex files.
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  browsers:
+    name: Validate apex in Chromium, Firefox, and WebKit
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install locked development dependency
+        run: npm ci --include=dev
+
+      - name: Install all browser engines and host dependencies
+        run: npx --no-install playwright install --with-deps chromium firefox webkit
+
+      - name: Require regression checks in all three engines
+        run: npm run check:apex:all
