@@ -58,6 +58,27 @@ explicitly; assertion failures always fail. Explicit browser selection and
 `--require-all` also fail if an engine cannot start, so CI cannot silently
 skip coverage. `--browser=firefox,webkit` selects multiple engines.
 
+### Pull-request browser checks
+
+`.github/workflows/apex-browser-checks.yml` runs on every pull request, without
+path filters, and can also be started manually with `workflow_dispatch`.
+The **Apex browser checks** workflow reports the separate
+**Validate apex in Chromium, Firefox, and WebKit** job. It uses Ubuntu 24.04
+and Node.js 22, runs `npm ci --include=dev`, installs the locked Playwright
+engines and supported host libraries with
+`npx --no-install playwright install --with-deps chromium firefox webkit`,
+then runs `npm run check:apex:all`. All three engines must launch and pass;
+missing engines fail the job instead of reducing coverage.
+
+The existing **Netlify output guard** workflow and its
+**Validate staged Netlify output** check remain independent and unchanged.
+Browser failures therefore appear separately from deploy-output failures.
+The browser suite serves the checked-out files locally; it does not publish
+the site or require deployment credentials. Replit/Nix cannot currently
+launch the bundled WebKit engine because its host libraries are incompatible;
+use the GitHub-hosted job to verify all three engines, not a locally skipped
+WebKit result.
+
 The existing 200% zoom reflow and analytics-failure navigation checks are also
 run for each available engine. Fandom popup destinations are intercepted
 locally during the tests rather than contacting the public site.
