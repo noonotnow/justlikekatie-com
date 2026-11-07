@@ -16,7 +16,10 @@ async function clickVisibleControl(page, selector, label, checks, assert) {
     };
   });
   assert(target.visible, `${label} is in view and not clipped or covered`, checks);
-  await page.mouse.click(target.x, target.y);
+  // Resizing and scroll anchoring can move the link between the visibility
+  // measurement and input dispatch. Locator clicks wait for a stable target
+  // and still send trusted mouse input; do not force-click or dispatch a DOM event.
+  await page.locator(selector).click();
 }
 
 // Preserve the existing 200% zoom regression cases using the same reflow
